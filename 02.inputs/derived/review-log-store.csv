@@ -1,0 +1,10 @@
+strand,route,query,date,retrieved,reported_total,cap,capped,error
+library-science,store-q1-disturbance-inventory,natural disturbance*|managed land proxy|factoring out AND greenhouse gas inventory|national inventory|unfccc|kyoto protocol|carbon accounting|greenhouse gas reporting,2026-10-22,0,0,,FALSE,
+library-science,store-q1b-disturbance-policy,natural disturbance*|managed land proxy|factoring out AND paris agreement|lulucf|managed forest|forest reference level,2026-10-22,0,0,,FALSE,
+library-science,store-q3-disturbance-budget-uncertainty,natural disturbance*|wildfire AND carbon budget|forest carbon|carbon balance AND monte carlo|uncertainty,2026-10-22,0,0,,FALSE,
+library-science,store-q5-disturbance-credit,natural disturbance* AND crediting|carbon credit*|redd*|buffer pool|reversal*,2026-10-22,0,0,,FALSE,
+library-science,store-q4-inventory-dataset,greenhouse gas inventory|national inventory|unfccc AND faostat|global fire emissions database|fire emissions,2026-10-22,0,0,,FALSE,
+library-science,store-q2a-regime-variation,fire regime|disturbance regime|fire cycle|fire history AND natural range of variation|historical range of variability|range of natural variability,2026-10-22,0,0,,FALSE,
+library-science,store-q2b-regime-variability,fire regime|disturbance regime|fire cycle AND interannual variability|record length|baseline period,2026-10-22,0,0,,FALSE,
+library-science,store-q2c-regime-model,fire cycle|fire frequency|time-since-fire|fire return interval AND age-class distribution|negative exponential|weibull,2026-10-22,1,1,,FALSE,
+library-science,store-q3b-variability-flux-disturbance,interannual variability AND net ecosystem production|net biome production|carbon flux|carbon sink AND disturbance|fire,2026-10-22,0,0,,FALSE,

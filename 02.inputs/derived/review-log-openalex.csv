@@ -1,0 +1,10 @@
+strand,route,query,date,retrieved,reported_total,cap,capped,error
+openalex,oa-q1-disturbance-inventory,"(""natural disturbance"" OR ""managed land proxy"" OR ""factoring out"") AND (""greenhouse gas inventory"" OR ""national inventory"" OR ""unfccc"" OR ""kyoto protocol"" OR ""carbon accounting"" OR ""greenhouse gas reporting"")",2026-10-22,60,60,2000,FALSE,
+openalex,oa-q1b-disturbance-policy,"(""natural disturbance"" OR ""managed land proxy"" OR ""factoring out"") AND (""paris agreement"" OR ""lulucf"" OR ""managed forest"" OR ""forest reference level"")",2026-10-22,308,308,2000,FALSE,
+openalex,oa-q3-disturbance-budget-uncertainty,"(""natural disturbance"" OR ""wildfire"") AND (""carbon budget"" OR ""forest carbon"" OR ""carbon balance"") AND (""monte carlo"" OR ""uncertainty"")",2026-10-22,142,142,2000,FALSE,
+openalex,oa-q5-disturbance-credit,"(""natural disturbance"") AND (""crediting"" OR ""carbon credit"" OR ""redd"" OR ""buffer pool"" OR ""reversal"")",2026-10-22,53,53,2000,FALSE,
+openalex,oa-q4-inventory-dataset,"(""greenhouse gas inventory"" OR ""national inventory"" OR ""unfccc"") AND (""faostat"" OR ""global fire emissions database"" OR ""fire emissions"")",2026-10-22,66,66,2000,FALSE,
+openalex,oa-q2a-regime-variation,"(""fire regime"" OR ""disturbance regime"" OR ""fire cycle"" OR ""fire history"") AND (""natural range of variation"" OR ""historical range of variability"" OR ""range of natural variability"")",2026-10-22,112,112,2000,FALSE,
+openalex,oa-q2b-regime-variability,"(""fire regime"" OR ""disturbance regime"" OR ""fire cycle"") AND (""interannual variability"" OR ""record length"" OR ""baseline period"")",2026-10-22,96,96,2000,FALSE,
+openalex,oa-q2c-regime-model,"(""fire cycle"" OR ""fire frequency"" OR ""time-since-fire"" OR ""fire return interval"") AND (""age-class distribution"" OR ""negative exponential"" OR ""weibull"")",2026-10-22,108,108,2000,FALSE,
+openalex,oa-q3b-variability-flux-disturbance,"(""interannual variability"") AND (""net ecosystem production"" OR ""net biome production"" OR ""carbon flux"" OR ""carbon sink"") AND (""disturbance"" OR ""fire"")",2026-10-22,93,93,2000,FALSE,

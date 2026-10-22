@@ -146,4 +146,16 @@ says so.
 
 ## Deviations
 
-None yet.
+1. 22 October 2026. In the first run, OpenAlex refused route `q1b` with HTTP 401 after the
+   chunk had retried only HTTP 429, while the same query answered 308 records when sent
+   again by hand minutes later. The `review-openalex` chunk was changed to retry 401 as
+   well, each strand was given its own log file so that one strand can be rerun without
+   the others, and every search file from the first run was deleted, before any record
+   was screened, so that all strands were run again the same day from the frozen terms.
+2. 22 October 2026. The second run refused `q1b` again, and sending its requests by hand
+   showed why. OpenAlex answered the first page and refused the second with "API key
+   required for cursor paging", so without a key a cursor reaches only the first 200
+   records, and `q1b`, at 308, was the only route with more. The chunk was changed to
+   page by number, which OpenAlex answered without a key, the 401 retry of deviation 1
+   was removed because retrying a key refusal cannot succeed, and only the OpenAlex
+   strand was deleted and run again, before any record was screened.

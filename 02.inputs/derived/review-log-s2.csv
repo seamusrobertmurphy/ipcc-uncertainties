@@ -1,0 +1,10 @@
+strand,route,query,date,retrieved,reported_total,cap,capped,error
+semantic-scholar,s2-q1-disturbance-inventory,"(""natural disturbance"" | ""managed land proxy"" | ""factoring out"") + (""greenhouse gas inventory"" | ""national inventory"" | unfccc | ""kyoto protocol"" | ""carbon accounting"" | ""greenhouse gas reporting"")",2026-10-22,52,52,3000,FALSE,
+semantic-scholar,s2-q1b-disturbance-policy,"(""natural disturbance"" | ""managed land proxy"" | ""factoring out"") + (""paris agreement"" | lulucf | ""managed forest"" | ""forest reference level"")",2026-10-22,248,248,3000,FALSE,
+semantic-scholar,s2-q3-disturbance-budget-uncertainty,"(""natural disturbance"" | wildfire) + (""carbon budget"" | ""forest carbon"" | ""carbon balance"") + (""monte carlo"" | uncertainty)",2026-10-22,95,95,3000,FALSE,
+semantic-scholar,s2-q5-disturbance-credit,"(""natural disturbance"") + (crediting | ""carbon credit"" | redd* | ""buffer pool"" | reversal*)",2026-10-22,44,44,3000,FALSE,
+semantic-scholar,s2-q4-inventory-dataset,"(""greenhouse gas inventory"" | ""national inventory"" | unfccc) + (faostat | ""global fire emissions database"" | ""fire emissions"")",2026-10-22,29,29,3000,FALSE,
+semantic-scholar,s2-q2a-regime-variation,"(""fire regime"" | ""disturbance regime"" | ""fire cycle"" | ""fire history"") + (""natural range of variation"" | ""historical range of variability"" | ""range of natural variability"")",2026-10-22,108,108,3000,FALSE,
+semantic-scholar,s2-q2b-regime-variability,"(""fire regime"" | ""disturbance regime"" | ""fire cycle"") + (""interannual variability"" | ""record length"" | ""baseline period"")",2026-10-22,49,49,3000,FALSE,
+semantic-scholar,s2-q2c-regime-model,"(""fire cycle"" | ""fire frequency"" | time-since-fire | ""fire return interval"") + (""age-class distribution"" | ""negative exponential"" | weibull)",2026-10-22,115,115,3000,FALSE,
+semantic-scholar,s2-q3b-variability-flux-disturbance,"(""interannual variability"") + (""net ecosystem production"" | ""net biome production"" | ""carbon flux"" | ""carbon sink"") + (disturbance | fire)",2026-10-22,56,56,3000,FALSE,
