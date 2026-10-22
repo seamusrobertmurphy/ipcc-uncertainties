@@ -1,0 +1,58 @@
+term,source,question,concept
+natural disturbance*,keywords,q1 q1b q3 q5,disturbance
+managed land proxy,keywords,q1 q1b,disturbance
+factoring out,keywords,q1 q1b,disturbance
+greenhouse gas inventory,keywords,q1 q4,inventory
+national inventory,keywords,q1 q4,inventory
+unfccc,keywords,q1 q4,inventory
+kyoto protocol,keywords,q1,inventory
+paris agreement,keywords,q1b,policy
+carbon accounting,keywords,q1,inventory
+lulucf,keywords,q1b,policy
+managed forest,keywords,q1b,policy
+forest reference level,keywords,q1b,policy
+fire regime,keywords,q2a q2b,regime
+disturbance regime,keywords,q2a q2b,regime
+fire cycle,keywords,q2a q2b q2c,regime
+fire history,keywords,q2a,regime
+fire frequency,keywords,q2c,regime
+time-since-fire,keywords,q2c,regime
+fire return interval,keywords,q2c,regime
+natural range of variation,keywords,q2a,variation
+historical range of variability,keywords,q2a,variation
+range of natural variability,keywords,q2a,variation
+interannual variability,keywords,q2b q3b,variability
+record length,keywords,q2b,variability
+baseline period,keywords,q2b,variability
+age-class distribution,keywords,q2c,model
+negative exponential,keywords,q2c,model
+weibull,keywords,q2c,model
+carbon budget,keywords,q3,budget
+forest carbon,keywords,q3,budget
+carbon balance,keywords,q3,budget
+net ecosystem production,keywords,q3b,flux
+net biome production,keywords,q3b,flux
+carbon flux,keywords,q3b,flux
+carbon sink,keywords,q3b,flux
+monte carlo,keywords,q3,uncertainty
+wildfire,keywords,q3,disturbance
+faostat,keywords,q4,dataset
+global fire emissions database,keywords,q4,dataset
+crediting,keywords,q5,credit
+carbon credit*,keywords,q5,credit
+redd*,keywords,q5,credit
+buffer pool,keywords,q5,credit
+reversal*,keywords,q5,credit
+disaggregated uncertainties,title,,
+natural,title,,
+fire emissions,title,q4,dataset
+canada,title,,
+greenhouse gas reporting,title,q1,inventory
+assessing,subtitle,,
+crediting balance,subtitle,,
+ipcc method updates,subtitle,,
+uncertainty,subtitle,q3,uncertainty
+era,subtitle,,
+megafire emissions accounting,subtitle,,
+disturbance,keywords,q3b,disturbance
+fire,keywords,q3b,disturbance
