@@ -84,9 +84,9 @@ A bracketed citation placed directly after a cross-reference is swallowed and ne
 
 <!-- render:start -->
 
-## Disaggregated uncertainties of natural and anthropogenic fire emissions in Canada’s greenhouse gas reporting
+## Reported forest emissions and removals in Canada with and without the separation of natural disturbances
 
-*Assessing the crediting balance of IPCC method updates to reported uncertainty in the era of megafire emissions accounting*
+*Uncertainty under the IPCC 2019 Refinement, jurisdictional credit and a test of the FAOSTAT fire method*
 
 Everything from here to the end marker is generated from the render by `01.manuscript/_tools/build-readme.py`. Do not edit it by hand.
 

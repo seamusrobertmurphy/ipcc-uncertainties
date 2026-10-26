@@ -183,3 +183,15 @@ says so.
    `review-records.csv`. The full texts of included and undecided records were then sought
    by the `review-fulltext` chunk, and those it could not fetch were listed for the author
    to fetch by hand.
+4. 25 October 2026. The included and undecided records were charted by the same language
+   model rather than by the author, so that the Introduction and the Discussion could be
+   written from the review the day after screening. The 494 distinct works among them were
+   charted from their titles and abstracts under `charting-rule.md`, in seven batches, each
+   recording the questions a work bore on, its place, scale, method and disturbance, its
+   finding, and a passage of its abstract copied word for word. Every passage was checked by
+   script against its abstract, and the 163 works with no abstract were charted from their
+   titles alone. The charting is kept in `charting-model.csv`, read by the
+   `review-charting` chunk, and the bibliographic record of every work with a DOI was taken
+   from CrossRef or DataCite by the `review-bib` chunk. The full texts were not read for the
+   charting, so any statement that the charted works contain no study of a given kind rests
+   on titles and abstracts until the full texts are read.
