@@ -1,9 +1,9 @@
-Year,Burned area share (%),Disaggregated emissions (Mt),Disaggregated reductions (Mt),Undisaggregated emissions (Mt),Undisaggregated reductions (Mt)
-2017,35.9,38,4.2,228,-151
-2018,60.5,42,0.2,272,-195
-2019,1.5,33,9.2,65,12
-2020,6.6,31,11.2,60,17
-2021,21.1,29,13.2,199,-122
-2022,9,25,17.2,80,-3
-2023,22.2,19,23.2,399,-322
-2024,20.8,16,26.2,226,-149
+Year,Burned area share (%),Disaggregated emissions (Mt),Disaggregated reductions (Mt),Undisaggregated emissions (Mt),Undisaggregated reductions (Mt),Australian rule emissions (Mt),Australian rule reductions (Mt)
+2017,35.9,38,4.2,228,-151,228,-160.6
+2018,60.5,42,0.2,272,-195,42,25.4
+2019,1.5,33,9.2,65,12,65,2.4
+2020,6.6,31,11.2,60,17,60,7.4
+2021,21.1,29,13.2,199,-122,29,38.4
+2022,9,25,17.2,80,-3,80,-12.6
+2023,22.2,19,23.2,399,-322,19,48.4
+2024,20.8,16,26.2,226,-149,16,51.4

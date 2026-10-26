@@ -1,5 +1,5 @@
 ---
-title: "Reported forest emissions and removals in Canada with and without the separation of natural disturbances"
+title: "Reported emissions and removals from Canada's managed forest with and without disaggregation of natural disturbances"
 subtitle: "Uncertainty under the IPCC 2019 Refinement, jurisdictional credit and a test of the FAOSTAT fire method"
 keywords:
   - natural disturbance
@@ -94,7 +94,6 @@ csl: ../04.references/apa.csl
 
 ```{r}
 #| label: setup
-#| echo: true
 #| output: false
 
 knitr::opts_chunk$set(fig.path = "../03.outputs/PNG/", dpi = 300, dev = "png")
@@ -117,7 +116,6 @@ th <- ggplot2::theme_bw(base_size = 8) +
 
 ```{r}
 #| label: analysis
-#| echo: true
 #| output: false
 
 # FAOSTAT Emissions from Fires (domain GI), FAO, Rome
@@ -328,6 +326,35 @@ classify <- function(n) {
 }
 baselines <- do.call(rbind, lapply(c(13, 20, 30), classify))
 
+# Australia's rule on Canada's components: the natural disturbance component is left out only in a year whose
+# forest fire emissions exceed the mean of the 13-year baseline, Australia's length, by two standard deviations
+years13 <- forest_co2$year[forest_co2$year < min(forest_co2$year) + 13]
+first13 <- forest_co2$co2[forest_co2$year %in% years13]
+natural_years <- forest_co2$year[forest_co2$co2 > mean(first13) + 2 * stats::sd(first13)]
+accounts <- dplyr::mutate(accounts, rule = dplyr::if_else(year %in% natural_years, human, net))
+level_rule <- sum(accounts$rule[accounts$reference]) / 5
+credits <- credits |>
+  dplyr::mutate(`Australian rule emissions (Mt)` = accounts$rule[!accounts$reference],
+                `Australian rule reductions (Mt)` = round(level_rule - `Australian rule emissions (Mt)`, 1))
+rule_pos <- credits[["Australian rule reductions (Mt)"]] > 0
+rule_out <- credits$Year %in% natural_years
+rule_worst <- which.min(credits[["Australian rule reductions (Mt)"]])
+
+# Australia's second step for British Columbia: a nationally natural year counts as natural in the province only
+# when the province's burned area exceeds its own mean over the same 13 years by one standard deviation
+bc_burned <- dplyr::filter(burned, province == "BC")
+bc_base <- bc_burned$hectares[bc_burned$year %in% years13]
+bc_natural_years <- intersect(natural_years, bc_burned$year[bc_burned$hectares > mean(bc_base) + stats::sd(bc_base)])
+bc_accounts <- dplyr::mutate(bc_accounts, rule = dplyr::if_else(year %in% bc_natural_years, human, net))
+bc_level_rule <- sum(bc_accounts$rule[bc_accounts$year <= 2016]) / 5
+bc_credits <- bc_credits |>
+  dplyr::mutate(`Australian rule emissions (Mt)` = round(bc_accounts$rule[bc_accounts$year >= 2017], 1),
+                `Australian rule reductions (Mt)` = round(bc_level_rule - bc_accounts$rule[bc_accounts$year >= 2017], 1))
+bc_rule_pos <- bc_credits[["Australian rule reductions (Mt)"]] > 0
+bc_rule_worst <- which.min(bc_credits[["Australian rule reductions (Mt)"]])
+bc_threshold_ha <- mean(bc_base) + stats::sd(bc_base)
+bc_ha <- \(y) bc_burned$hectares[bc_burned$year == y]
+
 ci <- c(0.10, 0.20, 0.30, 0.50, 0.75, 1.00, 1.50, 2.00)
 deductions <- data.frame(
   `Uncertainty, 90% interval half width (%)` = ci * 100,
@@ -362,6 +389,8 @@ mc_split <- monte_carlo(reference_split,
   data.frame(year = credits$Year, emissions = credits[["Disaggregated emissions (Mt)"]]))
 mc_whole <- monte_carlo(reference_whole,
   data.frame(year = credits$Year, emissions = credits[["Undisaggregated emissions (Mt)"]]))
+mc_rule <- monte_carlo(accounts$rule[accounts$reference],
+  data.frame(year = credits$Year, emissions = credits[["Australian rule emissions (Mt)"]]))
 
 blank_if_negative <- function(value, mean_reduction) ifelse(mean_reduction > 0, value, NA)
 
@@ -372,6 +401,9 @@ uncertainty <- data.frame(
   `Disaggregated deduction (%)` = blank_if_negative(round(100 * trees_uncertainty(mc_split$ci), 1), mc_split$mean),
   `Undisaggregated reductions (Mt)` = round(mc_whole$mean, 1),
   `Undisaggregated interval (% of mean)` = blank_if_negative(round(100 * mc_whole$ci), mc_whole$mean),
+  `Australian rule reductions (Mt)` = round(mc_rule$mean, 1),
+  `Australian rule interval (% of mean)` = blank_if_negative(round(100 * mc_rule$ci), mc_rule$mean),
+  `Australian rule deduction (%)` = blank_if_negative(round(100 * trees_uncertainty(mc_rule$ci), 1), mc_rule$mean),
   check.names = FALSE)
 
 over <- uncertainty[["Disaggregated deduction (%)"]] > 100
@@ -384,7 +416,7 @@ province <- dplyr::filter(eccc, region == "BC")
 
 # Abstract {.unnumbered}
 
-Separating natural disturbance from human activity, as the 2019 Refinement to the guidelines of the Intergovernmental Panel on Climate Change allowed, decided whether Canada and British Columbia had any forest carbon credit to claim in the large fire years of 2017 to 2024. Few studies have run a national inventory through a crediting standard with and without that separation, and the guidance set no length for the record behind it. This study compared the two accounts for Canada and British Columbia using the 2026 national inventory (1990 to 2024) and applied the crediting level, Monte Carlo uncertainty deduction and buffer of the REDD+ Environmental Excellence Standard to 2017 to 2024. It also tested baselines of 13, 20 and 30 years for classing a fire year as natural, and recovered the coefficients behind the fire emissions that the Food and Agriculture Organization published for Canada. The account Canada reported showed reductions in `r sum(split_pos)` of `r nrow(credits)` crediting years, totalling `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` million tonnes of carbon dioxide equivalent, while the same land without the separation showed them in `r sum(whole_pos)` years and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` million tonnes short in `r credits$Year[worst]` alone. British Columbia showed `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` million tonnes of reductions separated and fell `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` million tonnes short without it. Lengthening the baseline from 13 to 20 years raised the natural disturbance threshold by `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent without changing the years it marked, and the two deductions left nothing to issue once uncertainty reached `r round(100 * break_even())` per cent. The Food and Agriculture Organization applied savanna and grassland emission factors to Canadian forest fires, putting their methane at `r round(100 * table_2_5$ch4[1] / table_2_5$ch4[2])` per cent of its cited method. It also classed `r round(100 * sum(savanna_share[["Savanna fires"]]) / sum(savanna_share[["Savanna fires"]] + savanna_share[["Forest fires"]]))` per cent of the burned area as savanna, grassland or shrubland, for which it reported no carbon dioxide. Crediting standards that relied on the separation therefore needed a stated record length, a stated regrowth period and an uncertainty deduction taken on gross rather than net fluxes.
+Separating natural disturbance from human activity, as the 2019 Refinement to the guidelines of the Intergovernmental Panel on Climate Change allowed, decided whether Canada and British Columbia had any forest carbon credit to claim in the large fire years of 2017 to 2024. Few studies have run a national inventory through a crediting standard with and without that separation, and the guidance set no length for the record behind it. This study compared the two accounts for Canada and British Columbia using the 2026 national inventory (1990 to 2024) and applied the crediting level, Monte Carlo uncertainty deduction and buffer of the REDD+ Environmental Excellence Standard to 2017 to 2024. It also tested baselines of 13, 20 and 30 years for classing a fire year as natural, built a third account that left natural disturbance out only in such years, as Australia's inventory did, and recovered the coefficients behind the fire emissions that the Food and Agriculture Organization published for Canada. The account Canada reported showed reductions in `r sum(split_pos)` of `r nrow(credits)` crediting years, totalling `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` million tonnes of carbon dioxide equivalent, while the same land without the separation showed them in `r sum(whole_pos)` years and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` million tonnes short in `r credits$Year[worst]` alone. British Columbia showed `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` million tonnes of reductions separated and fell `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` million tonnes short without it. Australia's rule gave Canada `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]), 1)` million tonnes of reductions, `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]) / sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` times its reported account, because the ordinary fire years kept in the reference period raised the crediting level and the `r sum(rule_out)` extreme crediting years then fell far below it. Lengthening the baseline from 13 to 20 years raised the natural disturbance threshold by `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent without changing the years it marked, and the two deductions left nothing to issue once uncertainty reached `r round(100 * break_even())` per cent. The Food and Agriculture Organization applied savanna and grassland emission factors to Canadian forest fires, putting their methane at `r round(100 * table_2_5$ch4[1] / table_2_5$ch4[2])` per cent of its cited method. It also classed `r round(100 * sum(savanna_share[["Savanna fires"]]) / sum(savanna_share[["Savanna fires"]] + savanna_share[["Forest fires"]]))` per cent of the burned area as savanna, grassland or shrubland, for which it reported no carbon dioxide. Crediting standards that relied on the separation therefore needed a stated record length, a stated regrowth period, the exclusion of only the emissions above a background level and an uncertainty deduction taken on gross rather than net fluxes.
 
 # Introduction
 
@@ -408,7 +440,7 @@ What the separation was worth was set by the crediting standard. The REDD+ Envir
 
 None of the works this review charted ran a jurisdiction's account through a crediting standard both with and without the separation. The nearest compared Canada's reported series under different partitions [@kurz2024revised; @bysouth2024high], compared national inventories with independent estimates [@pilli2016modellinga; @grassi2022carbon], or mapped reversal risk without reference to an inventory [@wu2026global]. This study therefore aimed to test the natural disturbance approach introduced in the 2019 Refinement by comparing what Canada and British Columbia reported, and what they could have been credited, with and without it over 1990 to 2024, the period of the 2026 national inventory. It also aimed to test whether the fire emissions FAOSTAT published could be rebuilt from its stated method and the IPCC Tier 1 steps it cited, and it pursued three objectives.
 
-1. To compare the net emissions of the two accounts for 1990 to 2024, and the reductions, the uncertainty estimated by the Monte Carlo approach of the 2019 Refinement and the buffer of each, under the REDD+ Environmental Excellence Standard for 2017 to 2024.
+1. To compare the net emissions of the two accounts for 1990 to 2024, and the reductions, the uncertainty estimated by the Monte Carlo approach of the 2019 Refinement and the buffer of each, and of a third account built under Australia's rule, under the REDD+ Environmental Excellence Standard for 2017 to 2024.
 2. To test how a baseline of 13, 20 or 30 years, a length the 2019 Refinement left unstated, changed the threshold and the years classed as natural, and to show where the regrowth period and a net near zero made the separation hard to apply.
 3. To rebuild the forest fire emissions FAOSTAT published for Canada from its stated method and the IPCC Tier 1 steps it cited, and to compare them with what Canada reported.
 
@@ -420,7 +452,6 @@ A scoping review mapped the literature behind the Introduction and the Discussio
 
 ```{r}
 #| label: review-terms
-#| echo: true
 
 if (!file.exists("04.references/review/search-terms.csv")) {
   front <- rmarkdown::yaml_front_matter(knitr::current_input(dir = TRUE))
@@ -447,7 +478,6 @@ if (!file.exists("04.references/review/search-terms.csv")) {
 
 ```{r}
 #| label: review-queries
-#| echo: true
 
 front <- rmarkdown::yaml_front_matter(knitr::current_input(dir = TRUE))
 declared <- paste(front$title, front$subtitle, paste(unlist(front$keywords), collapse = " ")) |>
@@ -469,7 +499,6 @@ record_id <- \(doi, title) dplyr::coalesce(stringr::str_to_lower(doi), stringr::
 
 ```{r}
 #| label: review-store
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-store-hits.csv")) {
   dir.create("02.inputs/derived", recursive = TRUE, showWarnings = FALSE)
@@ -502,7 +531,6 @@ if (!file.exists("02.inputs/derived/review-store-hits.csv")) {
 
 ```{r}
 #| label: review-openalex
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-openalex-hits.csv")) {
   search_openalex <- function(question, route, concepts, cap = 2000) {
@@ -548,7 +576,6 @@ if (!file.exists("02.inputs/derived/review-openalex-hits.csv")) {
 
 ```{r}
 #| label: review-semantic-scholar
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-s2-hits.csv")) {
   search_s2 <- function(question, route, concepts, cap = 3000) {
@@ -583,7 +610,6 @@ if (!file.exists("02.inputs/derived/review-s2-hits.csv")) {
 
 ```{r}
 #| label: review-records
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-records.csv")) {
   c("02.inputs/derived/review-store-hits.csv", "02.inputs/derived/review-openalex-hits.csv", "02.inputs/derived/review-s2-hits.csv") |>
@@ -603,7 +629,6 @@ if (!file.exists("02.inputs/derived/review-records.csv")) {
 
 ```{r}
 #| label: review-chase
-#| echo: true
 
 central <- c()
 if (length(central) > 0 && !file.exists("02.inputs/derived/review-chase-hits.csv")) {
@@ -630,7 +655,6 @@ if (length(central) > 0 && !file.exists("02.inputs/derived/review-chase-hits.csv
 
 ```{r}
 #| label: review-screening
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-screening.csv")) {
   records <- readr::read_csv("02.inputs/derived/review-records.csv", col_types = readr::cols(.default = "c"))
@@ -658,7 +682,6 @@ screening <- readr::read_csv("02.inputs/derived/review-screening.csv", show_col_
 
 ```{r}
 #| label: review-fulltext
-#| echo: true
 
 if (!file.exists("02.inputs/derived/review-fulltext.csv")) {
   squash <- \(x) stringr::str_remove_all(stringr::str_to_lower(stringi::stri_trans_general(x, "NFKC; Latin-ASCII")), "[^a-z0-9]")
@@ -729,7 +752,6 @@ fulltext <- readr::read_csv("02.inputs/derived/review-fulltext.csv", show_col_ty
 
 ```{r}
 #| label: review-bib
-#| echo: true
 
 if (!file.exists("04.references/review/review.json")) {
   bib <- readr::read_file("04.references/references.bib")
@@ -770,7 +792,6 @@ review_keys <- readr::read_csv("04.references/review/review-keys.csv", show_col_
 
 ```{r}
 #| label: review-charting
-#| echo: true
 
 # Each included and undecided work charted from its title and abstract by a language model under charting-rule.md, committed with the protocol
 charting <- readr::read_csv("04.references/review/charting-model.csv", show_col_types = FALSE) |>
@@ -788,7 +809,6 @@ on <- \(q) sum(stringr::str_detect(charting$questions, q))
 
 ```{r}
 #| label: review-counts
-#| echo: true
 
 records <- readr::read_csv("02.inputs/derived/review-records.csv", show_col_types = FALSE) |>
   dplyr::select(-decision, -reason) |>
@@ -827,7 +847,6 @@ The same model then charted each of the `r format(nrow(charting), big.mark = ","
 ```{r}
 #| label: tbl-sources
 #| tbl-cap: "Datasets this study read, with the release used and what each one supplies."
-#| echo: true
 
 sources <- data.frame(
   Dataset = c("FAOSTAT Emissions from Fires (GI)",
@@ -860,6 +879,8 @@ The values FAO withheld from the domain were read from its `AllFires_OrganicSoil
 
 Australia's rule was applied to the Canadian series in the form its inventory used, a year counting as natural when its fire emissions exceeded the baseline mean by two standard deviations [@bowman2023wildfire]. The rule was run on baselines of 13, 20 and 30 years, the first being the length Australia used, 2000 to 2012.
 
+The shortest baseline, 13 years, was then used to build a third account from Canada's two components. In a year the rule classed as natural the natural disturbance component was left out, as in the account Canada reported, and in every other year it was kept, as in the undisaggregated account. Canada published that component as one line a year, combining the year's fire and insect emissions with the regrowth of earlier disturbances. The third account therefore left out the regrowth of earlier fires in a natural year and kept it in other years, whereas Australia's inventory kept the land of an excluded fire "disaggregated, tracked, and reported on separately from the point in time it was disturbed until the time forest carbon has returned to its original state" [@bowman2023wildfire]. For British Columbia the rule's second step was also applied, under which an anomalous season counted as natural in a state only if "the area burned in each state and territory exceeds by one standard deviation the average area burned during the 2000–2012 baseline" [@bowman2023wildfire]. The province's burned area was taken from the Canadian National Fire Database over the same 13 years, 2001 to 2013.
+
 
 ## Canada's reported components
 
@@ -871,7 +892,7 @@ Canada's disaggregated series was taken from Table 6-1 of the 2026 national inve
 The two deductions were implemented as the standard wrote them, so that the share of gross reductions and removals a jurisdiction kept could be read at any uncertainty. The uncertainty deduction took the adjustment factor of the standard's Equation 11, and the buffer took the contribution of its Table 2 [@art2021trees].
 
 
-The uncertainty of each account came from the published uncertainty of the model behind Canada's estimates, a 95 per cent interval 32.2 Tg C a year wide [@metsaranta2017uncertainty]. It was applied as a standard deviation to every annual flux in both accounts, which assumed the model was no more certain of a megafire year than of a quiet one. The crediting level was the mean emissions of the five-year reference period, 2012 to 2016, and the reduction in each crediting year, 2017 to 2024, was that level minus the emissions reported for the year [@art2021trees]. Both were computed on the human activity component alone, the disaggregated account Canada reported, and on the sum of the two components, the account without disaggregation.
+The uncertainty of each account came from the published uncertainty of the model behind Canada's estimates, a 95 per cent interval 32.2 Tg C a year wide [@metsaranta2017uncertainty]. It was applied as a standard deviation to every annual flux in every account, which assumed the model was no more certain of a megafire year than of a quiet one. The crediting level was the mean emissions of the five-year reference period, 2012 to 2016, and the reduction in each crediting year, 2017 to 2024, was that level minus the emissions reported for the year [@art2021trees]. Both were computed on the human activity component alone, the disaggregated account Canada reported, on the sum of the two components, the account without disaggregation, and on the third account built under Australia's rule.
 
 
 # Results
@@ -881,7 +902,6 @@ The uncertainty of each account came from the published uncertainty of the model
 ```{r}
 #| label: fig-accounts
 #| fig-cap: "Net emissions of the land use sector for Canada and British Columbia, 1990 to 2024, in the account Canada reports, with natural disturbance separated, and in the undisaggregated account, the reported total plus the natural disturbance component. Positive values are emissions and negative values are removals."
-#| echo: true
 
 eccc |>
   dplyr::mutate(region = factor(dplyr::if_else(region == "BC", "British Columbia", region), levels = c("Canada", "British Columbia"))) |>
@@ -903,7 +923,6 @@ Separating natural disturbance cut the standard deviation of Canada's annual lan
 ```{r}
 #| label: tbl-canada-forest
 #| tbl-cap: "Carbon dioxide from forest fires in Canada as FAOSTAT computes it at Tier 1, with the burned area it was derived from. The series begins in 2001 because that is the first year of the MODIS burned area input."
-#| echo: true
 
 readr::write_csv(forest, "03.outputs/TBL/tbl-canada-forest.csv")
 fmt_tbl(forest)
@@ -912,7 +931,6 @@ fmt_tbl(forest)
 ```{r}
 #| label: fig-canada-forest
 #| fig-cap: "Carbon dioxide from forest fires in Canada, 2001 to 2024, as computed by FAOSTAT at Tier 1 from MODIS burned area."
-#| echo: true
 
 ggplot2::ggplot(forest, ggplot2::aes(Year, `CO2 (kt)` / 1000)) +
   ggplot2::geom_col(width = 0.7) +
@@ -925,7 +943,6 @@ Forest fires in Canada released `r format(round(forest[["CO2 (kt)"]][forest$Year
 ```{r}
 #| label: tbl-source-gap
 #| tbl-cap: "Carbon dioxide from fires in other forest in Canada, as FAOSTAT computes it at Tier 1 and as Canada reported it to the UNFCCC, for the years both are available. FAOSTAT carries the reported series inside the same domain."
-#| echo: true
 
 readr::write_csv(gap, "03.outputs/TBL/tbl-source-gap.csv")
 fmt_tbl(gap)
@@ -938,7 +955,6 @@ Across the `r nrow(gap)` years both sources reported, the FAOSTAT Tier 1 estimat
 ```{r}
 #| label: tbl-coefficients
 #| tbl-cap: "Fuel consumption and emission factors FAOSTAT applied to fires in Canada, 2001 to 2024, recovered from its own published values by dividing the biomass burned of each item by its burned area and each emission by the biomass burned, with the rows of Tables 2.4 and 2.5 of the 2006 IPCC Guidelines that the values equal. Carbon dioxide is not reported for the savanna, grassland and shrubland items."
-#| echo: true
 
 readr::write_csv(coefficients, "03.outputs/TBL/tbl-coefficients.csv")
 fmt_tbl(coefficients)
@@ -951,7 +967,6 @@ FAOSTAT's published values for Canada showed which coefficients it had applied (
 ```{r}
 #| label: tbl-baselines
 #| tbl-cap: "The natural disturbance threshold applied to Canadian forest fire emissions under three baseline lengths. The threshold is the baseline mean plus two standard deviations, and the years listed are those the rule classifies as natural."
-#| echo: true
 
 readr::write_csv(baselines, "03.outputs/TBL/tbl-baselines.csv")
 fmt_tbl(baselines)
@@ -963,8 +978,7 @@ The baseline length moved the threshold but not the classification. Lengthening 
 
 ```{r}
 #| label: tbl-credits
-#| tbl-cap: "Emissions and reductions for Canada's managed land under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. The disaggregated account is the human activity component Canada reports; the undisaggregated account is the sum of the human activity and natural disturbance components. A negative reduction is emissions above the crediting level, which the standard treats as a reversal."
-#| echo: true
+#| tbl-cap: "Emissions and reductions for Canada's managed land under three accounts, 2017 to 2024, on a 2012 to 2016 reference period. The disaggregated account is the human activity component Canada reports; the undisaggregated account is the sum of the human activity and natural disturbance components; the Australian rule account leaves out the natural disturbance component only in the years the 13 year baseline classes as natural (@tbl-baselines). A negative reduction is emissions above the crediting level, which the standard treats as a reversal."
 
 readr::write_csv(credits, "03.outputs/TBL/tbl-credits.csv")
 fmt_tbl(credits)
@@ -975,12 +989,13 @@ The separation decided whether there was anything to credit. On the account Cana
 
 Neither deduction applied in that case, because there was nothing to deduct from. The standard's reversal rule retired buffer credits equal to the lower of the emissions above the crediting level or every credit issued, so an undisaggregated account of this land exhausted its buffer in `r credits$Year[which(!whole_pos)[1]]` and again in each later year that emissions exceeded the level [@art2021trees].
 
+Australia's rule gave more credit than either account. It left out the natural disturbance component in `r paste(natural_years[natural_years <= 2016], collapse = " and ")`, the only reference year it classed as natural, but kept it in the other four, which set the crediting level at `r round(level_rule, 1)` Mt of carbon dioxide equivalent, against `r round(level_split, 1)` Mt on the account Canada reported and `r round(level_whole, 1)` Mt without the separation. The `r sum(rule_out)` crediting years the rule classed as natural then fell well below that level, so reductions were positive in `r sum(rule_pos)` of the `r nrow(credits)` years and summed to `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]), 1)` Mt, `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]) / sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` times the total on the account Canada reported. The shortfalls fell in the years the rule classed as ordinary, the largest in `r credits$Year[rule_worst]` at `r abs(credits[["Australian rule reductions (Mt)"]][rule_worst])` Mt (@tbl-credits).
+
 ## Crediting in British Columbia
 
 ```{r}
 #| label: tbl-bc
-#| tbl-cap: "Emissions and reductions for British Columbia under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. Both components are the provincial figures of the national inventory, and the burned area share is the province's share of the area burned in Canada."
-#| echo: true
+#| tbl-cap: "Emissions and reductions for British Columbia under three accounts, 2017 to 2024, on a 2012 to 2016 reference period. Both components are the provincial figures of the national inventory, and the burned area share is the province's share of the area burned in Canada. The Australian rule account leaves out the natural disturbance component only in the years that both the national test and the province's own burned area test class as natural."
 
 readr::write_csv(bc_credits, "03.outputs/TBL/tbl-bc.csv")
 fmt_tbl(bc_credits)
@@ -989,25 +1004,25 @@ fmt_tbl(bc_credits)
 
 British Columbia followed the national pattern more sharply. The province had `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2018]` per cent of the area burned in Canada in 2018 and `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent in 2023. On the disaggregated account its reductions were positive in `r sum(bc_split_pos)` of the `r nrow(bc_credits)` crediting years, summing to `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt of carbon dioxide equivalent, and without the separation they were positive in `r sum(bc_whole_pos)` years, with `r bc_credits$Year[bc_worst]` falling `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` Mt below the crediting level (@tbl-bc).
 
+Under Australia's rule the province's burned area exceeded its own threshold of `r format(round(bc_threshold_ha), big.mark = ",")` hectares in every year the national test marked, so the same `r length(bc_natural_years)` years were classed as natural. Reductions were positive in `r sum(bc_rule_pos)` of the `r nrow(bc_credits)` crediting years and summed to `r round(sum(bc_credits[["Australian rule reductions (Mt)"]][bc_rule_pos]), 1)` Mt, against `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt on the disaggregated account. The largest shortfall fell in `r bc_credits$Year[bc_rule_worst]`, `r abs(bc_credits[["Australian rule reductions (Mt)"]][bc_rule_worst])` Mt, a year the national test classed as ordinary although British Columbia burned `r format(round(bc_ha(bc_credits$Year[bc_rule_worst])), big.mark = ",")` hectares, `r round(bc_ha(bc_credits$Year[bc_rule_worst]) / bc_threshold_ha, 1)` times its own threshold.
+
 ## The uncertainty of each account
 
 ```{r}
 #| label: tbl-uncertainty
-#| tbl-cap: "Reductions and their uncertainty for Canada under the two accounts, from 10,000 Monte Carlo draws using the annual flux uncertainty published for Canada's forest carbon model. The interval is the 90 per cent interval the standard requires, its half width expressed against the mean reduction of the same draws, and the deduction is what the standard's adjustment factor takes from it. A percentage is printed only where the mean reduction is positive, since a percentage of a shortfall carries no meaning, and the undisaggregated deduction is therefore not reported."
-#| echo: true
+#| tbl-cap: "Reductions and their uncertainty for Canada under the three accounts, from 10,000 Monte Carlo draws using the annual flux uncertainty published for Canada's forest carbon model. The interval is the 90 per cent interval the standard requires, its half width expressed against the mean reduction of the same draws, and the deduction is what the standard's adjustment factor takes from it. A percentage is printed only where the mean reduction is positive, since a percentage of a shortfall carries no meaning, and the undisaggregated deduction is therefore not reported."
 
 readr::write_csv(uncertainty, "03.outputs/TBL/tbl-uncertainty.csv")
 fmt_tbl(uncertainty)
 ```
 
-Canada's own uncertainty analysis of its model reported a 95 per cent interval `r round(32.2 * 44 / 12)` Mt of carbon dioxide equivalent wide around a median of `r round(-0.8 * 44 / 12, 1)` Mt, and stated that this interval "cannot be meaningfully expressed in percentage terms because its range of possible values contains zero" [@metsaranta2017uncertainty]. In the crediting arithmetic the interval was wider than the reductions it qualified. Across the `r sum(!is.na(uncertainty[["Disaggregated interval (% of mean)"]]))` crediting years with a positive mean reduction, the interval of the disaggregated account ran from `r format(min(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` per cent of its mean reduction, and the implied uncertainty deduction from `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent (@tbl-uncertainty). The separation restored the sign of the account but left the credit uncertain by more than its own size.
+Canada's own uncertainty analysis of its model reported a 95 per cent interval `r round(32.2 * 44 / 12)` Mt of carbon dioxide equivalent wide around a median of `r round(-0.8 * 44 / 12, 1)` Mt, and stated that this interval "cannot be meaningfully expressed in percentage terms because its range of possible values contains zero" [@metsaranta2017uncertainty]. In the crediting arithmetic the interval was wider than the reductions it qualified. Across the `r sum(!is.na(uncertainty[["Disaggregated interval (% of mean)"]]))` crediting years with a positive mean reduction, the interval of the disaggregated account ran from `r format(min(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` per cent of its mean reduction, and the implied uncertainty deduction from `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent (@tbl-uncertainty). The separation restored the sign of the account but left the credit uncertain by more than its own size. Under Australia's rule the interval ran from `r min(uncertainty[["Australian rule interval (% of mean)"]], na.rm = TRUE)` to `r max(uncertainty[["Australian rule interval (% of mean)"]], na.rm = TRUE)` per cent of the mean reduction and the deduction from `r min(uncertainty[["Australian rule deduction (%)"]], na.rm = TRUE)` to `r max(uncertainty[["Australian rule deduction (%)"]], na.rm = TRUE)` per cent, because its reductions were larger, not because its fluxes were more certain.
 
 ## What survives the deductions
 
 ```{r}
 #| label: tbl-kept
 #| tbl-cap: "The share of gross reductions and removals a jurisdiction keeps under the standard, by the reported uncertainty. The uncertainty deduction follows Equation 11 and the buffer follows Table 2 of the standard. The last column is the worst case in the five years after a reversal, when the buffer rises by five percentage points."
-#| echo: true
 
 readr::write_csv(deductions, "03.outputs/TBL/tbl-kept.csv")
 fmt_tbl(deductions)
@@ -1021,7 +1036,6 @@ The two deductions were linear in the reported uncertainty, so the uncertainty a
 ```{r}
 #| label: tbl-canada-peat
 #| tbl-cap: "Burned area and emissions from fires in organic soils in Canada, as FAO computed them and then set them to zero in the published Emissions from Fires domain. Values for 1990 to 1995 are the average of the reconstructed series rather than observations, which is why they do not vary."
-#| echo: true
 
 readr::write_csv(canada, "03.outputs/TBL/tbl-canada-peat.csv")
 fmt_tbl(canada)
@@ -1030,7 +1044,6 @@ fmt_tbl(canada)
 ```{r}
 #| label: fig-canada-peat
 #| fig-cap: "Burned area of fires in organic soils in Canada, 1990 to 2021, from the FAO table that the published domain replaces with zeros. The flat section to 1995 is the filled part of the series and the rest is derived from satellite observations."
-#| echo: true
 
 ggplot2::ggplot(canada, ggplot2::aes(Year, `Burned area (ha)` / 1000)) +
   ggplot2::geom_col(width = 0.7) +
@@ -1047,23 +1060,25 @@ The six years from 1990 to 1995 repeated one value, `r format(round(fill), big.m
 
 On the components of Canada's 2026 inventory, separating natural disturbance decided whether an account existed to credit in 2017 to 2024, but it did not make that account precise. The managed land of the country reported reductions in `r sum(split_pos)` of the `r nrow(credits)` years, totalling `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent, while the same land without the separation reported them in `r sum(whole_pos)` years and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt short of its crediting level in 2023 alone. British Columbia, with `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent of the area burned in Canada that year, reversed in the same way, reporting `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt separated against a shortfall of `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` Mt. The separation was therefore the condition on which a jurisdictional credit existed rather than an adjustment to a reported number. Earlier work found the same dependence in reporting, where natural disturbance was among the reasons Canada did not elect forest management under the Kyoto Protocol [@kurz2008risk] and a revised harvest record moved the reported human sink by 113 Mt CO~2~e in 1990 [@kurz2024revised]. The treatment of wildfire as natural also separated a forestry source of 90.8 Mt CO~2~e a year from a reported sink of 4.7 Mt [@bysouth2024high]. In each case the partition rather than the forest moved the balance, and a standard that took the reported balance as its input passed the partition straight into the credit.
 
-The rest of this Discussion took in turn the uncertainty of a net near zero, the record and regrowth period behind the separation and the fire emission method, then the buffers of the standards and the changes that would close these gaps.
+The rest of this Discussion took in turn the uncertainty of a net near zero, the record and regrowth period behind the separation, the rule that classed a year as natural and the fire emission method, then the buffers of the standards and the changes that would close these gaps.
 
 The separated account kept part of its reductions in only `r sum(banked > 0, na.rm = TRUE)` of the `r sum(!is.na(banked))` years with a positive reduction, for an arithmetic rather than an ecological reason. An account whose emissions and removals nearly cancelled reported a percentage uncertainty far larger than either side of it, the case @paciornik2019uncertainties warned against interpreting. Canada's own inventory met the same limit in 2024, printing the 95 per cent interval of the carbon dioxide of Forest Land, a net of −1.9 Mt within −63 to 19 Mt, as 3,100 and −1,100 per cent [@eccc2026nir]. Applied to the crediting equations, the published interval gave uncertainty deductions of `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent, larger than the reduction in `r sum(over, na.rm = TRUE)` of the `r sum(!is.na(over))` years with a positive reduction and smaller only in `r paste(uncertainty$Year[which(!over)], collapse = " and ")`. The separation thus moved the reported quantity away from zero in the years the fires dominated and left it near zero in the others. In `r mc_split$Year[which(banked > 0)]` the account kept `r round(banked[which(banked > 0)], 1)` per cent of its reduction, after the uncertainty deduction and a buffer that the shortfall of `r min(credits$Year[!split_pos])` had raised to `r 100 * trees_buffer(after_reversal = TRUE)` per cent. Regional budgets elsewhere were also near zero within their uncertainty, and in California the data could not establish whether the land was a source or a sink [@haverd2013australian; @rosan2023contemporary; @divittorio2021quantifying]. The standards differed in what such an interval cost. The adjustment factor of ART TREES rose with the interval without limit [@art2021trees], whereas the Forest Carbon Partnership Facility capped its uncertainty set-aside at 15 per cent [@fcpf2024buffer], under which a positive reduction kept at least `r round(100 * (1 - 0.15) * (1 - 0.40))` per cent of itself after both set-asides.
 
 The length of the record mattered less to the classification than to the threshold. Lengthening the baseline from 13 to 20 years raised the threshold by `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent and marked the same five years, and a 30 year baseline could not be tested because the satellite record covered only `r nrow(forest_co2)` years. The fire regime literature found estimates sensitive to the record in the same way, with Weibull parameters that changed between 22 and 31 years of data [@oliveira2011fire] and fire cycle estimates degraded by short-term variation in fire activity [@cyr2016quantifying]. Fire cycles in Canada ran from 50 to 769 years [@johnson1991climatically; @arsenault2016unravelling], so a baseline of 13 to 30 years sampled a small part of one cycle. Fire history therefore turned to centuries of tree rings and millennia of charcoal wherever recent fires were too few [@gavin2007forest]. Of the three crediting documents read for this study, only Verra's tool set a record length, 100 years with no fewer than 20 [@verra2024nprt]. Canada applied no baseline at all, reconstructing instead the cause of every stand for 1889 to 1989 and keeping each burned area in the natural category for the 60 to 100 years it took to regrow to a harvestable age [@kurz2024revised]. Australia tested fire seasons against a 13 year mean [@bowman2023wildfire], and the European example in the guidance used the 20 years before the base year and assumed 20 years of regrowth [@ogle2019generic]. Three implementations thus used three temporal designs under guidance that specified none. The regrowth half of the account also contained the error of the model, which underestimated the net biomass gain of undisturbed boreal stands by 10 per cent over 71 years [@bernier2010reconstructing]. That regrowth was what returned to the human account when a burned stand crossed the age threshold.
 
+The rule that classed a year as natural also decided how much was credited. On Canada's components, Australia's rule gave `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]), 1)` Mt of reductions over 2017 to 2024, `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]) / sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` times the account Canada reported, and British Columbia `r round(sum(bc_credits[["Australian rule reductions (Mt)"]][bc_rule_pos]), 1)` Mt against `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt. The gain came from the crediting level rather than from the forest, because the rule kept the natural disturbance component in four of the five reference years and then left all of it out of the crediting years it classed as natural, so the fires of ordinary years raised the level that an extreme year was measured against. The Kyoto Protocol provision avoided this by including a background level of natural disturbance emissions in the reference level and allowing only "the emissions above the background level" to be excluded in a year that exceeded it [@ipcc2014kp, p. 2.51]. Australia's inventory instead classed "all fire related GHG emissions (excluding prescribed fires) from that state or territory" as natural once a season passed both tests [@bowman2023wildfire]. The test also depended on the fire record it was run on. Run on FAOSTAT's forest fire series, it classed `r bc_credits$Year[bc_rule_worst]` as ordinary although British Columbia burned `r format(round(bc_ha(bc_credits$Year[bc_rule_worst])), big.mark = ",")` hectares that year, and the province's account fell `r abs(bc_credits[["Australian rule reductions (Mt)"]][bc_rule_worst])` Mt short.
+
 The fire emissions inside both accounts came from one method. Canada's fire matrices assumed high severity throughout, and a severity-based sub-model gave regional emissions typically 10 to 25 per cent lower [@thompson2026incorporating]. Both accounts shared that difference, and the account without the separation took nearly all of it, because Canada placed every wildfire in the natural component [@eccc2026nir]. FAOSTAT's Tier 1 estimate ran a median of `r round(median(gap$Ratio), 1)` times the value Canada submitted, which put the choice of source on the same scale as the choice of method. Part of that gap lay in coefficients the methodological note did not state. FAOSTAT applied the savanna and grassland emission factors to Canada's forest fires, which put its methane at `r round(100 * table_2_5$ch4[1] / table_2_5$ch4[2])` per cent of what its cited method gave. It also placed `r round(100 * sum(savanna_share[["Savanna fires"]]) / sum(savanna_share[["Savanna fires"]] + savanna_share[["Forest fires"]]))` per cent of the area it recorded as burned in savanna, grassland and shrubland items, which it burned at the fuel values of tropical savanna and reported without carbon dioxide. Most of the area FAOSTAT recorded as burned in Canada therefore contributed no carbon dioxide to the estimate a government would check its inventory against. Differences of this size were common among fire estimates [@kukavskaya2013fire; @vallet2025soil], and FAOSTAT's estimate of the global land sector differed in sign from what countries reported [@grassi2022carbon]. The same database set Canada's organic soil fire emissions to zero while computing them at a mean of `r format(round(mean(obs[["CO2 (kt)"]])), big.mark = ",")` kilotonnes of carbon dioxide a year over the satellite record [@fao2025fires].
 
 The buffers withheld against reversal did not follow the fire regime of the land they covered. ART TREES applied 25 per cent to every jurisdiction unless three mitigating factors were met [@art2021trees], and the Forest Carbon Partnership Facility added 0 to 5 percentage points for exposure to natural disturbance [@fcpf2024buffer]. Only Verra's tool scored the history of events in the area itself, and then for projects rather than jurisdictions [@verra2024nprt]. Fire cycles in Canada differed more than tenfold between regions [@johnson1991climatically; @belisle2011fire; @arsenault2016unravelling], and North American conifer forests were among those with the highest reversal risk [@wu2026global]. British Columbia, with `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2018]` per cent of the area burned in Canada in 2018 and `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent in 2023, fell `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` Mt short on its own unseparated account. These were grounds for buffer contributions set from regional fire regime statistics, as the contributions prepared for the carbon removals regulation of the European Union were set from modelled regional loss to disturbance [@marinelli2026risk].
 
-Crediting standards inherited the silence of the guidance, because the REDD+ Environmental Excellence Standard allowed natural disturbance to be excluded on the authority of the guidance without saying how far back the record must reach [@art2025trees3; @ogle2019generic]. Two jurisdictions applying the same clause to the same fire record could therefore report different natural shares, depending on how far back their labelling reached and how long their regrowth ran. Four changes would close the gap, the first being to specify the record length behind any natural disturbance test and the second to state the regrowth period over which later removals were disaggregated. The third was to take the uncertainty deduction from gross emissions and gross removals rather than from a net near zero, and the fourth to set buffer contributions from the regional fire regime.
+Crediting standards inherited the silence of the guidance, because the REDD+ Environmental Excellence Standard allowed natural disturbance to be excluded on the authority of the guidance without saying how far back the record must reach [@art2025trees3; @ogle2019generic]. Two jurisdictions applying the same clause to the same fire record could therefore report different natural shares, depending on how far back their labelling reached and how long their regrowth ran. Five changes would close the gap, the first being to specify the record length behind any natural disturbance test and the second to state the regrowth period over which later removals were disaggregated. The third was to take the uncertainty deduction from gross emissions and gross removals rather than from a net near zero, and the fourth to set buffer contributions from the regional fire regime. The fifth was to exclude only the emissions above a background level, as the Kyoto Protocol provision did, so that a threshold rule did not credit the ordinary share of an extreme year's fires.
 
-Two limits qualified these results, the first being that the uncertainty analysis applied one published interval to every annual flux, which assumed the model was as certain of a quiet year as of a megafire year. The second was that both accounts used Canada's figures as reported, so the study compared two sums of one model's output, with fire matrices that assumed high severity [@thompson2026incorporating], and FAOSTAT was its only independent estimate.
+Two limits qualified these results, the first being that the uncertainty analysis applied one published interval to every annual flux, which assumed the model was as certain of a quiet year as of a megafire year. The second was that all three accounts used Canada's figures as reported, so the study compared three sums of one model's output, with fire matrices that assumed high severity [@thompson2026incorporating], and FAOSTAT was its only independent estimate.
 
 # Conclusions
 
-Run through the crediting level, uncertainty deduction and buffer of the REDD+ Environmental Excellence Standard for 2017 to 2024, Canada's managed land achieved `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent with natural disturbance separated and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt short in 2023 alone without it. A jurisdiction in a megafire regime could therefore report a creditable balance only by excluding the fires, under guidance that set no record length for doing so. The separated account remained uncertain by more than its own size, with uncertainty deductions of `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent, and kept part of its reductions only in `r mc_split$Year[which(banked > 0)]`, `r round(banked[which(banked > 0)], 1)` per cent of them. FAOSTAT's fire estimate for Canada, the independent check a government reached for, rested on savanna emission factors and savanna fuel values that its method did not state. Standards that relied on the separation needed a stated record length, a stated regrowth period, an uncertainty deduction on gross fluxes and buffers set from regional fire regimes. The code and data behind every number here were published so that a government could repeat the comparison.
+Run through the crediting level, uncertainty deduction and buffer of the REDD+ Environmental Excellence Standard for 2017 to 2024, Canada's managed land achieved `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent with natural disturbance separated and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt short in 2023 alone without it. A jurisdiction in a megafire regime could therefore report a creditable balance only by excluding the fires, under guidance that set no record length for doing so. Under Australia's rule, which excluded natural disturbance only in extreme fire years, the same land achieved `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]), 1)` Mt, `r round(sum(credits[["Australian rule reductions (Mt)"]][rule_pos]) / sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` times the account Canada reported, because the fires of ordinary years stayed in the crediting level. The separated account remained uncertain by more than its own size, with uncertainty deductions of `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent, and kept part of its reductions only in `r mc_split$Year[which(banked > 0)]`, `r round(banked[which(banked > 0)], 1)` per cent of them. FAOSTAT's fire estimate for Canada, the independent check a government reached for, rested on savanna emission factors and savanna fuel values that its method did not state. Standards that relied on the separation needed a stated record length, a stated regrowth period, the exclusion of only the emissions above a background level, an uncertainty deduction on gross fluxes and buffers set from regional fire regimes. The code and data behind every number here were published so that a government could repeat the comparison.
 
 # Author contributions {.unnumbered}
 

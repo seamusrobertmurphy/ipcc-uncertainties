@@ -84,7 +84,7 @@ A bracketed citation placed directly after a cross-reference is swallowed and ne
 
 <!-- render:start -->
 
-## Reported forest emissions and removals in Canada with and without the separation of natural disturbances
+## Reported emissions and removals from Canada's managed forest with and without disaggregation of natural disturbances
 
 *Uncertainty under the IPCC 2019 Refinement, jurisdictional credit and a test of the FAOSTAT fire method*
 
