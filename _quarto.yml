@@ -1,0 +1,13 @@
+project:
+  type: default
+  execute-dir: project
+  render:
+    - "01.manuscript/Manuscript.qmd"
+  pre-render:
+    - "python3 01.manuscript/_tools/clean-appledouble.py"
+    - "python3 01.manuscript/_tools/check-manuscript-code.py"
+  post-render:
+    - "python3 01.manuscript/_tools/clean-appledouble.py"
+    - "python3 01.manuscript/_tools/format-tables.py"
+    - "python3 01.manuscript/_tools/stamp-wordcounts.py"
+    - "python3 01.manuscript/_tools/build-readme.py"

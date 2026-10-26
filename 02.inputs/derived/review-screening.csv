@@ -1,0 +1,1138 @@
+id,decision,reason,screener,author,note
+10.5194/egusphere-2026-6189,include,,author,include,"EU forest sink decline, natural disturbance against harvest losses compared with national inventories."
+10.5194/egusphere-egu26-178,include,,author,include,"North American greenhouse gas budget, managed land proxy and anthropogenic against natural fluxes."
+10.5194/gmd-19-3617-2026,include,,author,include,"Fire severity in CBM-CFS3 fire emission estimates, title plainly on disturbance emissions."
+10.1029/2024gb008310,exclude,wrong-concept,author,exclude,"RECCAP2 North America, inventory reconciliation through the managed land proxy definition."
+10.21203/rs.3.rs-3671432/v1,include,,author,include,"European forest sink decline driven by disturbances, title plainly on topic."
+10.3389/ffgc.2023.1297301,include,,author,include,"Canada inventory treats wildfire as natural, forestry emissions underreported, separation central."
+10.5194/egusphere-egu23-5917,exclude,wrong-concept,author,exclude,"Mapping dead trees in California from imagery, no carbon estimate."
+10.25260/ea.22.32.2.0.1849,exclude,not-english,author,exclude,"Spanish title only, Argentine permanent plot network without carbon or disturbance analysis."
+10.1007/s13595-021-01043-6,include,,author,include,"Vaia storm and management effects on forest carbon in Italy, title plainly on topic."
+10.5281/zenodo.5722947,exclude,not-research,author,exclude,"Finnish litter fall data record, disturbance mentioned only as site monitoring."
+response to referees comments on definitions and methods to estimate regional land carbon fluxes for the second phase of the regional carbon cycle assessment and processes project reccap 2 by philippe ciais et al,include,,author,include,"Reply to referees on RECCAP-2 flux definitions, no abstract, subject unclear from title."
+10.1186/s13595-022-01164-6,include,,author,include,"Vaia storm and management effects on forest carbon in Italy, title plainly on topic."
+10.5194/essd-12-257-2020,exclude,wrong-concept,author,exclude,"Pan-European wind disturbance database compared with inventory damaged volumes, included generously."
+10.1016/j.jag.2020.102116,include,,author,include,"National biomass change monitoring in Switzerland, management and natural disturbance noted, included generously."
+10.1561/112.00000446,include,,author,include,BC interior carbon accounting model with natural disturbance risk and offset prices.
+10.5194/essd-2019-141,exclude,wrong-concept,author,exclude,Preprint of pan-European wind disturbance database compared with inventory damaged volumes.
+recent dynamics of fagaceae and pinaceae in temperate forests in mexico and worldwide,exclude,wrong-concept,author,exclude,"Pine and oak composition change in Mexico, disturbance without carbon."
+10.1371/journal.pone.0161361,include,,author,include,Twenty-year national inventory record of natural disturbance frequency in Norway.
+10.1186/s13021-016-0047-8,include,,author,include,CBM estimates EU forest management emissions with natural disturbances against country inventories.
+carbon storage in forest ecosystem as a basis for terrestrial carbon accounting oleh by,exclude,wrong-concept,author,exclude,"Forest carbon storage for carbon accounting, no abstract, disturbance role unclear."
+10.2737/nrs-gtr-154,include,,author,include,"US forest carbon accounting framework separating growth, land use change, natural disturbance."
+10.3832/ifor1257-007,include,,author,include,"CBM afforestation sink in Italy, Kyoto accounting, fire emissions at country level."
+10.1111/aec.12187,include,,author,include,"Plot biomass in Papua New Guinea, disturbance speculative, no landscape estimate."
+10.1016/j.rser.2014.12.001,exclude,off-topic,author,exclude,"Japanese energy and climate policy after Fukushima, not land sector."
+10.5194/bg-11-4443-2014,exclude,wrong-concept,author,exclude,"Japanese cropland soil carbon, Kyoto accounting factoring out human-induced effects."
+10.1139/x09-177,include,,author,include,"CBM-CFS3 test over 71 years of growth and disturbance, boreal landscape."
+10.1111/j.1365-2486.2009.02146.x,include,,author,include,"Carbon carrying capacity baseline excluding anthropogenic disturbance, sources of uncertainty, Australia."
+10.3832/efor0528-005,include,,author,include,"Natural disturbances and Kyoto forest management accounting, Canada beetle example."
+10.3832/efor0528-0005,exclude,not-english,author,exclude,"Italian title only, Italian version of r0028 on natural disturbances and Kyoto."
+10.1093/forestry/cpm026,exclude,wrong-concept,author,exclude,"Stand chronosequence carbon after farm abandonment in Italy, no landscape estimate."
+10.1016/j.envsci.2007.01.009,include,,author,include,"Factoring out natural and indirect human effects on carbon sinks, title plainly on topic."
+mapping insect defoliation using multi temporal landsat data,exclude,wrong-concept,author,exclude,"Landsat insect defoliation mapping for Canada's carbon reporting, natural variability, included generously."
+10.1016/j.envsci.2007.03.003,include,,author,include,"All-lands greenhouse gas accounting framework, land sector accounting rules, title plainly on topic."
+10.1007/s11027-006-1006-6,include,,author,include,"Canada's national forest carbon monitoring, accounting and reporting system for Kyoto."
+methodological options for quantifying changes in carbon pools in swedish forests,include,,author,include,"Swedish national forest carbon methods for Kyoto, factoring out and uncertainty discussed."
+10.1007/s10584-004-2801-2,include,,author,include,"Excluding natural sinks from carbon sink verification, title plainly on separation."
+10.1890/02-5291,exclude,wrong-concept,author,exclude,"Stand-level carbon allocation after fire in Yellowstone, no landscape estimate."
+climate change effects on insect outbreaks and management opportunities for carbon sequestration,exclude,wrong-concept,author,exclude,"Insect outbreak effects on Canada's forest carbon sink, regional modelling, Kyoto."
+the kyoto protocol and forestry practices in the united states,exclude,wrong-concept,author,exclude,"US forest carbon flux, harvest against natural disturbance, Kyoto accounting rules."
+10.5558/tfc76445-3,exclude,wrong-concept,author,exclude,"Ontario forest management under climate change, disturbance not linked to carbon estimates."
+incorporating observed ﬁre severity in reﬁned emissions estimates for boreal and temperate forest ﬁres in the carbon budget model cbm cfs3 v1 2,include,,author,include,"Fire severity in CBM-CFS3 fire emission estimates, title plainly on disturbance emissions."
+sink of with the carbon budget at the an example for italy,include,,model,,"Garbled title of Carbon Budget Model country-level sink study for Italy, no abstract"
+10.5194/egusphere-egu26-22007,exclude,wrong-concept,author,exclude,"UK undermanaged woodland restoration in national inventory, disease disturbance in baseline."
+10.21203/rs.3.rs-10090179/v1,exclude,wrong-concept,author,exclude,"Pinus sylvestris carbon storage capacity across Europe, no abstract, disturbance role unclear."
+10.25726/a4918-4658-0041-l,exclude,not-english,author,exclude,"Russian title only, carbon farm sequestration study in Russia."
+10.36334/modsim.2023.abdollahi,exclude,wrong-concept,author,exclude,"Remote sensing biomass estimation methods, no abstract, no disturbance or accounting in title."
+10.1080/17421772.2019.1701700,include,,author,include,"Natural disturbance risk, whether accounting includes disturbance emissions, and carbon offsets."
+10.11575/prism/37170,exclude,wrong-concept,author,exclude,"Western Canada forest carbon accounting, natural disturbances turned sinks to sources, NIR."
+10.1186/s13021-019-0132-x,exclude,wrong-concept,author,exclude,"Hesse beech biomass, factoring out natural and indirect effects from management impact."
+10.1139/cjfr-2018-0176,include,,author,include,Canada managed forest fluxes partitioned into natural disturbance and human components.
+establishment of ireland s projected reference level for forest management for the period 2013 2020 under article 3 4 of the kyoto protocol,include,,author,include,"Ireland forest management reference level, factoring out age-class and indirect effects."
+afforestation in ireland examining farm and farmer characteristics behind the decision to plant,exclude,wrong-concept,author,exclude,"Abstract is Ireland reference level text, title on farmer planting, check record."
+10.1111/j.1467-9388.2011.00715.x,include,,author,include,"Kyoto LULUCF negotiations, reference levels, force majeure and natural disturbances."
+10.1016/j.envsci.2008.08.005,include,,author,include,Kyoto forest sink accounting factoring out past disturbance effects on age structure.
+10.1186/s13021-016-0059-4,include,,model,,"Carbon Budget Model EU harvest and natural disturbance carbon, compared with inventory"
+assessing carbon balance in european forests using a dvm recent trends and drivers,include,,model,,"European forest sink decline partitioned into harvest, natural disturbance and climate"
+10.1073/pnas.0708133105,include,,model,,Natural disturbance risk to Canada managed forest carbon balance under Kyoto rules
+10.64898/2026.06.19.733404,include,,model,,Global reversal risk from natural disturbance and buffer pools for forest credits
+10.1186/s13021-018-0096-2,include,,model,,Forest reference levels factoring out age dynamics from past management and disturbance
+10.3832/efor0688-009,include,,model,,Durban LULUCF accounting rules including natural disturbance emissions and reference levels
+10.5194/egusphere-egu25-13452,include,,model,,Russian national carbon budget drivers including natural and anthropogenic disturbances
+assessment of carbon budget of terrestrial ecosystems of russia and comparison of bottom up and top down estimates,undecided,,model,,"Russian terrestrial carbon budget top-down against bottom-up, no abstract, unclear disturbance role"
+10.1016/s0378-1127(02)00306-7,exclude,wrong-concept,model,,"Forest soil carbon stocks in western Europe, no disturbance in title, no abstract"
+10.1109/igarss.2016.7730156,exclude,wrong-concept,model,,"Remote sensing of productivity, national accounting systems only background"
+10.13016/m2c248,exclude,wrong-concept,model,,"Dissertation on management and carbon payment trade-offs, disturbance one factor among several"
+10.1016/j.envsci.2014.07.006,include,,model,,"Forest reference level against gross-net accounting for national inventories, Ontario case"
+10.25911/5d5e7454d7b97,exclude,wrong-concept,model,,"Peat swamp forest carbon stock assessment, no disturbance in title, no abstract"
+10.1201/b12728-14,exclude,wrong-concept,model,,"Soil carbon under eucalypt forests, disturbance only background"
+10.4155/cmt.11.65,exclude,wrong-concept,model,,"Forest investment risk paper, title names no disturbance, no abstract"
+10.2134/jeq2005.0193,include,,model,,United States forest sector carbon accounting rules including natural disturbance accounting
+sektor lulucf v sloveniji obračunavanje skladnost in obeti do leta 2030 the lulucf sector in slovenia accounting compliance and outlook to 2030 the lulucf sector in slovenia accounting compliance and outlook to 2030,include,,model,,"Slovenia LULUCF accounting, natural disturbances turned sink to source, reference level"
+10.5558/tfc2026-013,include,,model,,Carbon budget model projection for Ontario with harvest and natural disturbance cycles
+10.3390/f17091019,exclude,wrong-concept,model,,"Understory vegetation diversity review, no carbon or disturbance accounting"
+10.5281/zenodo.19366915,exclude,not-research,model,,"Dataset record for Bosnian forest plots, nothing on topic"
+10.1371/journal.pesy.0000033,exclude,wrong-concept,model,,"Harvest scheduling to emulate natural disturbance texture, no carbon"
+10.5558/tfc2026-023,exclude,wrong-concept,model,,"Ecosystem management reference conditions, title names no disturbance, no carbon"
+10.1016/j.tfp.2026.101481,exclude,wrong-concept,model,,"Forest structural complexity and microclimate, no disturbance or carbon focus"
+10.1186/s42408-026-00558-5,exclude,wrong-concept,model,,"Saproxylic organisms in burnt forests, biodiversity only"
+10.18174/681632,include,,model,,European natural disturbance trends over 70 years and modelled fire and wind impacts
+10.1016/j.foreco.2026.123765,exclude,wrong-concept,model,,"Stand-level regeneration after prescribed burning, no carbon"
+10.1007/s11676-026-02009-y,exclude,wrong-concept,model,,"Laser scanning of retention trees for certification, disturbance only background"
+10.1201/9781003492733-6,exclude,wrong-concept,model,,"Book chapter on managing forests for mitigation, disturbance background"
+assessment report of approaches and methods used by ms for reporting ghg emissions from biomass burning deliverable 2 2 2 2kd3 etc ca task 2 2 2 2 improvement of biomass burning reporting under the lulucf sector,include,,model,,EU member state reporting of wildfire emissions under the natural disturbance provision
+10.1007/978-3-032-03180-8_15,exclude,wrong-concept,model,,"Land management philosophy book chapter, no abstract, off the questions"
+10.1038/s41598-025-96836-4,exclude,wrong-concept,model,,"Hemiboreal policy and practice mismatches, title names no disturbance, no carbon"
+10.1111/1365-2664.70036,include,,model,,"Disturbance rate, frequency and severity in German reserves and managed forests, 1986 to 2020"
+10.1016/j.foreco.2025.123320,exclude,wrong-concept,model,,Spruce budworm effect on white pine regeneration in plots
+10.1007/s44392-025-00064-7,exclude,wrong-concept,model,,"Ecological silviculture, no abstract, title off the questions"
+10.1007/s00267-025-02278-z,exclude,wrong-concept,model,,"Public forest connectivity in Spain, no disturbance or carbon"
+10.52202/080513-0586,exclude,wrong-concept,model,,"Life cycle assessment methods for timber, disturbance background"
+10.5194/egusphere-egu25-15552,include,,model,,Landscape model of disturbance resilience with carbon stock and production metrics
+10.1111/1365-2664.70123,exclude,wrong-concept,model,,"Understory vegetation in harvest and wildfire remnants, no carbon"
+10.1002/eap.70032,exclude,wrong-concept,model,,"Bird assemblages after fire and harvest, no carbon"
+10.5194/egusphere-egu25-17238,exclude,wrong-concept,model,,"Project description on forest management for decarbonisation, disturbance background"
+10.1016/j.biocon.2025.111588,exclude,wrong-concept,model,,"Succession under strict protection in one reserve, stand scale"
+10.1002/eap.70117,exclude,wrong-concept,model,,"Stand-level carbon after retention harvesting, no landscape estimate or accounting link"
+10.3389/ffgc.2024.1512518,exclude,not-research,model,,"Opinion on mycorrhizal networks, nothing on topic"
+10.1016/j.jenvman.2024.121659,include,,model,,Annual natural disturbance probabilities across the Alps from 35 years of records
+10.1002/eap.3011,exclude,wrong-concept,model,,"Understory traits under disturbance-based management, no carbon"
+10.1016/j.foreco.2024.121816,include,,model,,Wind and bark beetle disturbance regimes in uneven-aged against even-aged forests
+10.5194/egusphere-egu24-12739,exclude,wrong-concept,model,,"Swiss landscape model for protective function and timber, no carbon or regime statistics"
+10.71548/11092,include,,model,,Dissertation estimating regional carbon loss from 2021 spongy moth infestation in Ontario
+10.36253/ifm-1137,exclude,wrong-concept,model,,"Review of naturalness in forest management, no carbon"
+10.1016/j.foreco.2024.121728,exclude,wrong-concept,model,,"Herb layer richness in primary beech forests, no abstract"
+10.5558/tfc2024-024,exclude,wrong-concept,model,,"Habitat prediction with laser scanning, disturbance a scenario only"
+10.31857/s0024114824010036,exclude,wrong-concept,model,,"Stand dynamics on permanent plots after clearcut and windthrow, Russian journal"
+10.2139/ssrn.4865831,exclude,wrong-concept,model,,"Logging effects on watershed runoff, no carbon"
+10.5194/egusphere-egu24-11932,include,,model,,Amazon forest loss attributed separately to land-use change and climate change
+10.1134/s1995425524700756,exclude,wrong-concept,model,,"Stand dynamics on permanent plots after clearcut and windthrow, no carbon"
+10.5194/egusphere-egu24-18510,exclude,wrong-concept,model,,"Carbon dioxide removal timing, natural disturbance one factor among several"
+10.2139/ssrn.4684229,undecided,,model,,"Preprint on boreal carbon dynamics under management and climate, no abstract"
+10.3389/ffgc.2024.1375285,exclude,not-research,model,,Editorial on protective mountain forests
+10.1016/j.ecolmodel.2024.110894,include,,model,,Landscape carbon projection where budworm and fire switch sink to source
+10.1007/978-3-031-15988-6_3,include,,model,,"Review of boreal disturbance regimes, frequency, extent and severity"
+10.13031/soil.2023700,exclude,wrong-concept,model,,"Hurricane disturbance effects on Puerto Rico forests and infrastructure, no carbon"
+10.13031/soil.23700,exclude,wrong-concept,model,,"Hurricane disturbance effects on Puerto Rico forests and infrastructure, no carbon"
+10.1016/j.agrformet.2023.109722,exclude,wrong-concept,model,,"Forest microclimate recovery, no abstract"
+10.1016/j.foreco.2023.121394,exclude,wrong-concept,model,,"Ground beetle assemblages in beech forest, no abstract"
+10.2139/ssrn.4601443,exclude,wrong-concept,model,,"Herb layer richness in primary beech forests, no abstract"
+10.1007/978-3-031-15988-6_18,exclude,wrong-concept,model,,"Boreal restoration by disturbance emulation for biodiversity, no carbon"
+10.1007/s11258-023-01357-7,exclude,wrong-concept,model,,Plant and bryophyte congruence in managed forests
+10.1002/wsb.1431,exclude,wrong-concept,model,,Bat response to tree felling in wetlands
+10.56658/04747313_2023_47_13,exclude,wrong-concept,model,,Bird communities along forestry and succession gradients
+10.1093/pnasnexus/pgad254,exclude,wrong-concept,model,,"Trait-based forestry and timber building, disturbance background"
+10.3390/rs15020375,exclude,wrong-concept,model,,Tree diversity mapping from satellite data
+10.3390/plants13010061,exclude,wrong-concept,model,,Tree growth response to management and climate in one stand
+10.5194/egusphere-egu23-3377,include,,model,,Mixed-severity disturbance regime of primary beech forests over 200 years
+10.5281/zenodo.8184009,exclude,not-research,model,,Supporting data record for a timber building paper
+10.1134/s1995425523070107,exclude,wrong-concept,model,,"Windthrow dynamics of one primeval forest, title names no disturbance, no carbon"
+10.7251/eoru2305463k,exclude,wrong-concept,model,,"Silviculture for sustainable development, disturbance background"
+10.1007/s11368-023-03533-8,undecided,,model,,"Global forest wildfire research review, no abstract, scope unclear"
+10.1093/forestry/cpac045,include,,model,,"Disturbance intensity trends in Slovak reserves and managed forests, 2000 to 2017"
+10.25903/bt2a-rc15,include,,model,,"Papua New Guinea forest carbon, natural disturbance main predictor of biomass"
+10.1002/essoar.10511814.1,exclude,wrong-concept,model,,"Thinning effects on water yield, no disturbance carbon estimate"
+10.17190/amf/1881598,exclude,not-research,model,,Flux tower data record
+10.3389/ffgc.2022.940302,include,,model,,Fire regime reconstruction from fire scars over 238 years in Durango
+10.1038/s41598-022-16352-7,exclude,wrong-concept,model,,Beetle richness in beech stands
+10.1016/j.foreco.2022.120541,exclude,wrong-concept,model,,"Disturbance history of two Pyrenean forests, title names no disturbance, no carbon"
+10.1007/978-3-030-99206-4_13,exclude,wrong-concept,model,,"Climate-smart forestry case study for Spain, disturbance background"
+10.3390/f13020150,exclude,wrong-concept,model,,Moose carrying capacity from remote sensing
+10.1016/j.foreco.2022.120399,exclude,wrong-concept,model,,"Stand resilience to gypsy moth defoliation, no abstract, no carbon"
+10.3389/ffgc.2022.868024,exclude,wrong-concept,model,,"Plot carbon after fire and planting in BC, no landscape estimate"
+10.32999/ksu2413-7391/2021-15-5,exclude,wrong-concept,model,,"Carpathian landscape simulation methods, disturbance one driver among several"
+10.17221/63/2022-jfs,exclude,wrong-concept,model,,"Regeneration in managed and unmanaged beech forests, no abstract"
+10.22498/pages.30.1.8,exclude,wrong-concept,model,,"Old-growth history for restoration, no abstract"
+10.3389/ffgc.2021.629020,exclude,wrong-concept,model,,"Review of disturbance-based management against retention forestry, no carbon"
+10.1111/jvs.13052,exclude,wrong-concept,model,,Stand recovery towards old growth after management ends
+10.1016/j.foreco.2021.119254,exclude,wrong-concept,model,,Riparian buffer management review
+10.1002/ece3.7955,exclude,wrong-concept,model,,Rodent response to masting across disturbance histories
+10.1016/j.scitotenv.2021.146763,exclude,wrong-concept,model,,"Capercaillie habitat from spy satellite images, no abstract"
+10.1016/j.foreco.2021.119720,exclude,wrong-concept,model,,"Boreal bird habitat and disturbance, no abstract, no carbon"
+10.1002/eap.2296,exclude,wrong-concept,model,,Retention harvest effects on tree regeneration and growth
+10.3929/ethz-b-000493088,exclude,wrong-concept,model,,"Ecosystem service risk thesis, disturbance risk to services, title names no disturbance"
+10.21685/2500-0578-2021-4-2,exclude,wrong-concept,model,,"Bird communities after fire, beetles and salvage logging, no abstract"
+10.1007/s11629-019-5685-3,exclude,wrong-concept,model,,"Topsoil chemistry after disturbance at site scale, no abstract"
+10.1016/j.foreco.2020.118128,exclude,wrong-concept,model,,"Understory floristic change in Denmark, no abstract"
+10.1016/j.foreco.2020.118132,undecided,,model,,"Disturbance-based silviculture and carbon storage, no abstract, scale unclear"
+10.1016/j.ecolind.2020.107027,exclude,wrong-concept,model,,"Deadwood volume drivers from Polish inventory, disturbance background"
+10.3390/en13184609,exclude,wrong-concept,model,,"Profitability of budworm-killed wood for pellets, no carbon"
+10.1016/j.foreco.2020.118744,exclude,wrong-concept,model,,"Long-term forest structure change, no abstract, title names no disturbance"
+modelling land use and land cover changes in california s landscapes,exclude,wrong-concept,model,,"Californian land use change dissertation, property-scale carbon, wildfire mapping"
+10.1073/pnas.1913321117,include,,model,,"Amazon carbon dynamics from conversion, degradation and disturbance, no abstract"
+10.25394/pgs.12723293.v1,exclude,wrong-concept,model,,"Hardwood management under risk, no abstract, title names no disturbance"
+guide to variable density thinning using skips and gaps,exclude,wrong-concept,model,,"Variable-density thinning guide, no abstract"
+10.1016/j.foreco.2019.117676,undecided,,model,,"Biomass carbon in primary forest under mixed-severity disturbance, no abstract, scale unclear"
+10.1016/j.foreco.2019.02.016,exclude,wrong-concept,model,,"Woodpecker habitat use, no abstract"
+10.1007/s10980-019-00921-9,exclude,wrong-concept,model,,"Post-disturbance recovery of cover and height from imagery, no carbon"
+10.17190/amf/1579542,exclude,not-research,model,,Flux tower data record
+10.7717/peerj.6219,exclude,wrong-concept,model,,Laser scanning of rewilding forest structure
+10.20315/asetl.118.3,exclude,wrong-concept,model,,Tree microhabitats in managed and old-growth beech
+10.1080/02827581.2019.1663915,exclude,wrong-concept,model,,Polypore fungi after disturbance-emulating harvests
+understory response to gap based multi aged silviculture,exclude,wrong-concept,model,,Understory response to gap-based silviculture
+10.1016/j.foreco.2019.05.027,exclude,wrong-concept,model,,"Beetle fauna after cutting treatments, no abstract"
+10.1016/j.jclepro.2019.119278,undecided,,model,,"Disturbance effects on residual biomass supply; no abstract, carbon link unclear from title"
+leaving some forests unmanaged,exclude,wrong-concept,model,,Ecological forestry and biodiversity in unmanaged stands; no carbon or regime analysis
+10.1002/ecs2.2632,exclude,wrong-concept,model,,"Retention harvesting and wildlife use; biodiversity only, no carbon"
+10.1016/j.foreco.2019.03.038,exclude,wrong-concept,model,,"Plantation carbon by species and density; stand level, no disturbance"
+10.1007/s11027-019-09885-2,undecided,,model,,"Russian managed lands greenhouse gas fluxes; no abstract, role of disturbance unknown"
+10.1016/j.ecolind.2019.105461,exclude,wrong-concept,model,,Ecological effects of clearcutting and certification; no carbon estimate
+10.1016/j.foreco.2019.117462,exclude,wrong-concept,model,,Saproxylic beetle habitat needs; biodiversity only
+10.21266/2079-4304.2021.236.198-211,exclude,wrong-concept,model,,"Coarse woody debris stocks in a reserve; plot ecology, no accounting link"
+10.22215/etd/2019-13651,exclude,wrong-concept,model,,Songbird habitat in managed forest; biodiversity only
+10.1002/ecs2.2288,include,,model,,Natural disturbance in dry forests compared against historical variability of rates
+10.1002/ecy.2500,exclude,wrong-concept,model,,Data paper on stand metrics in reserves; no disturbance analysis
+10.1007/s11056-018-9687-8,exclude,wrong-concept,model,,Forest regeneration under change; title names no disturbance or accounting
+10.1186/s13021-017-0089-6,include,,model,,"Forest management accounting rules, factoring out natural and indirect effects"
+10.1016/j.foreco.2018.08.052,exclude,wrong-concept,model,,Plant diversity in protected and managed forests; biodiversity only
+10.1007/978-3-319-75937-1_17,exclude,wrong-concept,model,,Primary forests and saproxylic insects; biodiversity only
+10.1093/forestry/cpy026,exclude,wrong-concept,model,,Silviculture emulating disturbance for diversity; no carbon or regime statistics
+10.1186/s40663-018-0145-z,exclude,wrong-concept,model,,Ecosystem management of paludified forests; disturbance only background
+10.1007/978-3-319-75937-1_18,exclude,wrong-concept,model,,Dead wood and saproxylic insects; biodiversity only
+10.1016/j.forpol.2018.09.002,undecided,,model,,"Fire impact on timber production policy; no abstract, carbon link unclear"
+10.1002/ecs2.2140,exclude,wrong-concept,model,,Adaptation guidance for stand-replacing fire regimes; no carbon or regime statistics
+10.17011/conference/eccb2018/107210,exclude,wrong-concept,model,,Public perception of continuous-cover forestry; outside the review questions
+10.1016/j.foreco.2018.09.020,exclude,wrong-concept,model,,Harvest legacies and soil microbes; stand-level ecology
+10.17011/conference/eccb2018/107296,exclude,wrong-concept,model,,Active conservation management of protected forests; biodiversity only
+10.20332/tvk-jnatconserv.2018.24.208,exclude,not-english,model,,Hungarian title on ice break damage and logging; not English
+10.7916/d8d2292t,include,,model,,Land-use and natural disturbance interactions; carbon sequestration under clearing assumptions
+10.1016/j.isprsjprs.2017.07.004,include,,model,,Separates natural from human disturbance dynamics; reports durations and temporal synchrony
+10.5822/978-1-61091-768-1_12,exclude,wrong-concept,model,,"Chapter on managing forest carbon; disturbance is background, not title subject"
+10.1016/j.foreco.2017.01.009,undecided,,model,,"Windthrow, bark beetle and management interactions; no abstract, carbon or regime unclear"
+10.18125/d2mw2x,exclude,wrong-concept,model,,Conference proceedings on silviculture under change; disturbance background only
+10.1139/cjfr-2016-0468,exclude,wrong-concept,model,,Harvest intensity and soil microbes; stand-level ecology
+10.5194/bg-14-3445-2017,exclude,wrong-concept,model,,Soil properties by forest density; disturbance only in passing
+10.1016/j.foreco.2017.01.007,exclude,wrong-concept,model,,Silviculture intensity and stand attributes; no disturbance accounting
+10.7939/r31v5bt50,exclude,wrong-concept,model,,Wood frog response to retention harvest; biodiversity only
+10.5849/jof.16-057,exclude,wrong-concept,model,,Ecological forestry concepts; no carbon or disturbance accounting
+10.1016/j.funeco.2016.12.005,exclude,wrong-concept,model,,Mycology in old-growth forests; biodiversity only
+10.5194/bg-2017-9,exclude,wrong-concept,model,,"Soil carbon between forest types; site level, no disturbance in title"
+10.1016/j.foreco.2016.06.006,exclude,wrong-concept,model,,Natural disturbance and salvage logging effects on biodiversity; no carbon
+10.1002/eap.1468,exclude,wrong-concept,model,,Pollinator diversity and disturbance heterogeneity; biodiversity only
+10.1111/ddi.12407,exclude,wrong-concept,model,,"Bird assemblages and disturbance regimes; biodiversity, no regime statistics"
+erdőgazdálkodási javaslatok a nagygombák funkcionális és faji sokféleségének megőrzésére conservation of macrofungal biodiversity in managed forests recommendations for management,exclude,wrong-concept,model,,Macrofungal conservation in managed forests; biodiversity only
+10.1016/j.foreco.2016.07.037,undecided,,model,,"Disturbance dynamics in European mountain forests; no abstract, regime content unclear"
+10.1016/j.landusepol.2016.01.003,exclude,wrong-concept,model,,Resilience policy in the US Forest Service; no disturbance accounting
+10.7717/peerj.1767,exclude,wrong-concept,model,,Provincial aboveground carbon map; disturbance mentioned only in passing
+10.1002/eco.1790,exclude,wrong-concept,model,,Streamflow from Douglas-fir plantations; hydrology
+10.1016/j.forpol.2016.10.009,exclude,wrong-concept,model,,Bioenergy carbon debt in European forests; no disturbance
+10.1111/1365-2664.12656,exclude,wrong-concept,model,,Retention harvest and ground-layer plants; biodiversity only
+10.1016/j.foreco.2016.09.041,exclude,wrong-concept,model,,Saproxylic beetles in silver fir forest; biodiversity only
+10.14214/df.222,exclude,wrong-concept,model,,Disturbance emulation and insect assemblages; biodiversity only
+evaluating carbon storage timber harvest and potential habitat possibilities 8 for a western cascades us forest landscape,exclude,wrong-concept,model,,"Landscape tradeoffs among carbon, harvest and habitat; management paper"
+10.1016/j.ecolind.2015.08.033,exclude,wrong-concept,model,,Ecological integrity indicators from bird occupancy; no carbon
+10.1139/cjfr-2015-0079,include,,model,,Timber supply vulnerability from current and projected burn rates across Canada
+10.1016/j.rse.2015.05.005,exclude,wrong-concept,model,,"Landsat disturbance agent attribution for habitat; mapping, no carbon"
+10.1016/j.jenvman.2015.08.009,exclude,wrong-concept,model,,Salvage logging and caribou habitat; no carbon or regime statistics
+10.25673/93458,exclude,not-english,model,,German vegetation survey study; title only in German
+10.5849/jof.14-593,exclude,wrong-concept,model,,Values of multiaged silviculture; no disturbance accounting
+comparaison des impacts des coupes forestières et des feux sur la sélection d habitat et l utilisation de l espace du caribou forestier,exclude,not-english,model,,"French thesis on caribou, logging and fire; title only in French"
+10.5849/jof.14-599,exclude,not-research,model,,Journal section heading with nothing on the topic
+cloud to coast assessing monitoring and managing forest carbon in papua new guinea,undecided,,model,,"Forest carbon monitoring in Papua New Guinea; no abstract, role of disturbance unknown"
+umwelt und nutzungswandel im kalkbuchenwald hordelymo fagetum lathyretosum ein vergleich alter und neuer vegetationsaufnahmen aus dem göttinger wald,exclude,not-english,model,,German vegetation survey study; title only in German
+chapter 6 quantifying greenhouse gas sources and sinks in managed forest systems,include,,model,,"Forest greenhouse gas reporting guidance, including clearing, harvest and natural disturbance emissions"
+10.1016/j.foreco.2014.05.017,exclude,wrong-concept,model,,Avian communities in managed and wilderness forests; biodiversity only
+10.1139/cjfr-2013-0402,exclude,wrong-concept,model,,Spatial patterns of windthrow and logging; no carbon or temporal regime statistics
+10.15159/emu.2,exclude,wrong-concept,model,,"Forest restoration monitoring in Estonia; biodiversity, stand level"
+10.26202/sylwan.2014014,exclude,not-english,model,,Polish review of rodents and regeneration; title only in Polish
+10.1007/s13762-014-0532-0,exclude,wrong-concept,model,,Deadwood by stand development stage; stand ecology
+10.5849/forsci.13-015,exclude,wrong-concept,model,,Harvest gaps and ground-layer diversity; biodiversity only
+insect diversity on clearcuts in boreal forest landscapes,exclude,wrong-concept,model,,Insect diversity on clearcuts; biodiversity only
+10.5194/we-14-61-2014,exclude,wrong-concept,model,,Comment on biodiversity and protected areas; outside the review questions
+10.1007/s11027-013-9460-4,include,,model,,Age and disturbance effects on landscape carbon stock changes in central Canada
+soil quality and plant diversity in managed forests in the hilly purple soil southwestern china,exclude,wrong-concept,model,,Soil quality and plant diversity under restoration; no carbon accounting
+10.1016/j.jnc.2012.11.003,exclude,wrong-concept,model,,Conservation value of bark beetle stands; biodiversity only
+10.1016/j.ecolmodel.2013.07.007,include,,model,,CBM-CFS3 national forest carbon budget for Italy with fire and harvest scenarios
+10.1002/ece3.751,include,,model,,Harvesting effects on Ontario managed forest carbon stocks at provincial scale
+10.1016/j.foreco.2013.10.039,undecided,,model,,"Recovery under divergent disturbance regimes; no abstract, carbon or statistics unclear"
+forest specific diversity of vascular plants bryophytes and lichens,exclude,wrong-concept,model,,"Plant, bryophyte and lichen diversity; biodiversity only"
+10.1007/978-3-642-12725-0_28,exclude,wrong-concept,model,,Carpathian biodiversity landscape approach; no disturbance accounting
+10.1371/journal.pone.0081358,exclude,wrong-concept,model,,Bird community dynamics after fire and logging; biodiversity only
+10.1016/j.foreco.2013.07.045,include,,model,,Gap disturbance history of an old-growth forest; disturbance regime reconstruction
+10.1016/j.foreco.2013.07.055,exclude,wrong-concept,model,,Cohort growth in retention harvests; stand ecology
+10.1899/11-114.1,exclude,wrong-concept,model,,Disturbance emulation for aquatic ecosystems; no carbon
+10.1016/j.foreco.2012.10.052,exclude,wrong-concept,model,,Lichen diversity and management abandonment; biodiversity only
+10.1016/j.foreco.2012.06.016,exclude,wrong-concept,model,,"Protection or harvest for mitigation; management paper, no disturbance in title"
+10.1890/es12-00241.1,include,,model,,LANDIS-II projection of wildfire and climate effects on landscape carbon
+10.1007/978-3-642-12754-0_1,exclude,wrong-concept,model,,"Book on managing landscapes under global change; no abstract, general"
+10.1016/j.foreco.2011.06.019,exclude,wrong-concept,model,,Regeneration in disturbance-based silviculture; stand ecology
+an inventory based analysis of canada s managed forest carbon dynamics 1990 to 2008,include,,model,,"Canada managed forest carbon budget with fire, insects and harvest, 1990 to 2008"
+10.1525/bio.2011.61.2.9,include,,model,,Fire effects on carbon stocks in US dry temperate forests
+10.1007/s10531-011-0092-2,exclude,wrong-concept,model,,"Bryophytes after logging, fire and budworm; biodiversity only"
+10.3390/f2030730,exclude,wrong-concept,model,,Long-term carbon accumulation in two forests; disturbance only in passing
+10.1016/j.foreco.2011.01.008,exclude,wrong-concept,model,,Burning and dead wood effects on fungi; biodiversity only
+chapter 1 managing forest landscapes under global change scenarios,exclude,wrong-concept,model,,Chapter on landscape management under global change; general
+10.1111/j.1365-2486.2010.02369.x,include,,model,,"Canada managed forest carbon budget with natural disturbance, 1990 to 2008"
+10.4324/9781849776417-11,exclude,wrong-concept,model,,Managing plantations for carbon; disturbance only background
+10.4324/9781849775106-2,exclude,wrong-concept,model,,Biodiversity conservation in managed forests; no carbon
+10.1111/j.1600-0889.2010.00487.x,include,,model,,Future fire and insect regimes and the carbon balance of Canada's managed forest
+10.1016/j.foreco.2010.04.015,undecided,,model,,"National dead wood from natural disturbances for bioenergy; no abstract, carbon unclear"
+10.5558/tfc86589-5,exclude,wrong-concept,model,,Habitat thresholds for biodiversity; no carbon or regime statistics
+10.1016/j.biocon.2009.12.021,exclude,wrong-concept,model,,Frog gene flow under disturbance; population genetics
+10.3390/su2082403,exclude,wrong-concept,model,,Timber policy response to the BC beetle outbreak; no carbon estimate
+microtopographic influence on recolonization patterns of forest floor bryophytes following clear cut logging,exclude,wrong-concept,model,,Bryophyte recolonization after clearcutting; biodiversity only
+resistance and recolonization of bryophyte assemblages following disturbances detecting patterns and exploring mechanisms,exclude,wrong-concept,model,,Bryophyte resistance and recolonization; biodiversity only
+microtopography creates small scale refugia for boreal bryophytes during clear cut logging,exclude,wrong-concept,model,,Bryophyte refugia during clearcutting; biodiversity only
+bryophyte species density and composition in young forests regenerating after clear cut logging wildfire and spruce budworm outbreak,exclude,wrong-concept,model,,"Bryophytes after logging, fire and budworm; biodiversity only"
+10.1111/j.1365-2664.2010.01923.x,exclude,wrong-concept,model,,"Aspen abundance, land use and browsing; no carbon"
+relations between natural forest stability and pest disturbance to control and to be controlled,exclude,wrong-concept,model,,Review of pest disturbance and forest stability; no carbon
+10.1016/j.foreco.2010.03.010,exclude,wrong-concept,model,,"Coweeta long-term forest change; no abstract, no disturbance in title"
+resistance and recolonization of bryophyte assemblages following disturbances,exclude,wrong-concept,model,,Bryophyte recolonization after disturbance; biodiversity only
+10.1007/s10310-009-0177-x,exclude,wrong-concept,model,,Silviculture for complex stand structures; no disturbance accounting
+inventory based model estimates of the net impact of natural disturbances on the c balance of canada s managed forest lands,include,,model,,Net impact of natural disturbances on Canada's managed forest carbon balance
+10.5860/choice.47-0859,exclude,wrong-concept,model,,Book on biodiversity in managed forests; no carbon
+regeneration dynamics after fire and clear cutting in boreal mixedwoods,exclude,wrong-concept,model,,Regeneration after fire and clearcutting; stand ecology
+10.3897/zookeys.22.144,exclude,wrong-concept,model,,Deadwood and beetles by disturbance history; biodiversity only
+10.1016/j.foreco.2009.10.037,exclude,wrong-concept,model,,Biodiversity conference summary; no carbon
+10.1007/s10021-009-9259-z,exclude,wrong-concept,model,,Tree species response to fire and clearcutting; stand ecology
+10.5558/tfc85695-5,exclude,wrong-concept,model,,"Ecological forestry at wildlife refuges; management, no carbon"
+10.5735/085.046.0402,include,,model,,Gap disturbance history and temporal pattern of gap creation in old-growth spruce
+10.3897/zookeys.0.144,exclude,wrong-concept,model,,Deadwood and beetles by disturbance history; biodiversity only
+10.1016/j.foreco.2009.04.018,exclude,wrong-concept,model,,Linkage areas for biodiversity; no carbon
+10.13031/2013.27029,exclude,wrong-concept,model,,Watershed hydrology monitoring; hydrology
+10.5860/choice.46-6797,exclude,wrong-concept,model,,"Book on forest landscape patterns; contents list, general"
+coarse woody debris macrofungalassemblages and sustainable forestmanagement in a eucalyptus obliqua forest ofsouthern tasmania,exclude,wrong-concept,model,,Coarse woody debris and fungi by fire history; plot ecology
+conference of the australasian mycological society and the 23 rd new zealand fungal foray mycology colloquium,exclude,not-research,model,,Mycology conference listing; nothing on the topic
+10.7939/r39w09086,exclude,wrong-concept,model,,"Ecosystem management examples in boreal Canada; no abstract, management"
+options for improving the treatment of lulucf in a copenhagen agreement forest and wetland degradation factoring out harvested wood products and approaches for fuller accounting,include,,model,,Land sector accounting options including factoring out and degradation
+projecting the carbon sink of managed forests based on standard forestry data,exclude,wrong-concept,model,,Stand carbon sink projection method; factoring out stated only as an aim
+10.1016/j.foreco.2008.04.026,exclude,wrong-concept,model,,"Climate vulnerability framework for BC management; no abstract, management"
+10.1007/s10980-008-9237-4,exclude,wrong-concept,model,,Alien tree spread simulation; invasion ecology
+10.1890/07-1697.1,exclude,wrong-concept,model,,Residual tree mortality after partial harvest; stand ecology
+should i stay or should i go kasvupaikkaspesifisten maksasammalten lisääntymis ja leviämisstrategiat,exclude,wrong-concept,model,,Liverwort reproduction and dispersal; biodiversity only
+10.1525/auk.2008.1708,exclude,wrong-concept,model,,Tropical deforestation effects on birds; biodiversity only
+10.5558/tfc83326-3,include,,model,,"Natural fire regime attributes and historic variability compared with management, Clay Belt"
+10.5558/tfc83539-4,exclude,wrong-concept,model,,National circumstances of boreal nations; no carbon or regime statistics
+10.1111/j.1523-1739.2007.00808.x,exclude,wrong-concept,model,,Burning logged sites for beetles; biodiversity only
+10.59962/9780774852067,exclude,wrong-concept,model,,"Landscape ecology book on Ontario; general, no carbon"
+landscape ecology vol 9 no 2 pp 1994,exclude,wrong-concept,model,,Clearcut fauna and edge effects; biodiversity only
+carbon storage in ontario s forests 2000 2100,exclude,wrong-concept,model,,Ontario forest carbon projection; disturbance only part of model background
+10.2193/2005-460,exclude,wrong-concept,model,,Bird nesting after spruce beetle outbreak; biodiversity only
+vegetationsökologisches monitoring in naturwaldreservaten,exclude,not-english,model,,German vegetation monitoring in reserves; title only in German
+10.1139/x06-132,exclude,wrong-concept,model,,Resilience and disturbance-based management review; no carbon
+10.1016/j.biocon.2005.11.010,exclude,wrong-concept,model,,Saproxylic beetles and dead wood; biodiversity only
+fire history of a western montana ponderosa pine grassland a pilot study,include,,model,,Fire history of a ponderosa pine grassland for historical range of variation
+10.1007/s10980-005-2378-9,exclude,wrong-concept,model,,"Intensive management effects on landscape structure; no abstract, no carbon"
+10.1016/j.foreco.2006.02.053,exclude,wrong-concept,model,,"Wildfire, logging and bird communities; biodiversity only"
+balancing ecological and economic objectives while managing for old growth forest characteristics,exclude,wrong-concept,model,,Old-growth management objectives; no disturbance accounting
+10.1016/j.foreco.2005.05.008,exclude,wrong-concept,model,,Understorey succession after disturbances; vegetation ecology
+10.1093/jof/103.7.339,exclude,wrong-concept,model,,Old-growth controls in forestry research; no disturbance named
+virgin forests as a knowledge source for central european silviculture reality or myth,exclude,wrong-concept,model,,Virgin forests and silviculture; no carbon or regime statistics
+modeling disturbance and competition in temperate forests of northeastern north america,exclude,wrong-concept,model,,Stand model of wind disturbance and competition; no carbon or regime statistics
+college of forestry integrated research project ecological and socioeconomic responses to alternative silvicultural treatments,exclude,wrong-concept,model,,Silvicultural alternatives experiment; no carbon
+10.7557/2.25.4.1775,exclude,wrong-concept,model,,Beetle effects on caribou forage lichens; biodiversity only
+10.1023/b:bioc.0000018148.84640.fd,exclude,wrong-concept,model,,Selective felling for biodiversity; no carbon
+10.1023/b:land.0000030442.96122.ef,exclude,wrong-concept,model,,"Landscape pattern index sensitivity; methods, no carbon"
+10.1016/j.jnc.2003.08.002,exclude,wrong-concept,model,,Aspen persistence in conservation areas; biodiversity only
+10.1016/j.foreco.2004.10.031,exclude,wrong-concept,model,,Management records and structural diversity; no carbon
+vegetation patterns in managed and semi natural boreal forests in eastern finland and russian karelia,exclude,wrong-concept,model,,Vegetation in managed and semi-natural forests; biodiversity
+10.1111/j.0021-8901.2004.00960.x,exclude,wrong-concept,model,,Understorey diversity under silvicultural systems; biodiversity
+effects of harvest gaps and natural canopy gaps on amphibians within a northeastern forest,exclude,wrong-concept,model,,Amphibians in harvest and natural gaps; biodiversity
+disturbance diversity and permanence of structures in forest ecosystems,exclude,wrong-concept,model,,Disturbance and diversity models; no carbon or regime statistics
+10.1179/174328204x19504,exclude,wrong-concept,model,,Bryophytes on disturbed soil in Tanzania; floristics
+10.7939/r3st7f085,exclude,wrong-concept,model,,Representative non-harvestable areas; conservation planning
+10.1016/s0378-1127(03)00250-0,undecided,,model,,"Pre-Columbian baselines for managed forests; no abstract, relevance of baseline unclear"
+carbon incentives and canada s managed forest under risk,include,,model,,Carbon incentives under natural disturbance risk in Canada's managed forest
+regeneration microsites of picea abies seedlings in a windthrow area of a boreal old growth forest in southern finland,exclude,wrong-concept,model,,Spruce regeneration microsites after windthrow; stand ecology
+10.5558/tfc79531-3,exclude,not-english,model,,French paper on old-forest birds; title only in French
+10.1093/forestscience/49.2.209,undecided,,model,,"Coarse filter management in a nonequilibrium forest; no abstract, regime content unclear"
+10.1016/s0378-1127(03)00254-8,exclude,wrong-concept,model,,Early-successional bird habitat; biodiversity
+10.1890/02-5237,exclude,wrong-concept,model,,Understory response to tillage and harvest; biodiversity
+10.1016/s0140-6701(03)90663-1,exclude,off-topic,model,,Gas and biomass energy; unrelated field
+10.1017/cbo9780511615757.017,exclude,wrong-concept,model,,Small mammals in a landscape mosaic; biodiversity
+10.1016/s0378-1127(02)00453-x,exclude,wrong-concept,model,,Post-harvest silviculture and wildlife review; biodiversity
+10.1016/s1351-4180(03)00422-7,exclude,off-topic,model,,Chemical catalyst company report; unrelated field
+10.1078/1617-1381-00028,exclude,wrong-concept,model,,Forest and ungulate interactions; no carbon
+10.14214/sf.572,exclude,wrong-concept,model,,Ecological restoration principles in Finland; biodiversity
+10.1016/s0006-3207(01)00225-7,exclude,wrong-concept,model,,Beetles by forest age and naturalness; biodiversity
+a preliminary regional division for efficient biodiversity preservation based on disturbance regime forest history and tree species distribution the southern swedish example,exclude,wrong-concept,model,,Regional division for biodiversity by disturbance regime; no statistics or carbon
+10.1139/x01-110,include,,model,,"Regional coarse woody debris carbon stores differing by disturbance type, Russia"
+10.1046/j.1365-2486.2002.00475.x,exclude,wrong-concept,model,,Site-level carbon dioxide flux after windthrow; no landscape-scale estimate
+10.1007/bf02803188,exclude,wrong-concept,model,,Vegetation dynamics after storms; vegetation ecology
+richness of bryophyte vegetation in near natural and managed beech stands the effects of management induced differences in dead wood,exclude,wrong-concept,model,,Bryophytes and dead wood in beech stands; biodiversity
+spatial relationships between vegetation and forest bird boundaries in a mixed wood managed forest,exclude,wrong-concept,model,,Bird boundaries in managed forest; biodiversity
+10.1093/jof/99.8.18,exclude,wrong-concept,model,,Conservation biology and certification; no carbon
+10.1071/bt99053,exclude,wrong-concept,model,,Flora after clear-felling and wildfire; biodiversity
+rare plants of eastern oregon and washington,exclude,wrong-concept,model,,Rare plants of eastern Oregon and Washington; floristics
+10.1046/j.1365-2745.2001.00562-3.x,exclude,not-research,model,,Book review on forest biodiversity; nothing on the topic
+10.7312/fimb11454,exclude,wrong-concept,model,,Wildlife in logged tropical forests; biodiversity
+use of wildlife tree patches by forest birds in the sub boreal spruce sbs zone,exclude,wrong-concept,model,,Wildlife tree patches and birds; biodiversity
+10.1890/0012-9615(2000)070[0423:lsdaci]2.0.co;2,exclude,wrong-concept,model,,"Bird communities across disturbed boreal landscapes; no carbon, accounting or regime statistics."
+10.5558/tfc76481-3,exclude,wrong-concept,model,,Sustainable forest management standards; natural disturbance only as a benchmark.
+10.1093/forestry/72.4.337,exclude,wrong-concept,model,,Review on mimicking wind disturbance in plantations for biodiversity; no regime statistics.
+10.1046/j.1365-2664.1999.00459-3.x,exclude,not-research,model,,Book review on forest biodiversity management; nothing on the review topic.
+physical geography of ontario,exclude,wrong-concept,model,,"Physical geography of Ontario, no abstract; title names no disturbance."
+10.1023/b:miti.0000004486.62808.29,include,,model,,Carbon budget effects of the shift from natural to managed disturbance regimes.
+10.7557/2.18.5.1438,exclude,wrong-concept,model,,Caribou habitat under ecosystem management; disturbance emulation only as background.
+10.1023/a:1018399401248,exclude,wrong-concept,model,,"Saproxylic beetles in clearcut dead trees; stand biodiversity, no carbon."
+10.1007/bf02437053,include,,model,,Copy of carbon budget study of natural to managed disturbance regimes.
+10.24124/1997/bpgub34,exclude,wrong-concept,model,,Stand ecology of wildfire remnants; no carbon or regime statistics.
+10.1007/bf00051571,exclude,wrong-concept,model,,"Harvest pattern management drawn from wildfire, no abstract; forestry practice title."
+forests of the oregon coast range considerations for ecological restoration,exclude,wrong-concept,model,,Restoration considerations for fish and wildlife; fire intervals only as context.
+10.2307/2265594,include,,model,,Gap disturbance regime in coastal British Columbia rainforest; estimates forest turnover time.
+a sequential approach in mathematical programming to include spatial aspects of biodiversity in long range forest management planning,exclude,wrong-concept,model,,Mathematical programming for biodiversity in forest planning; disturbance as background.
+10.1007/978-3-642-79755-2,exclude,wrong-concept,model,,"Tropical forest biodiversity book, no abstract; title names no disturbance."
+past climates forests and disturbances of the sierra nevada california understanding the past to manage for the future,include,,model,,Historical disturbances and fire frequency of Sierra Nevada forests; title names disturbances.
+10.1007/bf00124377,exclude,wrong-concept,model,,"Vertebrate distributions at clearcut edges; wildlife ecology, no carbon."
+10.1016/0378-1127(94)90115-5,undecided,,model,,"Ecological disturbance and eucalypt forest management, no abstract; regime content unclear."
+10.1007/bf00047695,exclude,wrong-concept,model,,"Vegetation succession after natural destruction, no abstract; stand ecology."
+10.2307/1941860,exclude,wrong-concept,model,,New Forestry management principles; natural disturbance only a reference for practice.
+principles and practices of new forestry a guide for british columbians,exclude,wrong-concept,model,,"New Forestry practice guide for British Columbia, no abstract; forestry practice."
+auswirkungen der energetischen nutzung forstlicher biomasse in deutschland auf deutsche und internationale lulucf senken biosink,exclude,not-english,model,,Title only in German; German report on wood energy and LULUCF sinks.
+10.17221/63/2022-jfs.html,exclude,wrong-concept,model,,Beech regeneration in managed versus unmanaged stands; stand ecology.
+age dependent changes in ecosvstem carbon fluxes in a n i e d forests in northern wisconsin usa,exclude,wrong-concept,model,,"Stand age and carbon fluxes, no abstract; no disturbance named in title."
+is a hands off approach appropriate for red cockaded woodpecker conservation in twenty first century landscapes,exclude,wrong-concept,model,,"Woodpecker conservation, no abstract; wildlife management."
+10.5846/stxb201307221927,include,,model,,"Review of historical range of variability in forest landscapes, no abstract."
+using biodiversity indicators to assess the success of forecasting adaptive ecosystem management the newfoundland and labrador experience,exclude,wrong-concept,model,,Biodiversity indicator tools for Newfoundland; regime definition only a minor component.
+10.1093/jof/103.7.351,undecided,,model,,"Reference conditions for disturbed landscapes, no abstract; may define natural range."
+10.1016/s0378-1127(01)00568-0,exclude,wrong-concept,model,,"Natural disturbance as silviculture guide, no abstract; forestry practice."
+10.1016/s0378-1127(01)00573-4,exclude,wrong-concept,model,,"Natural disturbance-based management integration, no abstract; management practice."
+10.1139/er-2024-0001,include,,model,,Review of Canadian forest carbon research; natural versus anthropogenic in inventory.
+modelling carbon sequestration in finnish forests a climate and harvest level scenario case study,exclude,wrong-concept,model,,Finnish harvest and climate scenarios for carbon sink; natural disturbance not modelled.
+10.1007/978-3-319-56201-8_8,undecided,,model,,"Chapter titled Canada, no abstract; subject cannot be judged from title."
+10.1139/cjfr-2024-0055,include,,model,,Historic harvest data move area between anthropogenic and natural inventory categories.
+10.5849/jof.16-013,exclude,wrong-concept,model,,"History of ecological forestry, no abstract; forestry practice."
+10.14288/1.0166118,exclude,wrong-concept,model,,Harvest strategies and carbon credit costs in British Columbia; disturbance in passing.
+10.5849/jof.13-040,exclude,wrong-concept,model,,Critique of ecological forestry restoration framework; management and wildlife policy.
+10.4155/cmt.13.67,undecided,,model,,"REDD+ implementation, no abstract; deforestation accounting content unclear."
+10.22004/ag.econ.34175,exclude,wrong-concept,model,,Carbon market effects on timber values; disturbance approach only for non-timber values.
+10.1186/s42408-026-00500-9,exclude,wrong-population,model,,Laboratory charcoal spectroscopy for fire intensity; no fire frequency or regime statistics.
+long term vegetation and wildfire dynamics in the high cascade mountains pacific northwest usa,include,,model,,Paleo fire history baseline testing whether current fire exceeds natural range.
+10.1186/s13717-026-00740-2,exclude,wrong-concept,model,,"Reference stand conditions for Nothofagus; stand structure, no regime statistics."
+10.3390/su18179135,exclude,wrong-concept,model,,Conceptual ecosystem memory framework; no carbon or regime statistics.
+10.1007/s10113-024-02356-8,undecided,,model,,"Beetle and fire suppression effects on Jasper landcover, no abstract; regime content unclear."
+10.1002/eap.3080,exclude,wrong-concept,model,,Owl assemblage response to fire; wildlife ecology.
+10.1016/j.biocon.2024.110701,exclude,wrong-concept,model,,Spotted owl survival after wildfire; wildlife ecology.
+10.3390/fire7040148,exclude,wrong-concept,model,,Seed bank diversity after short-interval fire; plot ecology.
+10.1002/ecs2.4795,exclude,wrong-concept,model,,Understory recovery after fire in British Columbia; plot ecology.
+10.1002/ecs2.4735,include,,model,,Historical fire return intervals reconstructed across a western Cascades landscape.
+10.1002/ecy.4041,exclude,wrong-concept,model,,Species regeneration strategies under fire rotation thresholds; community ecology model.
+10.1080/0035919x.2023.2175076,exclude,wrong-concept,model,,Grassland plant diversity and socio-ecological disturbance regimes; no forest or carbon.
+10.3390/fire6040146,include,,model,,Rebuttal on historical range of variability of dry forest fire regimes.
+10.1088/1748-9326/acee16,include,,model,,Fire rotation and historical range of variability from a lake charcoal network.
+10.3390/land11101615,include,,model,,Recent fire rotations compared with historical range of variability.
+10.14288/1.0398455,include,,model,,Dendrochronological reconstruction of historical fire regimes in British Columbia dry forests.
+10.3389/ffgc.2021.644696,exclude,wrong-concept,model,,"Governance under novel ecosystems; conceptual, no carbon or regime statistics."
+10.1016/j.foreco.2021.119256,exclude,wrong-concept,model,,"Restoration to reference conditions, no abstract; title names no disturbance."
+10.21203/rs.3.rs-171634/v1,undecided,,model,,"Post-fire forest patterns versus reference landscapes, no abstract; regime content unclear."
+10.1007/s10980-021-01352-1,undecided,,model,,"Copy of post-fire forest patterns versus reference landscapes, no abstract."
+10.1016/j.gloplacha.2020.103264,include,,model,,"Holocene biomass burning history in Carpathian forests, no abstract; fire history."
+10.2737/nrs-gtr-p-193-paper4,include,,model,,Historical fire return intervals in moist mixed conifer forests to inform management.
+10.6073/pasta/adff9897f359712baf4cdb0c4867e040,exclude,wrong-concept,model,,Data package on scrub vegetation cover after fires; plot monitoring.
+10.1002/eap.2013,include,,model,,"Natural range of variation under rare extreme fires, with uncertainty."
+10.3390/fire2010014,include,,model,,Fire history and median fire intervals in Taos Valley watersheds.
+10.1071/wf18203,include,,model,,Distinguishes natural fire disturbance from anthropogenic perturbation of fire regimes.
+10.59350/arevy-scd43,include,,model,,Copy of natural disturbance versus human perturbation of fire regimes.
+10.59350/h4jk4-7qr32,include,,model,,Copy of natural disturbance versus human perturbation of fire regimes.
+10.3389/fevo.2019.00440,exclude,wrong-concept,model,,"Landscape resilience metrics; title names no disturbance, regime only as context."
+10.1201/9780429104404-15,exclude,wrong-concept,model,,GIS fire hazard model for habitat and fish; no carbon or regime statistics.
+10.1016/j.foreco.2019.01.020,include,,model,,"Status and trends of fire activity in southern California forests, no abstract."
+10.2737/rmrs-gtr-394,exclude,wrong-concept,model,,"Riparian conditions versus natural range, no abstract; no disturbance named."
+10.2737/rmrs-gtr-385,include,,model,,Simulated wildfire-driven historical range of variability for the Yuba watershed.
+10.1002/ecs2.2394,exclude,wrong-concept,model,,Dryland plant community simulation model; no forest carbon or regime statistics.
+10.1201/9781315137797-19,exclude,wrong-concept,model,,Ecological classification framework for forest health planning; management.
+10.3955/046.092.0104,exclude,wrong-concept,model,,Structural restoration needs from departure; title names no disturbance.
+10.25675/3.023143,exclude,wrong-concept,model,,Aspen stand regeneration on Roan Plateau; stand ecology.
+10.1093/biosci/bix028,exclude,wrong-concept,model,,Conservation strategy mapping under climate change; no disturbance focus.
+10.1016/j.foreco.2016.07.047,include,,model,,"Synthesis of the natural disturbance regime of Dinaric forests, no abstract."
+10.7939/r3cv4c309,include,,model,,Fire return intervals and survival analysis for southern Alberta fire regimes.
+10.1016/j.foreco.2016.08.014,include,,model,,"Historical disturbance regime of Carpathian spruce forests, no abstract."
+10.5558/tfc2016-085,include,,model,,Newfoundland disturbance history database; fire cycle and natural range of variation.
+10.4996/fireecology.1203117,include,,model,,Tests whether Hayman Fire severity exceeded historical range of variability.
+10.1016/j.yqres.2016.08.006,include,,model,,3500-year fire history in Jasper; natural versus human control of fire.
+unravelling the past to manage newfoundland s forests for the future by,include,,model,,"Same work as r0440, no abstract; Newfoundland disturbance history and fire cycle."
+10.14288/1.0221490,include,,model,,Anthropogenic disturbance regimes compared with historical fire range in Alberta.
+10.1007/s00334-015-0533-z,include,,model,,"Holocene fire history of a Finnish spruce forest, no abstract."
+10.1139/cjfr-2014-0546,include,,model,,Anthropogenic disturbance patterns outside historical fire range in Alberta boreal forest.
+sage grouse and fire management on the charles m russell national wildlife refuge,exclude,wrong-concept,model,,Sage-grouse habitat and fire management; wildlife ecology.
+10.1007/978-3-319-21527-3_14,exclude,wrong-concept,model,,"Managing hardwood forests within historical range, no abstract; management practice."
+10.1007/978-3-319-21527-3_13,undecided,,model,,"Future natural disturbances in Central Hardwoods, no abstract; regime content unclear."
+10.1007/978-3-319-21527-3_10,exclude,wrong-concept,model,,"Forest structure change since park protection, no abstract; no disturbance named."
+10.5849/jof.15-010,exclude,wrong-concept,model,,"Wilderness intervention framework, no abstract; management policy."
+sage grouse fire management charles m russell national wildlife refuge montana,exclude,wrong-concept,model,,"Sage-grouse and fire management, no abstract; wildlife management."
+10.1093/obo/9780199363445-0001,include,,model,,Defines historical range of variability and its link to disturbance regimes.
+use of a forest reconstruction model to assess changes to sierra nevada mixed conifer forest conditions during the fire suppression era,exclude,wrong-concept,model,,Single-plot forest reconstruction model; fire history only a supporting step.
+10.1071/wf13184,exclude,wrong-concept,model,,Post-fire management strategies simulated for stand basal area; management.
+10.1890/es13-00294.1,include,,model,,Landscape reference conditions including modelled fire return intervals.
+the use of dendroecological techniques to build a master chronology and determine fire effects in a mixed severity fire regime forest of northern montana,undecided,,model,,"Dendroecological fire effects in mixed-severity regime, no abstract; fire history unclear."
+factors affecting regeneration layer dynamics in mixed pine forest ecosystems of eastern upper michigan and implications for forest ecosystem restoration,exclude,wrong-concept,model,,Regeneration dynamics in mixed-pine stands; stand ecology and silviculture.
+the wallow fire and its effects on mixed conifer forest a comparison with reference conditions special report to the apache sitgreaves national forests usda forest service region 3,include,,model,,Wallow Fire high-severity patches compared with historical range of variability.
+10.1111/nyas.12104,include,,model,,Bounded ranges of variation refine historical range with thresholds.
+10.5558/tfc2013-011,exclude,wrong-concept,model,,Timber supply under disturbance emulation policies; management planning.
+10.1016/j.foreco.2012.07.005,undecided,,model,,"Fire risk in managed eastern Canadian forests, no abstract; carbon or regime unclear."
+wildfire regime shifts in temperate forest ecosystems international symposium in new zealand,undecided,,model,,"Symposium on wildfire regime shifts, no abstract; may be a meeting report."
+10.1016/j.palaeo.2011.08.008,include,,model,,"Human amplification of Patagonian fire regimes, no abstract; human versus natural fire."
+10.1016/j.foreco.2010.11.020,include,,model,,"Fire and harvest effects on boreal age structure, no abstract."
+10.14288/1.0074961,include,,model,,Historical range of disturbance in sub-boreal spruce; Poisson climate models.
+10.1007/978-1-4614-1034-8_10,exclude,wrong-concept,model,,"Expert knowledge versus succession model, no abstract; no disturbance named."
+10.4996/fireecology.0703088,include,,model,,Historical stand-replacing fire intervals and patch sizes within range of variability.
+incorporating historical ecosystem diversity into conservation planning efforts in grass and shrub ecosystems,exclude,wrong-concept,model,,Rangeland ecosystem diversity for conservation; title names no disturbance.
+10.1016/j.foreco.2011.04.013,undecided,,model,,"Wind disturbance in Bulgarian spruce forest, no abstract; regime statistics unclear."
+pinyon juniper restoration ecology compatibilities and incompatibilities of biomass harvesting in the southwest,exclude,wrong-concept,model,,Pinyon-juniper restoration and biomass harvest; management.
+paleoecological perspectives on fire ecology revisiting the fire regime concept,include,,model,,Paleofire records and the fire-regime concept across temporal scales.
+climate change and fire regimes in the sierra de manantlan mexico,include,,model,,Fire regimes and historical range of variability in Manantlan; brief abstract.
+10.2174/1874213001003020006,include,,model,,Copy of paleofire records and the fire-regime concept.
+10.1139/x10-025,include,,model,,Time since fire and old-forest proportion from inventory and fire history.
+10.1890/08-1698.1,exclude,wrong-concept,model,,Restoration scenarios under climate change; title names no disturbance.
+10.1016/j.foreco.2010.07.007,exclude,wrong-concept,model,,"Soil fertility after harvest replacing wildfire, no abstract; stand-level soils."
+simulating historical and future mpb threat in alberta s eastern slopes,include,,model,,Proposal on disturbance regime natural range and mountain pine beetle threat.
+10.1016/j.foreco.2009.04.019,include,,model,,"Historical fire and vegetation dynamics in dry interior forests, no abstract."
+modeling fire disturbance and forest structure change in the black hills,include,,model,,Simulated fire rotations and historical range versus fire suppression in Black Hills.
+10.1016/j.foreco.2009.10.042,exclude,wrong-concept,model,,"Restoration strategy simulation, no abstract; title names no disturbance."
+10.5751/es-02482-140118,undecided,,model,,"Historical range as conservation guide, no abstract; regime statistics unclear."
+10.1071/wf07152,include,,model,,Historical range of variability of fires; natural versus human causes.
+10.1071/wf07155,include,,model,,Special issue introduction on large fires within historical range of variability.
+using reconstructed outbreak histories of mountain pine beetle fire and climate to predict the risk of future outbreaks,include,,model,,Reconstructed beetle outbreak and fire histories in British Columbia versus natural range.
+10.1071/wf06159,include,,model,,Fire history showing recent severe fire outside the 1000-year range.
+10.1007/s10113-008-0071-7,include,,model,,"Disturbance effects on vegetation carbon pools, no abstract."
+10.1086/529455,exclude,off-topic,model,,Book review in an education journal.
+10.1016/j.foreco.2007.08.013,include,,model,,"Climate change effects on historical range of variability of landscapes, no abstract."
+10.1139/x07-064,include,,model,,"Simulated historical range of wood biomass under natural fire regimes, regional scale."
+10.25675/3.024485,include,,model,,Historical fire regime and range of variability in Colorado mixed conifer.
+10.1890/060161,include,,model,,Sediment charcoal records as millennial baseline for fire range of variability.
+creosotebush blackbrush and interior chaparral shrublands chapter 6,exclude,wrong-concept,model,,Shrubland fire regime condition class chapter; title names no disturbance.
+10.1007/s10980-007-9133-3,include,,model,,"Fire response to Little Ice Age climate, no abstract; fire history."
+wood biomass a regional scale simulation study,include,,model,,Copy of simulated historical range of wood biomass under natural fire regimes.
+biodiversity conservation in contemporary landscapes stressors and ranges of variability scientific and social views,exclude,wrong-concept,model,,"Biodiversity conservation and ranges of variability, no abstract; conservation focus."
+similarities and differences between harvesting and wildfire induced disturbances in fire mediated canadian landscapes,include,,model,,"Harvest versus wildfire disturbance in Canadian landscapes, no abstract."
+10.1890/04-0902,include,,model,,Simulated historical range of landscape structure under natural fire regimes.
+10.1111/j.1365-2699.2005.01357.x,exclude,wrong-concept,model,,Understorey plant communities and time since fire; plot ecology.
+10.1890/02-5145,include,,model,,Maps fire interval and severity regimes with gradient models.
+mapping relative fire regime condition class for the western united states,include,,model,,Maps fire regime departure from historical conditions across the western United States.
+fire regime condition class and associated data for fire and fuels planning methods and applications,include,,model,,Fire regime condition class and historical range departure mapping methods.
+10.1111/j.1523-1739.2003.00230.x,exclude,wrong-concept,model,,Speculative pigeon effects on presettlement disturbance; no quantified regime or carbon.
+10.1016/j.yqres.2003.07.009,include,,model,,Postglacial fire history shows recent fire within historical range.
+10.1890/03-4014,include,,model,,Ponderosa pine fire history with severity and historical range of variability statistics.
+hayman fire case study,undecided,,model,,"Case study of a single fire, no abstract; subject unclear from title."
+10.1201/9781420032277-10,include,,model,,Natural disturbance as a cause of change in forest soil carbon.
+10.1007/978-1-4419-8620-7_20,include,,model,,"Methods for historical range of variability, no abstract; title is an include case."
+a forum for natural cultural and social studies,exclude,not-research,model,,Forum or series title with no abstract and nothing on the topic.
+10.1300/j091v11n01_11,include,,model,,Inherent disturbance regime and historical range of variability as reference points.
+restoring natural fire regimes to the sierra nevada in an era of global change,include,,model,,"Natural fire regimes, fire intervals and historical range of variability, Sierra Nevada."
+10.1071/wf99004,include,,model,,Weibull models of fire interval data; fire regime statistics.
+10.1023/a:1008110804909,include,,model,,"Paleoecological fire history for fire management in a British Columbia park, no abstract."
+10.4102/koedoe.v42i2.237,exclude,wrong-concept,model,,Savanna burning paradigm for biodiversity management; no regime statistics or carbon.
+10.2737/pnw-rp-514,undecided,,model,,"Natural variation in forest spatial patterns, no abstract; disturbance link unclear."
+10.2737/pnw-gtr-422,include,,model,,Landscape plan built on a 500 year dendrochronological fire regime.
+fire silviculture relationships in sierra forests,undecided,,model,,"Fire and silviculture relationships, no abstract; could go either way."
+fire regimes and approaches for determining fire history,include,,model,,"Fire regimes and fire history methods, no abstract; title is an include case."
+tree ring reconstructions of climate and fire history at el malpais national monument new mexico,include,,model,,Tree-ring fire history with fire frequency and historical range of variability.
+landscape prioritization and reserve design in the interior columbia river basin,exclude,wrong-concept,model,,Reserve design for biodiversity; disturbance only in passing.
+ecosystem management a framework for management of our national forests,exclude,wrong-concept,model,,Ecosystem management framework; disturbance regime is background only.
+10.1300/j091v02n03_06,exclude,wrong-concept,model,,Ecological classification for forest health planning; disturbance regime is background.
+10.4000/books.irdeditions.9575,exclude,not-research,model,,Executive summary with no abstract and no topic in the title.
+10.1016/0031-0182(92)90208-m,exclude,wrong-concept,model,,"Vegetation and climate feedbacks, no abstract; no disturbance in title."
+10.1016/0921-8181(92)90010-8,exclude,wrong-concept,model,,"Vegetation and climate feedbacks, no abstract; no disturbance in title."
+10.1016/0305-7488(81)90125-0,exclude,off-topic,model,,Scottish and Irish economic and social history.
+regeneration strategies and forest resilience to changing fire regeneration strategies and forest resilience to changing fire regimes insights from a goldilocks model regimes insights from a goldilocks model,undecided,,model,,"Regeneration and resilience under changing fire regimes, no abstract; could go either way."
+institute for natural resources white paper management of fire and fuels in an ecosystem dynamics framework recommendations from,undecided,,model,,"White paper on fire and fuels management, no abstract; could go either way."
+long term perspective on wildfires in the western usa author summary,include,,model,,"Long-term wildfire history of the western United States, no abstract."
+10.5194/essd-18-7535-2026,include,,model,,GFED5 near real time global fire emissions dataset and interannual variability.
+10.5194/essd-2026-158-rc3,include,,model,,Referee comment on the GFED5 near real time fire emissions paper.
+10.5194/essd-2026-158-rc2,include,,model,,Referee comment on the GFED5 near real time fire emissions paper.
+10.5194/essd-2026-158-ac3,include,,model,,Author reply to referee on the GFED5 near real time fire emissions paper.
+10.5194/essd-2026-158-ac1,include,,model,,Author reply to referee on the GFED5 near real time fire emissions paper.
+10.5194/essd-2026-158-ac2,include,,model,,Author reply to referee on the GFED5 near real time fire emissions paper.
+10.5194/essd-2026-158-rc1,include,,model,,Referee comment on the GFED5 near real time fire emissions paper.
+10.5194/egusphere-2026-1498,include,,model,,"Simulated fire probability and fire return intervals, eastern Mediterranean, 1961 to 2100."
+10.5194/egusphere-2026-1498-rc2,include,,model,,Referee comment on the eastern Mediterranean fire regime simulation paper.
+10.5194/egusphere-2026-1498-rc1,include,,model,,Referee comment on the eastern Mediterranean fire regime simulation paper.
+10.5194/egusphere-2026-1498-ac2,include,,model,,Author reply on the eastern Mediterranean fire regime simulation paper.
+10.22533/at.ed.62326131075,include,,model,,Flood pulses against burned area time series in the Pantanal; extreme fire years.
+10.34133/remotesensing.1060,exclude,wrong-concept,model,,Vegetation sensitivity to precipitation after drought and fire; no carbon estimate.
+10.1007/s12517-026-12621-1,include,,model,,"Burned area trends, interannual variability and fire recurrence in the Cerrado."
+10.2139/ssrn.7571866,include,,model,,"United States fire regimes from 14 years of fire perimeters, no abstract."
+10.1007/s10661-026-15838-5,include,,model,,"Trends and drivers of burned area in Kurdistan forests, no abstract."
+10.1016/j.rsase.2026.101982,include,,model,,"Burned area trends and drivers in Niassa Reserve, 2000 to 2023."
+10.53846/goediss-11889,exclude,wrong-concept,model,,Tree growth and climate in Patagonia; disturbance history only in passing.
+10.1111/geb.70145,include,,model,,"Global event-based fire regime metrics, trends and interannual variability."
+10.25921/ttd2-mn24,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/x3f7-md69,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/s9dt-3n08,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/rv0p-2f29,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/3pa1-1q30,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/kavq-xr49,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/k9ke-q480,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/3mfe-de15,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.25921/t5q7-ep26,include,,model,,Fire-scar data record from Argentine Araucaria fire history; mean fire intervals.
+10.3390/f16071114,include,,model,,Gran Chaco fire regions from fire frequency and interannual variability metrics.
+10.1007/s10021-025-00985-6,exclude,wrong-concept,model,,"Grassland productivity, no abstract; no disturbance in title."
+10.1088/1748-9326/ae20af,include,,model,,"National prescribed fire and wildfire regime trends, 1984 to 2022, and water effects."
+10.3390/fire8070282,include,,model,,Fire activity trends and drivers against a 1980 to 2000 baseline.
+10.3390/fire7100334,exclude,wrong-concept,model,,Seed germination of one shrub species; no landscape estimate.
+10.1186/s42408-024-00259-x,exclude,wrong-concept,model,,Bird diversity is the subject; fire regime serves only as a predictor.
+10.1186/s42408-023-00231-1,include,,model,,"Projected fire return intervals, burned area and biomass change, Southern Appalachians."
+10.4324/9781003324072-40,include,,model,,Review of fire history reconstruction and interannual variability in area burned.
+using the past to predict the future,include,,model,,Same fire history chapter as Fire and climate; title and abstract agree.
+10.1016/j.foreco.2023.121372,include,,model,,"Contemporary fire years compared with historical fire regimes, no abstract."
+10.2139/ssrn.4462853,include,,model,,"Contemporary fire years compared with historical fire regimes, no abstract."
+10.2139/ssrn.4435735,exclude,wrong-concept,model,,"Bird diversity under wildfire regimes, no abstract; birds are the subject."
+10.1016/j.foreco.2023.120794,exclude,wrong-concept,model,,"Masting in a conifer species, no abstract; no disturbance."
+10.1016/j.rcar.2023.03.002,include,,model,,"Circum-Arctic fire activity and carbon emissions, 2001 to 2020, with extreme years."
+10.1002/eap.2588,include,,model,,Global fire regime classes separating wild from human-managed burning.
+10.14195/978-989-26-2298-9_157,include,,model,,Global fire regime statistics by biome and vulnerability class.
+10.5194/gmd-15-8411-2022,include,,model,,Global 500 m fire carbon emissions model compared with GFED4.
+10.5194/gmd-2022-132-ac1,include,,model,,Author reply on the GFED 500 m fire emissions paper.
+10.5194/gmd-2022-132-ac2,include,,model,,Response to reviewers on the GFED 500 m fire emissions paper.
+10.5194/gmd-2022-132-rc2,include,,model,,Referee comment on the GFED 500 m fire emissions paper.
+10.5194/gmd-2022-132-cec1,include,,model,,Referee comment on the GFED 500 m fire emissions paper.
+10.5194/gmd-2022-132-rc1,include,,model,,Referee comment on the GFED 500 m fire emissions paper.
+10.1071/wf21118,include,,model,,Change in landscape fire regime metrics under savanna burning for emissions abatement.
+10.1016/j.agrformet.2019.01.017,exclude,wrong-concept,model,,"Restoring farmed peat soils to wetland, no abstract; no disturbance."
+10.37002/biodiversidadebrasileira.v9i1.1218,include,,model,,Cerrado burned area trends and interannual variability over 18 years.
+10.1007/s10980-019-00817-8,exclude,wrong-concept,model,,"Cheatgrass invasion patterns, no abstract; no disturbance named."
+10.1117/1.jrs.13.036509,include,,model,,Agricultural fire smoke emissions estimated and compared with GFED 4.1.
+10.3390/rs11040467,exclude,wrong-concept,model,,Satellite orbital drift errors in active fire detection; no carbon or regime statistics.
+spatial and temporal characteristics of fire patterns in the cerrado using 18 years of satellite observations,include,,model,,"Cerrado fire patterns over 18 years, no abstract; regime statistics."
+10.1038/nclimate3329,include,,model,,"Lightning as the natural cause of large boreal fire years, no abstract."
+10.1002/ecm.1244,include,,model,,"700 year fire history separating climate from human influence, Norway."
+10.1002/2013gb004664,include,,model,,"Fire return intervals and biomass burning emissions, Peruvian Andes."
+10.1016/j.foreco.2014.02.034,include,,model,,"Climate and fire regimes in ponderosa pine, no abstract; regime statistics."
+10.3390/rs6054061,include,,model,,Fire regime parameters compared across three satellite fire products.
+10.1890/13-1477.1,include,,model,,"Statistical models of area burned in boreal Canada, 1980 to 2010."
+10.4155/cmt.13.61,include,,model,,"Deforestation, savanna and forest fire trends and carbon emissions, South America."
+10.1038/nclimate1906,exclude,wrong-concept,model,,"Climate variability and tropical tree cover, no abstract; no disturbance named."
+10.5281/zenodo.18200964,include,,model,,Data copy of the cheatgrass fire regime study; fire return interval 78 years.
+10.1002/jgrg.20026,include,,model,,"Modelled European burned area with human ignition and suppression, 1990 to 2009."
+10.5194/bg-10-2293-2013,include,,model,,"Global fire model with fire carbon emissions, human influence and GFED3 comparison."
+10.1071/wf12061,include,,model,,Fire regimes of Spain characterised from historical fire statistics.
+10.1111/gcb.12046,include,,model,,Cheatgrass altered the regional fire regime; fire return interval 78 years.
+10.1029/2011gb004249,include,,model,,"Charcoal records of fire regime change over 21,000 years against climate."
+10.1071/wf11164,include,,model,,"Fire-scar history with mean fire intervals, human and climate influences, Argentina."
+quantifying the role of fire in the earth system part 1 improved global fire modeling in the community earth system model cesm 1,include,,model,,"Global fire model in CESM with fire emissions, no abstract."
+interactive comment on effects of climate variability on savannah fire regimes in west africa,include,,model,,"Referee comment on savanna fire regimes and climate variability, no abstract."
+10.1080/01431161.2010.501042,exclude,wrong-concept,model,,Global vegetation index variability; disturbance is one driver among several.
+10.1038/npre.2011.6222.1,include,,model,,Fire-scar time series and power laws in fire regime controls.
+10.1029/2011gl047674,include,,model,,Fire history at 42 sites; widespread fire years and Southern Annular Mode.
+10.5194/hess-15-91-2011,exclude,wrong-concept,model,,Vegetation model evaluated for runoff; fire only in passing.
+interannual variability of wildfires and summer precipitation in the southwest,exclude,wrong-concept,model,,Whether spring wildfires reduce monsoon rainfall; neither regime statistics nor carbon.
+10.5194/bg-7-1991-2010,include,,model,,Process-based fire regime model and global biomass burning carbon emissions.
+10.1007/s11676-010-0035-x,include,,model,,"Area burned projected under climate scenarios in boreal China, no abstract."
+10.3133/ofr20101236,exclude,wrong-population,model,,Climate effects on stream salmonid fishes.
+carbon cycling fire and phenology in a tropical savanna woodland in nhambita mozambique,include,,model,,"Fire effects on miombo woodland carbon stocks, with landscape-scale uncertainty."
+10.1111/j.1469-8137.2009.02736.x,exclude,wrong-concept,model,,Invasion-driven desertification concept; fire cycle is one mechanism among several.
+10.1111/j.1365-2486.2008.01585.x,include,,model,,Global fire regime metrics from six years of MODIS active fire data.
+10.1029/2007jg000483,exclude,wrong-concept,model,,Stand energy budget across a fire chronosequence; no carbon or regime statistics.
+10.1029/2006jd008372,include,,model,,Statistical burned area model for boreal forest fitted to Canadian fire records.
+long term development of macrozoobenthic communities in the german bight climatic forcing and anthropogenic impacts,exclude,wrong-population,model,,Marine benthic communities in the North Sea.
+10.1002/rra.902,exclude,wrong-population,model,,Global river flow variability.
+10.1029/2005wr004097,exclude,wrong-population,model,,Urban streamflow and streambed disturbance.
+community dynamics and development of soft bottom macrozoobenthos in the german bight north sea 1969 2000,exclude,wrong-population,model,,Marine benthic communities in the North Sea.
+10.1175/bams-84-5-595,undecided,,model,,"Climate and wildfire in the western United States, no abstract; could go either way."
+10.1002/1097-0088(200010)20:12<1451::aid-joc547>3.0.co;2-0,exclude,wrong-concept,model,,Rainfall trends in Valencia; fire only in passing.
+10.1890/0012-9615(1999)069[0047:fhinpt]2.0.co;2,include,,model,,"Fire-scar history separating human and climate influence, northern Patagonia."
+10.2307/1938902,exclude,wrong-concept,model,,Gopher disturbance in a grassland plot study; no landscape or carbon estimate.
+10.1594/pangaea.805154,include,,model,,"Charcoal data record for the 21,000 year fire regime study."
+forecasting the flame simulating future wildfire regimes 1 in the northeast mediterranean,include,,model,,"Simulated future fire regimes, eastern Mediterranean, no abstract."
+10.1134/s1028334x11120075,include,,model,,"Russian wildfire area and carbon emissions with uncertainty, 1998 to 2010."
+10.20944/preprints202603.0409.v2,include,,model,,"Amazon fire activity, interannual variability and peak years, 2001 to 2022."
+10.1016/j.agrformet.2013.06.002,include,,model,,"Climate variability and disturbance regimes in a landscape carbon budget, no abstract."
+10.1002/gbc.20059,include,,model,,GFED burned area against vegetation models; fire emissions and carbon balance variability.
+10.1186/s42408-026-00598-x,include,,model,,"Fire return intervals by survival analysis and discrete Weibull, Niassa."
+10.17605/osf.io/thjfm,include,,model,,"Pre-registration on fire interval structure and thresholds over 40 years, Cerrado."
+10.1016/j.prosdent.2025.12.042,exclude,off-topic,model,,Dental ceramic firing and Weibull strength.
+10.1016/j.scitotenv.2026.181574,include,,model,,Fire severity and time since fire in negative exponential fuel models.
+10.1111/jopr.14007,exclude,off-topic,model,,Dental ceramic firing cycles.
+10.1071/wf23159,include,,model,,Time since fire and fire interval determine regional woodland biomass carbon.
+10.1016/j.prosdent.2024.01.006,exclude,off-topic,model,,Dental ceramic firing.
+10.1007/s41096-024-00222-8,exclude,off-topic,model,,"Reliability statistics for devices, no abstract."
+10.3390/fire6040158,include,,model,,Power law and Weibull statistics of wildfire size and frequency in Greece.
+10.3390/land11020260,include,,model,,"Weibull median fire intervals and natural against cultural fire regimes, Lithuania."
+10.30955/gnc2021.00060,exclude,wrong-concept,model,,Litter decomposition in four post-fire plots; no landscape estimate.
+10.21504/10962//365610,include,,model,,Human-caused fire in Ghana savanna; fire density by district and soil carbon.
+10.1016/j.jenvman.2021.113789,undecided,,model,,"Wildfire simulation with fuel hazard estimates, no abstract; could go either way."
+10.3390/f12060700,include,,model,,"Fire-scar history with mean and Weibull fire intervals, Mexico."
+10.1071/wf20022,include,,model,,"Fire return intervals by area-weighted and Weibull methods, Talladega National Forest."
+the effect of repetitive firing cycles on physical and optical properties of zirconia reinforced lithium silicate ceramics,exclude,off-topic,model,,Dental ceramic firing cycles.
+10.1071/wf18073,include,,model,,"Time since fire flammability functions fitted with Weibull models in Patagonia, regime statistics"
+10.1016/j.foreco.2019.01.012,undecided,,model,,"Pine regeneration under repeated burning, no abstract, could be stand ecology or fire history"
+10.1186/s42408-018-0020-x,include,,model,,Fire scar history in Durango with mean and Weibull median fire intervals
+three decades of anthropogenic fire activity in a neotropical agricultural frontier,include,,model,,Anthropogenic fire activity mapped 1985 to 2017 with Weibull fire interval models
+10.3959/1536-1098-75.2.127,include,,model,,Fire history of a Nevada pine stand reporting mean and Weibull fire intervals
+10.1186/s42408-019-0033-0,include,,model,,"Holocene fire frequency from charcoal with negative exponential decay, natural against human fires"
+10.1111/1365-2745.13206,exclude,wrong-concept,model,,"Herb metapopulation persistence, fire history only an input to plant population models"
+10.1007/s11069-018-3324-x,include,,model,,"Fire frequency analysis for Victorian climate stations, title names regime statistics"
+10.1016/j.jmbbm.2018.08.015,exclude,off-topic,model,,"Firing of dental ceramics, not landscape fire"
+10.1002/eap.1676,include,,model,,"Ideal time since disturbance distributions as landscape metrics, regime statistics"
+climatic vegetation and edaphic influences on the 2 probability of fire across mediterranean woodlands of 3 south eastern australia 4 running heading time since fire and fire probability in mallee woodlands and heathlands 5,include,,model,,"Time since fire and fire probability in mallee woodlands, regime statistics"
+10.1016/j.foreco.2016.10.035,include,,model,,Fire return intervals by elevation and aspect in Canadian Rockies
+10.6084/m9.figshare.3566634,include,,model,,"Code comparing Weibull fire return interval distributions, data record on topic"
+10.3390/f7070131,include,,model,,"Fire cycle estimation with Weibull, exponential and Cox survival models in eastern Canada"
+10.5154/r.rchscfa.2016.03.017,include,,model,,Historical fire frequency in Durango with mean and Weibull median intervals
+10.3390/f7100219,include,,model,,Fire regime of jack pine in Riding Mountain with Weibull fire intervals
+10.4067/s0717-92002016000200017,exclude,not-english,model,,"Fire regime of Pinus hartwegii in Puebla, title only in Spanish"
+10.1071/wr16097,exclude,wrong-concept,model,,"Endangered rodent decline and disturbance exclusion, wildlife ecology without carbon or regime"
+10.1111/jbi.12547,include,,model,,Weibull hazard of burning and fire intervals across south-eastern Australian woodlands
+10.1071/wf14128,exclude,wrong-concept,model,,"Plot fuel accumulation after fire in a shrubland chronosequence, stand ecology"
+10.4067/s0717-92002015000100005,exclude,not-english,model,,"Fire history of a Jalisco pine forest, title only in Spanish"
+análise da dependência temporal da ocorrência do fogo nas fisionomias abertas do parque nacional das emas estado de goiás brasil,exclude,not-english,model,,"Fire occurrence in Emas National Park, title only in Portuguese"
+10.3290/j.jad.a32663,exclude,off-topic,model,,"Heat treatment of zirconia dental ceramic, not landscape fire"
+10.1071/bt12212,include,,model,,Time since fire and regional age-class distribution of Eucalyptus woodlands
+10.1016/j.jenvman.2012.12.006,include,,model,,"Wildfire frequency by fuel type patches in south-eastern France, regime statistics"
+10.3290/j.jad.a29584,exclude,off-topic,model,,"Firing cycles in zirconia porcelain bonding, dental materials"
+10.1016/j.foreco.2012.02.014,undecided,,model,,"Time since fire and pinyon-juniper structure, no abstract, regime or stand ecology unclear"
+10.1071/wf12021,include,,model,,Fire interval distributions in Australian savannas with Weibull and lognormal models
+10.1016/j.dental.2012.03.014,exclude,off-topic,model,,Firing of zirconia porcelain in dental materials
+10.1071/wf12071,include,,model,,Fire history in Florida Keys pine rocklands with Weibull median intervals
+10.1890/11-0850.1,exclude,wrong-concept,model,,"Bird occurrence against time since fire, fauna ecology without carbon or regime"
+10.1071/wf10131,include,,model,,"Weibull fire frequency in Portugal, effect of time series length and censoring"
+10.4996/fireecology.0702051,include,,model,,"Defines a normal fire year from 26 year fire normals, threshold for regime"
+10.1016/j.msea.2010.12.086,exclude,off-topic,model,,"Firing cycle of porcelain tile, materials science"
+10.1071/wf10108,include,,model,,Tree-ring fire history in Mongolia with Weibull fire return intervals
+10.14214/sf.77,include,,model,,Fire cycle and old-growth age-class distribution in central Quebec
+10.1890/es10-00068.1,include,,model,,"Great Basin fire history with Weibull intervals, climate against settlement causes"
+10.1890/es10-00159.1,include,,model,,Decreasing wildfire ages boreal forests and constrains net ecosystem production
+10.14789/jmj.2020.66.2-en,exclude,not-research,model,,Editor's note in a medical journal
+10.1071/bt10051,include,,model,,Ageing mallee vegetation to infer fire history and age-class distribution
+10.3375/043.030.0311,include,,model,,Rimrock pine fire history with Weibull median fire intervals
+investigative experiment on the loose coal heating field,exclude,off-topic,model,,"Coal heating experiment, not landscape fire"
+assessment of durability of carbon epoxy composite materials after exposure to elevated temperatures and immersion in seawater for navy vessel applications,exclude,off-topic,model,,Composite material durability at high temperature
+10.1016/j.sajb.2009.02.108,exclude,wrong-concept,model,,"Decided on title, seedling phylogenetics of legumes, abstract belongs to another record"
+10.1016/j.sajb.2009.02.107,exclude,wrong-concept,model,,"Decided on title, pollination networks, abstract belongs to another record"
+10.14288/1.0075275,include,,model,,Fire cycle from age-class distribution in sub-boreal British Columbia
+10.22230/jem.2009v10n2a424,include,,model,,"Equilibrium age structure under random fires, fire control and harvest in BC"
+rekindling the flame reconstructing a fire history for peters mountain giles county virginia,include,,model,,Peters Mountain fire history with mean and Weibull median intervals
+clearcut solutions an evaluation of partial harvesting in the black spruce boreal forest,exclude,wrong-concept,model,,"Partial harvesting stand dynamics in black spruce, forestry practice"
+early forest conditions in west central sierra nevada ponderosa pine forests,exclude,wrong-concept,model,,"Early Sierra Nevada pine forest conditions, no abstract, title names no disturbance"
+10.1016/j.ecolmodel.2008.07.001,include,,model,,Simulated changes in mean fire return interval and spruce budworm outbreaks
+10.14288/1.0066864,include,,model,,"Time since fire, age-class distribution and fire cycle from Saskatchewan inventory"
+10.1007/s10651-007-0088-y,include,,model,,"Sampling and censoring in fire interval analysis, regime statistics"
+10.1139/x07-216,include,,model,,Ohio fire history with Weibull median fire return intervals
+10.1016/j.foreco.2008.02.018,exclude,wrong-concept,model,,"Mountain pine beetle effects on stand structure, stand ecology without carbon"
+10.2747/0272-3646.29.5.424,include,,model,,Peters Mountain fire history with Weibull median composite fire interval
+10.1111/j.1472-4642.2007.00452.x,exclude,wrong-concept,model,,"Pyrophilous insect populations, fire cycle only context for insect ecology"
+10.1139/x07-013,include,,model,,Accuracy of Weibull median point fire intervals tested by simulation
+10.1071/bt06160,exclude,wrong-concept,model,,"Age from diameter in Allocasuarina, title names no disturbance"
+10.1007/s11676-006-0060-y,include,,model,,Deriving fire cycle from time since fire distribution
+10.1139/x06-177,include,,model,,"Past, current and future fire frequency in Quebec against age-class structure"
+10.1016/j.ecolmodel.2006.07.011,include,,model,,"Forest age structure under fire regimes and management, landscape sensitivity"
+10.1016/j.ecolmodel.2006.03.007,include,,model,,Fire size and frequency effects on forest age distribution
+10.1016/j.catena.2006.05.006,undecided,,model,,"Wildfire and landsliding in coastal BC, no abstract, regime or geomorphology unclear"
+10.1139/x05-247,include,,model,,Historical disturbance regimes and age-class range as reference for Oregon policy
+10.33915/etd.3250,include,,model,,Historic benchmark for rimrock pine with Weibull median fire intervals
+methods for assessment of time influence and human factor dramatic influence of time and human factor during accidental dynamics in assessment of epistemic,exclude,off-topic,model,,"Human factor and time in accident dynamics, not landscape disturbance"
+10.4996/fireecology.0101050,include,,model,,Riparian and upslope Weibull median fire return intervals in Oregon
+disturbance forest age and mountain pine beetle outbreak dynamics in bc a historical perspective,include,,model,,"Disturbance, forest age and mountain pine beetle dynamics in BC history"
+10.1016/j.ecolmodel.2004.03.017,include,,model,,Hierarchical fire frequency model for fire regimes in LANDIS
+10.1139/x03-143,include,,model,,Fire cycles and harvest effects on boreal age-class structure in Quebec
+10.1071/wf02051,include,,model,,Fire rotation and Weibull fire interval models for Catalonia
+fire history and secondary vegetation succession in the forest tundra near churchill manitoba,include,,model,,"Fire cycle from time since last fire with negative exponential, Churchill"
+10.1890/02-5349,include,,model,,Eastern Cascades fire regime with Weibull median probability intervals
+10.1674/0003-0031(2004)152[0201:ayfhia]2.0.co;2,include,,model,,Oak savanna fire history with Weibull median and mean fire intervals
+scaling rules for fire regimes,include,,model,,Scale dependence and Weibull and lognormal fire interval theory
+simulation of boreal forest landscape dynamics modeling approaches and applications,exclude,wrong-concept,model,,"Boreal landscape simulation methods, no abstract, title names no disturbance"
+forest dynamics modelling under natural fire cycles a tool to define natural mosaic diversity for forest management,include,,model,,Forest dynamics under natural fire cycles to define natural mosaic
+10.1071/wf03018,include,,model,,Savanna time since fire and fire interval patches following negative exponential
+10.1890/0012-9658(2003)084[0351:saocos]2.0.co;2,include,,model,,Weibull fire frequency analysis of age dependency in California shrublands
+10.1071/wf02060,include,,model,,Grand Canyon fire regimes with Weibull median probability intervals
+10.1093/auk/120.4.1201,exclude,not-research,model,,Book review on red-cockaded woodpecker
+fire regimes of kipuka forests in el malpais national monument new mexico,include,,model,,"Fire regimes of kipuka forests, title names regime"
+10.1016/s0378-1127(01)00805-2,include,,model,,Regional synchrony of fire regimes in Oregon and Washington
+time since fire map age class distribution and forest dynamics in the lake abitibi model forest,include,,model,,Time since fire map and age-class distribution in Lake Abitibi
+10.1071/rj02003,exclude,wrong-concept,model,,"Tree-grass dynamics in grazing lands, title names no disturbance"
+changes in fire regimes and the successional status of table mountain pine pinus pungens lamb in the southern appalachians usa,include,,model,,Changes in fire regimes and Table Mountain pine succession
+10.1139/cjfr-31-3-384,include,,model,,Natural fire frequency and fire cycle in eastern Canadian boreal forest
+10.1139/x01-074,include,,model,,"Reply on fire suppression, fire return interval and annual burn fraction"
+10.1016/s0378-1127(00)00323-6,include,,model,,Medieval against current fire regimes in Catalonian pine forests
+10.1016/s0378-1127(00)00475-8,include,,model,,"Changing hazard of burning and stand-origin maps, fire history statistics"
+10.1071/wf01014,include,,model,,Chaco savanna fire regime with fire frequency and Weibull median
+10.1071/wf01013,include,,model,,Theoretical fire interval distributions
+10.1139/x00-178,include,,model,,Natural fire frequency and fire cycle in eastern Canadian boreal forest
+10.2307/4003163,include,,model,,Rochelle Hills fire history with Weibull median probability intervals
+10.2458/azu_jrm_v53i6_perryman,include,,model,,Rochelle Hills fire history with Weibull median probability intervals
+10.1016/s0304-3800(99)00074-5,include,,model,,Weibull model of fire return interval with censoring
+10.1023/a:1008116926563,undecided,,model,,"Title missing and no abstract, cannot be judged"
+10.1080/11956860.1999.11682563,include,,model,,"Historical fire variability at Black Hills ecotone, mean and Weibull intervals"
+10.1139/x99-224,include,,model,,Reply on reverse cumulative age distributions in fire frequency analysis
+10.1093/njaf/16.4.203,exclude,wrong-concept,model,,"Silvicultural practice trends in Minnesota, forestry practice"
+10.1139/a97-008,include,,model,,Review of climate change effects on Canadian boreal fire regimes
+10.1080/11956860.1997.11682413,exclude,wrong-concept,model,,"Balsam fir distribution and population age structure, species ecology"
+10.1007/978-94-009-1653-1_30,include,,model,,Forest dynamics under natural fire cycles to define natural mosaic
+10.1007/bf00396159,include,,model,,Forest dynamics under natural fire cycles to define natural mosaic
+10.1071/wf9950197,include,,model,,Censored tail in negative exponential fire history models
+10.1139/b95-100,undecided,,model,,"Old-growth, disturbance and ecosystem management, no abstract, regime or policy unclear"
+10.2307/3235621,include,,model,,Boreal composition under fire cycles with negative exponential age classes
+10.2307/1938914,include,,model,,"Climatically induced change in fire cycle in Kananaskis, negative exponential"
+10.2307/3236034,exclude,wrong-concept,model,,"Dead bole dynamics method, title names no disturbance"
+10.13001/uwnpsrc.1990.2861,include,,model,,Montana foothill fire history with mean intervals and Weibull
+10.1086/284803,exclude,wrong-concept,model,,"Longleaf pine population dynamics, title names no disturbance"
+10.1139/x87-098,include,,model,,Red fir fire-free interval and negative exponential age-class distribution
+10.1139/x85-039,include,,model,,Theory of negative exponential and Weibull fire history models
+10.1139/x81-076,include,,model,,Fire cycles from Weibull and life tables in interior Alaska
+10.17223/2312461x/23/1,exclude,not-research,model,,Editor's note in an Asian studies journal
+10.1094/phyto-69-41,exclude,wrong-concept,model,,"Phenology of a rust fungus, plant pathology without carbon or regime"
+10.1139/x78-034,include,,model,,Negative exponential age-class distribution and forest fire cycle
+10.5194/egusphere-egu26-21274,include,,model,,Future wildfire spread reduces forest carbon uptake across South Korea
+10.1186/s42408-026-00510-7,exclude,wrong-concept,model,,"Plot fuel and carbon change after fire in California, stand scale"
+10.58532/nbennurffemv6b1c8,exclude,wrong-concept,model,,"Book chapter on carbon management and policy, disturbance one of many drivers"
+10.1186/s13021-026-00519-0,include,,model,,"Two models project California forest carbon loss driven by wildfire, structural uncertainty"
+10.5281/zenodo.21029276,include,,model,,CONUS carbon projections with natural disturbance as dominant driver
+10.5194/egusphere-egu26-18502,include,,model,,Bookkeeping model of French forest carbon with harvest and natural disturbance
+10.3389/fpos.2026.1695743,exclude,wrong-concept,model,,"Policy risk tradeoffs in Alaska, wildfire one of several risks"
+10.1142/s2382624x26500062,exclude,wrong-concept,model,,"Blockchain payment scheme, fire risk only part of a market model"
+10.1088/2515-7620/ae8151,exclude,wrong-concept,model,,"Conceptual paper on plant-microbe links after tundra fire, no scale estimate"
+10.1111/nph.71286,exclude,wrong-concept,model,,"Uncertainty in live fuel moisture modelling, fire danger not disturbance carbon"
+10.5194/egusphere-egu26-15842,include,,model,,Global model of warming-induced emissions including wildfire carbon emissions
+10.48550/arxiv.2610.05614,include,,model,,Wildfire biomass loss across West Coast national forests with Bayesian uncertainty
+10.5194/egusphere-2026-5536,include,,model,,"Fire carbon bookkeeping module compared with GFED, Monte Carlo uncertainty"
+10.1088/1748-9326/ae9e24,exclude,wrong-concept,model,,"Warming-induced natural emissions, wildfire one of four sources"
+10.22541/essoar.15002332/v1,exclude,wrong-concept,model,,"Warming-induced natural emissions, wildfire one of four sources"
+10.5194/egusphere-egu26-12351,exclude,wrong-concept,model,,"Natural climate solutions in a vegetation model, harvest as management not disturbance"
+10.5281/zenodo.23265182,exclude,wrong-concept,model,,"General review of sustainable forest management, disturbance only background"
+10.5194/egusphere-egu26-8340,exclude,wrong-concept,model,,"Warming-induced emissions synthesis, wildfire one of several sources"
+10.5281/zenodo.23499334,include,,model,,French data on harvest and natural disturbance rates and biomass loss
+10.1525/elementa.2025.00101,exclude,off-topic,model,,"Tropospheric ozone assessment, atmospheric chemistry"
+10.1088/1748-9326/ae8d3b,include,,model,,Attributes eastern US carbon recovery to CO2 against forest area change
+10.1016/j.foreco.2026.124115,include,,model,,"Forest carbon valuation with disturbance risk, title names disturbance risk"
+10.3389/ffgc.2026.1780993,exclude,not-research,model,,"Editorial on restoration and carbon storage, disturbance only in passing"
+10.5281/zenodo.22982584,exclude,off-topic,model,,Book on quantum sensing and planetary intelligence
+10.3389/fenvs.2026.1776354,exclude,not-research,model,,"Editorial on Arctic ecosystems, fire regimes only in passing"
+10.18822/edgcc707898,exclude,not-research,model,,Conference report on atmospheric and climate research
+10.4324/9781003755012-10,exclude,wrong-concept,model,,Book chapter on climate mitigation policy myths; no forest disturbance or carbon accounting.
+within fire estimates of biomass loss across national forests of the us west coast inventory informed inference with uncertainty,include,,model,,No abstract; title names fire biomass loss across national forests with uncertainty.
+a low latency estimation of the global carbon budget for timely monitoring of the carbon cycle,exclude,wrong-concept,model,,Low-latency global carbon budget framework; wildfire sink weakening only one late finding.
+10.1007/s44392-025-00048-7,undecided,,model,,"No abstract; forest carbon quantification recommendations, title could concern national reporting."
+10.1016/j.scitotenv.2025.181260,include,,model,,Simulated fire regimes drive landscape carbon stock projections in Australian temperate forests.
+10.1038/s41597-025-04408-y,exclude,wrong-concept,model,,Potential tree cover map; natural disturbance mentioned only in passing.
+10.5194/essd-2025-294,exclude,wrong-concept,model,,"Global soil carbon map; land disturbance and wildfire are background, not subject."
+10.5194/essd-2025-294-rc3,exclude,wrong-concept,model,,Review comment on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-ac3,exclude,wrong-concept,model,,Author reply on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-rc5,exclude,wrong-concept,model,,Review comment on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-ac4,exclude,wrong-concept,model,,Author reply on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-rc1,exclude,wrong-concept,model,,Review comment on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-rc2,exclude,wrong-concept,model,,Review comment on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-ac5,exclude,wrong-concept,model,,Author reply on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-ac2,exclude,wrong-concept,model,,Author reply on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-rc4,exclude,wrong-concept,model,,Review comment on global soil carbon map; disturbance not central.
+10.5194/essd-2025-294-ac1,exclude,wrong-concept,model,,Author reply on global soil carbon map; disturbance not central.
+10.5194/bg-22-213-2025,include,,model,,"Soil smouldering fire emissions in France 2022, twice the GFAS estimate."
+10.1186/s13021-024-00282-0,include,,model,,Review of natural disturbance risk to forest carbon stability in the United States.
+10.1029/2024ef005098,include,,model,,Wildfire emissions offsetting permafrost ecosystem carbon sink from observations and models.
+10.1080/10095020.2024.2336599,exclude,wrong-concept,model,,Review of remotely sensed carbon fluxes; disturbance mentioned only in passing.
+10.1038/s41467-024-44991-z,exclude,wrong-concept,model,,Mapping individual dead trees in California; no carbon estimate.
+10.1038/s43247-024-01205-0,include,,model,,Amazon carbon flux synthesis attributing source to deforestation and fire degradation.
+10.5463/thesis.778,include,,model,,Modelled windstorm and bark beetle interactions on large-scale forest carbon dynamics.
+10.1002/eap.2976,exclude,wrong-concept,model,,Grass allometry greenhouse experiment; no disturbance or carbon accounting.
+10.5194/egusphere-2023-2421-rc1,include,,model,,Review comment on France fire emissions paper compared with GFAS; subject on topic.
+10.5194/egusphere-2023-2421-ac1,include,,model,,Author reply on France fire emissions paper compared with GFAS; subject on topic.
+10.5194/egusphere-2023-2421-ac2,include,,model,,Author reply on France fire emissions paper compared with GFAS; subject on topic.
+10.5194/egusphere-2023-2421-rc2,include,,model,,Review comment on France fire emissions paper compared with GFAS; subject on topic.
+10.3389/ffgc.2024.1521968,exclude,wrong-concept,model,,Editorial on managed forestry for mitigation; disturbance only background.
+10.5194/egusphere-egu23-3228,include,,model,,"Amazon carbon budget separating human disturbance fluxes from intact sink, with uncertainty."
+10.5194/egusphere-egu23-6286,include,,model,,Global projection of fire-induced carbon emissions under changing CO2 forcing.
+10.1088/1748-9326/ac888d,exclude,wrong-concept,model,,Atmospheric forcing uncertainty in biosphere models; wildfire only in passing.
+10.1111/1365-2745.13963,include,,model,,Wildfire effects on boreal carbon stocks across 545 inventory plots in Alaska.
+10.1029/2021ef002433,include,,model,,Climate-induced wildfire risk to forest sector carbon stocks with uncertainty propagation.
+10.1016/j.resconrec.2022.106333,include,,model,,No abstract; title names land use change effects on national carbon stocks.
+10.5194/essd-14-3013-2022,exclude,wrong-concept,model,,"Global inversion dataset of ecosystem exchange; fire emissions prescribed, not studied."
+10.5194/essd-2022-15-rc3,exclude,wrong-concept,model,,Review comment on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15-ac1,exclude,wrong-concept,model,,Author reply on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15-rc1,exclude,wrong-concept,model,,Review comment on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15-ac3,exclude,wrong-concept,model,,Author reply on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15-ac2,exclude,wrong-concept,model,,Author reply on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15-rc2,exclude,wrong-concept,model,,Review comment on global inversion flux dataset; disturbance not central.
+10.5194/essd-2022-15,exclude,wrong-concept,model,,"No abstract; title is a global inversion flux dataset, disturbance not named."
+10.5751/es-13278-270215,undecided,,model,,"No abstract; title names wildfire against management, carbon not stated."
+10.1371/journal.pone.0251346,include,,model,,"California landscape carbon budget with wildfire, land cover change and uncertainty."
+10.1787/e4d45973-en,exclude,wrong-concept,model,,Economic ranking of carbon sequestration costs; wildfire risk one minor factor.
+10.1038/s41598-021-87343-3,include,,model,,"Wildfire makes North American boreal forests a carbon source, 1986 to 2016."
+10.1071/wf20143,include,,model,,Fuel burning efficiency by fire severity for boreal fire carbon emission estimates.
+10.1016/j.foreco.2021.119155,exclude,wrong-concept,model,,"No abstract; savanna biomass mapping by lidar, no disturbance named."
+forestry usage of biochar,exclude,wrong-concept,model,,"No abstract; biochar use in forestry, no disturbance named."
+10.5194/egusphere-egu2020-1939,include,,model,,Field measured wildfire carbon combustion across two fire scars in Siberian larch.
+10.7287/peerj.8891v0.1/reviews/2,exclude,wrong-concept,model,,Peer review of commercial carbon protocol; wildfire raised only as a question.
+10.7287/peerj.8891v0.2/reviews/1,exclude,wrong-concept,model,,Peer review of commercial carbon protocol; wildfire raised only as a question.
+10.7287/peerj.8891v0.1/reviews/1,exclude,wrong-concept,model,,Peer review of commercial carbon protocol; wildfire raised only as a question.
+10.7287/peerj.8891v0.2/reviews/2,exclude,wrong-concept,model,,Peer review of commercial carbon protocol; wildfire raised only as a question.
+the effects of drought and wildfire on forest structure and carbon storage in a resprouting eucalypt forest,include,,model,,"Drought and wildfire carbon losses, 723,113 t C from a 360 km2 fire."
+10.21203/rs.3.rs-73841/v1,include,,model,,Preprint; wildfire makes North American boreal forests a carbon source.
+10.1016/j.scitotenv.2020.142839,include,,model,,No abstract; title names carbon loss from forest disturbance in the Amazon.
+10.1093/oso/9780198717263.003.0003,exclude,wrong-concept,model,,Remote sensing chapter on mapping natural disturbances; no carbon estimate.
+10.3390/f10070606,include,,model,,Land use change and disturbance effects on future biomass carbon from national inventory.
+10.53846/goediss-7570,exclude,wrong-concept,model,,Thesis on eddy flux variability in Siberia; wildfire only as context.
+10.1016/b978-0-12-409548-9.11574-x,exclude,wrong-population,model,,"No abstract; sub-sea permafrost, an ocean system."
+an investigation of temporal variability of co2 fluxes in a boreal coniferous forest and a bog in central siberia from local to regional scale,exclude,wrong-concept,model,,"No abstract; title on CO2 flux variability, disturbance not named."
+10.1088/1748-9326/aab540,include,,model,,"Land use change, harvest and wildfire effects on United States carbon balance."
+10.5194/bg-15-5699-2018,include,,model,,"Disturbance legacies against climate in landscape forest carbon uptake, Austrian Alps."
+10.1002/ecs2.2191,exclude,wrong-concept,model,,Management scenarios for forest carbon; title does not name disturbance.
+10.1002/ecs2.2321,exclude,wrong-concept,model,,Expert elicitation on management for carbon; wildfire risk only context.
+10.1088/1748-9326/aab0dd,undecided,,model,,No abstract; title on explaining forest carbon flux could involve disturbance.
+10.1371/journal.pone.0169275,include,,model,,"Landscape carbon balance under wildfire and restoration, southwestern United States."
+10.1088/1748-9326/aa63fc,exclude,wrong-concept,model,,Global forest climate impact scenarios; fire one of several findings.
+10.1007/s10021-017-0175-3,undecided,,model,,"No abstract; title names bark beetles and fuel management, carbon not stated."
+10.5194/bg-14-353-2017,include,,model,,"Power law size distribution of natural canopy gaps over 30,000 ha."
+10.1002/eap.1626,exclude,wrong-concept,model,,Fire effects on carbon pools reported at stand scale; no landscape estimate.
+10.1007/s10021-017-0210-4,undecided,,model,,"No abstract; carbon decline in old boreal forests, link to disturbance unclear."
+10.1016/j.foreco.2017.02.015,undecided,,model,,"No abstract; fire, beetle and harvest effects on canopy cover, carbon not stated."
+10.1088/1748-9326/11/3/034014,include,,model,,Expert assessment of wildfire and permafrost carbon release across the region.
+10.1360/n972015-00811,exclude,not-english,model,,Chinese-language edition of a national forest carbon and disturbance study.
+10.1016/j.gloplacha.2015.02.004,exclude,wrong-concept,model,,"No abstract; global boreal carbon stocks, disturbance not named."
+10.1007/s10584-015-1450-y,include,,model,,No abstract; title names wildfire risk reduction and forest carbon balance.
+accounting for biological and anthropogenic factors in national land base carbon budgets,include,,model,,"National land carbon budgets separating biological and anthropogenic factors, three countries."
+10.14214/df.188,include,,model,,"Land use change, age structure, harvest and wildfire effects on European forest carbon."
+role of remote sensing in energy water and carbon cycle studies over the amazáffi,exclude,wrong-concept,model,,"No abstract; remote sensing of Amazon cycles, disturbance not named."
+a systematic framework for monte carlo simulation of remote sensing errors map in carbon assessments,include,,model,,Monte Carlo map error in assessing wildfire and harvest effects on landscape carbon.
+10.1016/j.rse.2014.04.028,include,,model,,Map error simulation in assessing wildfire and harvest effects on carbon storage.
+forest and agricultural economics and policy analysis theory and practice,exclude,wrong-concept,model,,Forest economics working paper list; no study of disturbance and carbon.
+monte carlo simulation of map error in carbon assessments,undecided,,model,,"No abstract; map error in carbon assessments, disturbance not named."
+10.1016/j.jenvman.2013.02.009,include,,model,,"No abstract; title names wildfire, fuel treatments and landscape carbon stocks."
+effects of stand replacing wildfire on ecosystem carbon pools in lake states jack pine forests,include,,model,,Wildfire chronosequence carbon scaled to landscape under changing disturbance regimes.
+development of geoss and geo grid,exclude,off-topic,model,,"No abstract; Earth observation computing infrastructure, not forest carbon."
+10.1186/1750-0680-7-7,include,,model,,"Sensitivity of post-wildfire carbon recovery to fire mortality rates, Lake Tahoe."
+10.1139/cjfr-2012-0367,include,,model,,Uncertainty in Siberian fire emission estimates; satellite products against official Russian data.
+impacts of natural and human induced disturbances on carbon dynamics in northern eurasia,include,,model,,Natural and human disturbance carbon emissions across Northern Eurasia.
+fire emissions estimates in siberia evaluation of uncertainties in area burned land cover and fuel consumption,include,,model,,No abstract; title names uncertainty in Siberian fire emission estimates.
+10.1029/2010jg001506,exclude,wrong-concept,model,,Woody encroachment carbon synthesis; disturbance one secondary factor.
+carbon budget of circumpolar boreal forests an attempt of synthesis,exclude,wrong-concept,model,,Boreal carbon budget synthesis; disturbance only explains one country's small sink.
+10.1016/j.foreco.2011.05.016,undecided,,model,,"No abstract; British Columbia forest greenhouse gas uncertainty, disturbance not named."
+10.1007/s00267-011-9681-9,include,,model,,No abstract; title names Mediterranean forest fire CO2 emissions.
+land surface modelling and earth observation of land atmosphere interactions in african savannahs,exclude,wrong-concept,model,,Land surface modelling of African savannahs; fire only in passing.
+10.2172/1024861,include,,model,,Four wildfires emitted 2.4 per cent of Oregon emissions; disturbance and climate.
+carbon storage and sequestration in the russian forest sector,undecided,,model,,"No abstract; Russian forest sector carbon, disturbance not named."
+world resource review vol 12 no 3 climate change and insect disturbance regimes in canada s boreal forests,undecided,,model,,"No abstract; insect disturbance regimes in Canada, carbon or regime statistics unclear."
+10.1111/j.1365-2486.2010.02315.x,exclude,wrong-concept,model,,Multi-model ecosystem uncertainty; wildfire one of several factors.
+10.1111/j.1469-8137.2010.03390.x,include,,model,,Editorial on Amazon drought effects on mortality and carbon storage.
+10.1021/es101595t,include,,model,,No abstract; comment on prescribed fire reducing western United States carbon emissions.
+10.1029/2009jg000935,exclude,wrong-concept,model,,"Biomass satellite mission requirements; disturbance part of motivation, not subject."
+10.1016/j.foreco.2009.09.001,undecided,,model,,"No abstract; global drought tree mortality, carbon not stated."
+10.31390/gradschool_dissertations.2688,include,,model,,Hurricane disturbance and climate effects on Louisiana forest carbon stocks.
+10.1016/j.foreco.2008.09.037,exclude,wrong-concept,model,,"No abstract; afforestation carbon balance case study, no disturbance named."
+model documentation for the european forest information scenario model efiscen 3 1 3,exclude,wrong-concept,model,,Forest projection model documentation; disturbance one listed application.
+recent publications of the pacific northwest research station third quarter 2007,exclude,not-research,model,,No abstract; publication list of a research station.
+10.1029/2005jd006820,include,,model,,"Harvest and fire effects on regional carbon dynamics, southeastern United States."
+10.14264/283842,exclude,wrong-concept,model,,Rainforest productivity modelling thesis; disturbance one secondary scenario.
+10.1111/j.1529-8817.2003.00804.x,exclude,wrong-concept,model,,Stand-level logging chronosequence carbon budget; no landscape estimate.
+10.1029/2001jd000848,undecided,,model,,"No abstract; carbon exchange over wildfire age sequence, likely stand level."
+high resolution global map 100 m of soil organic carbon reveals critical ecosystems for carbon storage,exclude,wrong-concept,model,,"No abstract; global soil carbon map, disturbance not named."
+reviews and syntheses spatiotemporal dynamics drivers and uncertainties of global wildfire carbon dioxide emissions,include,,model,,No abstract; title names global wildfire CO2 emissions and uncertainties.
+10.5194/egusphere-2026-2906,include,,model,,"Review of global wildfire CO2 emissions, emission products and uncertainty."
+10.5194/egusphere-2026-2906-ac1,include,,model,,Author reply on global wildfire CO2 emissions review; subject on topic.
+10.5194/egusphere-2026-2906-rc1,include,,model,,"Referee comment on review of global wildfire CO2 emissions, datasets and uncertainty; decided on subject."
+10.5194/egusphere-2026-2906-rc2,include,,model,,"Referee comment on review of global wildfire CO2 emissions, datasets and uncertainty; decided on subject."
+10.5194/egusphere-2026-2906-ac2,include,,model,,Reply to referee on global wildfire CO2 emissions review; decided on subject.
+10.1016/j.tfp.2025.101135,include,,model,,Drought and wildfire as causes of boreal carbon source shift and budget variability.
+carbon balance and management,undecided,,model,,"Title is only a journal name, no abstract; subject cannot be judged."
+synthesis of top down and bottom up scaling of regional terrestrial carbon dioxide fluxes implications for global terrestrial co 2 flux,exclude,wrong-concept,model,,"Regional CO2 flux synthesis; title names no disturbance, no abstract."
+10.1038/s41586-026-10571-y,include,,model,,Crediting protocols and climate-driven carbon loss risk; natural disturbance risk in crediting.
+10.1016/j.foreco.2013.03.043,include,,model,,"Title names wildfire effects on regional forest carbon dynamics, western United States."
+forest disturbance spectrum of the amazon,include,,model,,Amazon disturbance regime spectrum and its effect on basin-wide carbon sink estimate.
+10.1002/gcb4.70041,exclude,wrong-concept,model,,Single eddy covariance site respiration trend; disturbance only in passing.
+10.22541/essoar.176892247.74792860/v1,exclude,wrong-concept,model,,Tidal wetland productivity trends driven by climate; disturbance only in passing.
+10.26207/kqeh-kv66,exclude,not-research,model,,Dataset for tidal wetland productivity study; disturbance only in passing.
+10.5445/ir/1000189466,include,,model,,Title names burned area effects on modelled terrestrial carbon fluxes.
+10.6084/m9.figshare.c.8236874,include,,model,,Satellite burned area in vegetation models changes fire emissions and flux variability.
+10.1186/s13021-025-00366-5,include,,model,,Satellite burned area in vegetation models changes fire emissions and flux variability.
+10.20944/preprints202603.0409.v1,exclude,wrong-concept,model,,Satellite fire radiative power sensor evaluation in Amazon; no carbon estimate.
+10.1029/2026gb009121,exclude,wrong-concept,model,,Western US carbon flux inversion driven by moisture; disturbance only in passing.
+10.1029/2026gb009093,exclude,wrong-concept,model,,Tidal wetland productivity trends driven by climate; disturbance only in passing.
+10.6073/pasta/2f9cb3813b65bc49a1b36554f7055e1b,exclude,wrong-concept,model,,Grazing land carbon balance from flux towers; fire history one background factor.
+10.6073/pasta/4fdcd0d982860026c1d790e72f446415,exclude,wrong-concept,model,,Grazing land carbon balance from flux towers; fire history one background factor.
+10.3390/land15040651,exclude,wrong-concept,model,,Dryland productivity drivers and land use transitions; no disturbance carbon accounting.
+10.5194/egusphere-egu26-8877,exclude,wrong-concept,model,,Precipitation whiplash index as winter wildfire risk indicator; no carbon estimate.
+10.5194/egusphere-2025-2841-rc2,include,,model,,Referee comment on dryland model study testing fire in uptake variability.
+10.5194/egusphere-2025-2841-ac2,include,,model,,Author reply on dryland model study testing fire in uptake variability.
+10.1016/j.agrformet.2025.110533,exclude,wrong-concept,model,,Four flux tower sites; disturbance effects at site scale only.
+10.1029/2025gl114642,exclude,wrong-concept,model,,Single peatland site sink loss from photoinhibition; disturbance only in passing.
+10.5194/egusphere-2025-2841,include,,model,,Title names fire; tests fire in model year-to-year variability of dryland uptake.
+10.1038/s41467-025-59999-2,include,,model,,Drought and fire driven live biomass carbon losses across northern ecosystems.
+assessing carbon balance in european forests using a dynamic vegetation model recent trends and drivers,include,,model,,"European forest sink decline attributed to disturbances and harvest, compared with inventories."
+10.1038/s43017-025-00743-1,exclude,wrong-concept,model,,"Eddy covariance network review; title names no disturbance, no abstract."
+10.2139/ssrn.5407870,undecided,,model,,"Satellite fluorescence for fire and beetle mortality; carbon estimate unclear, no abstract."
+10.5194/egusphere-egu25-7279,exclude,wrong-concept,model,,Drivers of northern CO2 seasonal amplitude; fire emissions one minor input.
+10.5194/egusphere-2025-2841-rc1,include,,model,,Referee comment on dryland model study testing fire in uptake variability.
+10.5281/zenodo.17984038,exclude,not-research,model,,Zenodo reference list of peatland flux studies; data record off topic.
+10.2139/ssrn.4987803,exclude,wrong-concept,model,,Title shows site-scale flux monitoring of management and disturbance effects.
+10.1088/1748-9326/ad9035,include,,model,,"State forest carbon monitoring with disturbance history and flux attribution, Maryland."
+10.21203/rs.3.rs-4802855/v1,undecided,,model,,"Fire and drought raise ozone damage to Amazon; carbon link unclear, no abstract."
+10.5194/egusphere-egu24-2420,exclude,wrong-population,model,,Organic carbon in agricultural reservoirs during drought; aquatic system.
+10.5194/egusphere-egu24-6069,exclude,wrong-concept,model,,Drivers of northern CO2 seasonal amplitude; fire emissions one minor input.
+10.1016/j.scitotenv.2024.176642,undecided,,model,,"Land use change and dissolved organic carbon export; scope unclear, no abstract."
+10.5194/egusphere-egu23-15314,exclude,wrong-concept,model,,Ozone damage to tropical forest productivity; fire only the ozone source.
+10.5194/egusphere-egu22-3849,exclude,wrong-concept,model,,Australian flux inversion from satellite CO2; fire one component of variability.
+10.1029/2021gb007186,exclude,wrong-concept,model,,Sierra Nevada water and carbon modelling; fire uncertainty mentioned in passing.
+10.17760/d20474678,include,,model,,"Global carbon cycle extremes attributed to drought, fire and land use change."
+10.5194/egusphere-egu21-1064,exclude,wrong-concept,model,,Leaf traits across post-fire stand ages; plot ecology without carbon estimate.
+10.1016/b978-0-12-821575-3.00027-x,exclude,wrong-concept,model,,General chapter on forests and the carbon cycle; title names no disturbance.
+10.5194/bg-17-1343-2020,exclude,wrong-concept,model,,Upscaling flux tower data to global fluxes; fire only in passing.
+10.1016/j.agrformet.2020.108022,exclude,wrong-concept,model,,Site carbon fluxes in coastal forested wetlands; title names no disturbance.
+10.5194/acp-2019-827-ac1,undecided,,model,,Author response with no named subject and no abstract; cannot be judged.
+10.5194/esd-10-685-2019,include,,model,,"Global model of emissions from burning, land use change and harvest."
+10.5194/esd-2018-62,include,,model,,"Global model of emissions from burning, land use change and harvest."
+integrating remote sensing observations with nasa s geos 5 modeling framework in support of retrospective analyses and seasonal prediction of biosphere atmosphere co2 flux,exclude,wrong-concept,model,,NASA flux modelling proposal; fire and land use only model inputs.
+10.1007/978-3-030-29298-0_4,exclude,wrong-concept,model,,"Forestry carbon sequestration chapter; title names no disturbance, no abstract."
+10.1111/nph.15992,exclude,wrong-concept,model,,Biocrust global change virtual issue editorial; no disturbance carbon content.
+10.5194/bg-2019-368,exclude,wrong-concept,model,,Upscaling flux tower data to global fluxes; title names no disturbance.
+10.1088/1748-9326/aaeaeb,exclude,wrong-concept,model,,Forest age effects on net production at flux sites; disturbance in background.
+10.1139/as-2018-0010,exclude,wrong-population,model,,Arctic catchment dissolved organic carbon fluxes in streams.
+10.5194/acp-18-11097-2018,exclude,wrong-concept,model,,Global CO2 flux inversion with satellite data; no disturbance focus.
+phytoplankton communities of subsurface chlorophyll maxima in the summer stratified waters of the western english channel,exclude,wrong-population,model,,Marine phytoplankton communities in the English Channel.
+drivers of long term variability in amazon forest carbon fluxes,exclude,wrong-concept,model,,Single Amazon flux site record and bias correction; drought legacy only local.
+10.1126/science.aam5690,exclude,wrong-concept,model,,El Nino carbon responses of tropical continents; fire one process among several.
+10.1007/s10584-017-2038-5,include,,model,,Title names anthropogenic and natural factors in forest sector carbon analyses.
+10.12688/f1000research.8962.1,exclude,wrong-concept,model,,Review of terrestrial carbon cycle variability; fire and land use in passing.
+10.31274/etd-180810-5606,exclude,wrong-population,model,,Carbon cycling in eutrophic lakes.
+10.1038/nature13376,exclude,wrong-concept,model,,"Semi-arid ecosystems and global carbon variability; title names no disturbance, no abstract."
+10.1016/j.agrformet.2014.06.013,exclude,wrong-concept,model,,"Data-driven North American carbon diagnostics; title names no disturbance, no abstract."
+10.1007/978-3-642-32424-6_2,exclude,wrong-concept,model,,"Italian ecosystem flux book; title names no disturbance, no abstract."
+spatial and temporal dynamics of the terrestrial carbon cycle assimilation of two decades of optical satellite data into a process based global vegetation model,exclude,wrong-concept,model,,Satellite data assimilation in global vegetation model; title names no disturbance.
+10.1088/1748-9326/9/3/035001,undecided,,model,,Extreme events and global productivity variability; disturbance role unclear without abstract.
+10.1002/gbc.20048,exclude,wrong-concept,model,,Carbon isotope variability modelling; fire only a model input.
+10.5194/bg-10-851-2013,include,,model,,Australian national carbon budget quantifying fire and land use losses and uncertainty.
+10.5194/bg-10-39-2013,exclude,wrong-concept,model,,Restored wetland site greenhouse gas budget driven by grazing management.
+10.1007/978-3-642-25047-7_6,exclude,wrong-concept,model,,Flux tower and remote sensing net exchange; title names no disturbance.
+10.1088/1748-9326/8/1/011006,exclude,wrong-concept,model,,Climate forcing growth rates commentary; land carbon only in passing.
+interannual variation in ecosystem co 2 exchanges in a semiarid grassland of mongolia,exclude,wrong-concept,model,,Mongolian grassland site CO2 exchange variability; title names no disturbance.
+10.3402/tellusb.v64i0.17159,exclude,wrong-concept,model,,Two flux sites with different disturbance histories; stand scale only.
+biogeosciences carbon emissions from land use and landcover change,include,,model,,Title names carbon emissions from land use and land cover change.
+10.1016/j.ecolmodel.2011.03.042,include,,model,,"Statewide ecosystem carbon change modelled with land cover disturbance data, California."
+10.1029/2010jg001566,exclude,wrong-concept,model,,Global upscaling of flux tower data; disturbance only as error source.
+10.1201/b10275-29,exclude,wrong-concept,model,,African carbon flux remote sensing chapter; fire and disturbance in background.
+10.1016/j.agrformet.2010.09.002,exclude,wrong-concept,model,,US net exchange from flux towers and satellites; title names no disturbance.
+a continuous measure of gross primary production for the conterminousu s derived from modis and ameriflux data,exclude,wrong-concept,model,,US productivity upscaled from flux towers; disturbance explains only some variability.
+10.5194/bg-6-235-2009,include,,model,,"Deforestation fire emissions from satellite data and modelling, Mato Grosso."
+10.5194/bg-6-1935-2009,exclude,wrong-concept,model,,African carbon balance variability driven by photosynthesis; disturbance not central.
+10.1016/j.rse.2009.10.013,exclude,wrong-concept,model,,"US productivity upscaled from flux towers; title names no disturbance, no abstract."
+räumliche und zeitliche dynamik des terrestrischen kohlenstoffhaushaltes anhand der assimilation von 20 jahren optischer satellitendaten in ein prozessbasiertes dynamisches globales vegetationsmodell dgvm,exclude,not-english,model,,Title only in German; satellite assimilation in global vegetation model thesis.
+10.1890/0012-9623(2008)89[79:patcc]2.0.co;2,exclude,not-research,model,,Peatland carbon symposium meeting report.
+10.1029/2005jd006455,include,,model,,Temperate peat fire carbon emissions and fire return interval needed to keep sink.
+10.1029/2005gl022526,include,,model,,"Siberian burned area year-to-year statistics, exceptional fire years and climate indices."
+10.1029/2004jd004959,exclude,wrong-concept,model,,ENSO effects on global productivity and respiration; fire not the subject.
+10.1046/j.1365-2486.2003.00604.x,include,,model,,Satellite and model estimates of tropical fire carbon emissions and variability.
+model studies on the response of the terrestrial carbon cycle to climate change and variability,exclude,wrong-concept,model,,Vegetation model isotope thesis; fire and land use only minor parts.
+10.1029/2001gb001845,exclude,wrong-concept,model,,Global productivity and carbon isotope discrimination under ENSO; no disturbance.
+a possible global covariance between terrestrial gross primary production and 13 c discrimination consequences for the atmospheric 13 c budget and its response to enso,exclude,wrong-concept,model,,"Global productivity and isotope discrimination under ENSO; no disturbance, no abstract."
+10.1029/2000jd900563,exclude,wrong-concept,model,,Amazon carbon variability model; fire only affects satellite inputs.
+10.1029/98gb02336,include,,model,,Boreal landscape soil carbon with fire driving losses and year-to-year variability.
+analysis of global carbon cycle extremes their compound climate drivers and implications for terrestrial carbon cycle,include,,model,,"Global carbon cycle extremes attributed to drought, fire and land use change."
+stand development in forests baseline maturation and aging of ecosystems,exclude,wrong-concept,model,,Stand development and aging book; title names no disturbance carbon accounting.
+10.3886/e250100,exclude,wrong-concept,model,,Data aggregating model outputs to North American inventory zones; no disturbance focus.
+10.5281/zenodo.20085666,include,,model,,FAOSTAT forest and deforestation emissions dataset compared with UNFCCC country data.
+opportunities for a low emission transformation of african food systems,exclude,wrong-concept,model,,African food system emissions and mitigation options.
+10.1038/s41598-026-55318-x,include,,model,,"Satellite Tier 3 framework for national forest fire emissions reporting, Italy."
+10.2905/jrc.2w3hh78,exclude,not-research,model,,EDGAR emissions database release excluding forest fires and LULUCF.
+10.5194/essd-18-6799-2026,include,,model,,"FAO estimates of national forest emissions and removals, the FAOSTAT dataset."
+förbättring av växthusgasberäkningar från skogsbränder i sverige granskning och vidareutveckling av biomassantaganden precision i brandavgränsning och utsläppsmetodik med stöd av svenska nationella datakällor,exclude,not-english,model,,Title only in Swedish; thesis on Swedish forest fire inventory emissions.
+10.1038/s41467-025-66292-9,exclude,off-topic,model,,"Structure fire air pollutant emissions, not forest carbon."
+10.17528/cifor-icraf/009409,exclude,wrong-concept,model,,Food system emissions from national transparency reports.
+10.7910/dvn/w2d7h2,exclude,wrong-concept,model,,Carbon credit financial models for India; no disturbance.
+10.5281/zenodo.17898543,include,,model,,"Dataset for satellite Tier 3 forest fire emissions monitoring, Italy 2018-2023."
+10.2905/jrc.1k6v990,exclude,not-research,model,,EDGAR emissions database release excluding forest fires and LULUCF.
+10.1186/s13021-024-00274-0,include,,model,,US national inventory forest fire emissions system checked against forest stocks.
+10.1071/wf23104,include,,model,,FullCAM calibration for fire emissions in Australia's national carbon accounting.
+10.1007/s11027-023-10096-z,include,,model,,"National inventories, FAOSTAT and models compared for tropical land use emissions."
+10.2905/jrc.38pq6zg,exclude,not-research,model,,EDGAR mercury emissions database; excludes fires and LULUCF.
+10.5194/essd-16-4325-2024,include,,model,,Methane inventories against observations; natural versus anthropogenic partition explains gaps.
+10.5194/essd-2023-516-rc1,include,,model,,Referee comment on methane inventory study; natural versus anthropogenic partition central.
+10.5194/essd-2023-516-rc2,include,,model,,Referee comment on methane inventory study; natural versus anthropogenic partition central.
+10.5194/essd-2023-516-ac2,include,,model,,Reply to referee on methane inventory study; natural versus anthropogenic partition central.
+10.5194/essd-2023-516-ac1,include,,model,,Reply to referee on methane inventory study; natural versus anthropogenic partition central.
+10.2905/jrc.afbyd1r,exclude,not-research,model,,EDGAR fossil emissions data record; forest fires and LULUCF excluded
+10.1186/s13021-023-00231-3,include,,model,,Australian inventory treatment of natural and anthropogenic wildfire emissions
+10.5194/egusphere-egu23-606,include,,model,,"African GHG budget; land cover change, fire, uncertainty and interannual variability"
+10.1038/s43016-022-00667-9,exclude,wrong-concept,model,,"Cropland area measurement, no abstract, nothing on disturbance or forest carbon"
+10.5194/essd-14-4643-2022,include,,model,,Country LULUCF reporting compared with FAOSTAT; managed land and deforestation fluxes
+10.5194/essd-2022-104-cc2,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-rc2,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-cc1,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-cc4,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-ac4,include,,model,,Author reply on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-ac2,include,,model,,Author reply on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-ac3,include,,model,,Author reply on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-ac5,include,,model,,Author reply on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-ac1,include,,model,,Author reply on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-cc3,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+10.5194/essd-2022-104-rc1,include,,model,,Referee comment on Grassi LULUCF reporting paper; subject on topic
+the primap hist national historical emissions time series 1750 2021 v2 4,exclude,not-research,model,,"PRIMAP-hist emissions data record; LULUCF not harmonised, no disturbance"
+10.1111/gcb.16280,exclude,wrong-concept,model,,Livestock methane inventory; no disturbance or forest carbon
+10.1038/s43016-022-00638-0,exclude,wrong-concept,model,,Food transport data; no disturbance or land carbon
+10.1038/s43016-021-00450-2,exclude,wrong-concept,model,,Food system emission inventories; no disturbance or forest carbon
+carbon fluxes from land 2000 2020 bringing clarity on countries reporting,include,,model,,Title names country reporting of land carbon fluxes; no abstract
+10.5281/zenodo.4479171,exclude,not-research,model,,"PRIMAP-hist emissions data record; LULUCF not harmonised, no disturbance"
+10.5281/zenodo.5652523,exclude,wrong-concept,model,,Crop residue burning data for one Indian state; no forest or inventory comparison
+10.24419/lhi.2304-3083.2021.2.08,include,,model,,Russian reserved forests in managed land; fire losses change national sink
+10.5281/zenodo.3941972,include,,model,,"FAOSTAT forest land emissions dataset, compared with country reports"
+10.5281/zenodo.3942369,exclude,wrong-concept,model,,FAOSTAT N2O from drained cropland and grassland soils
+10.5194/essd-2019-199-rc2,include,,model,,"Review of European AFOLU emissions paper; FAOSTAT, UNFCCC and uncertainty compared"
+10.5194/egusphere-egu2020-12561,include,,model,,Modelled fire emissions in Brazilian Cerrado following IPCC inventory guidelines
+10.1016/j.envsci.2018.12.023,include,,model,,Title names national reporting of forest fire emissions in Australia
+nacp regional national greenhouse gas inventories and aggregated gridded model data,exclude,wrong-concept,model,,NACP data record of inventory and model fluxes; disturbance not central
+10.22630/prs.2017.17.2.43,exclude,not-english,model,,Polish title and abstract only; agricultural emissions
+measurement reporting and verification of greenhouse gas emissions from livestock current practices and opportunities for improvement,exclude,wrong-concept,model,,Livestock emission MRV; no disturbance or forest carbon
+10.5194/bg-14-3685-2017,undecided,,model,,"Global carbon flux data limitations; no abstract, title could fit uncertainty question"
+10.1002/2016jd025087,include,,model,,"Australian wildfire emissions with Monte Carlo uncertainty, compared with GFED and inventory"
+agriculture s contribution to national emissions,exclude,wrong-concept,model,,Agriculture share of national emissions; no disturbance
+carbon stock change resulting from indonesian palm oil trade,include,,model,,"Indonesian land use change carbon stock change, dataset uncertainty including FAOSTAT"
+10.3334/ornldaac/1179,exclude,wrong-concept,model,,NACP data record of inventory and model fluxes; disturbance not central
+10.1071/wf12011,include,,model,,Compares national inventory methods for forest fire emissions in southern Europe
+10.1088/1748-9326/8/1/011002,exclude,wrong-concept,model,,Agricultural GHG quantification editorial; no disturbance
+aginfra building e infrastructure and services for the agricultural research community,exclude,off-topic,model,,Agricultural research data infrastructure project
+10.1088/1748-9326/8/2/021001,exclude,wrong-concept,model,,Farmer activity data for agricultural GHG accounting; no disturbance
+10.1029/2012jd017671,include,,model,,Savanna fire emission factors for national inventory compilation
+10.5194/bg-9-3437-2012,include,,model,,"Global Tier 1 forest carbon change with harvest, deforestation, fires; compared to UNFCCC"
+10.1890/10-2362.1,include,,model,,Satellite fire data used to evaluate national agricultural burning inventories
+title evaluating greenhouse gas emissions inventories for agricultural burning using satellite observations of active fires permalink,include,,model,,Copy of agricultural burning inventory evaluation; title names fire and inventories
+comparative analysis of major global forestry datasets for country level estimates of c stock change in living biomass,include,,model,,Global datasets and GFED fires for country forest carbon change versus inventories
+10.1016/j.atmosenv.2007.10.089,include,,model,,Title names regional biomass burning emissions in northern Australia; no abstract
+the emissions of greenhouse gases from forest fires in the mediterranean region,include,,model,,"Mediterranean forest fire GHG emissions, reducing burned biomass uncertainty for UNFCCC"
+a development perspective for biomassfuelled electricity generation technologies economic technology assesment in view of sustainability,exclude,off-topic,model,,Biomass electricity technology assessment
+toward a better understanding of boreal forest fires and their role in the climate system,include,,model,,Boreal fire carbon emissions and stochastic fire occurrence from national records
+l atin a merican and the c aribbean c ommission on a gricultural s tatistics,exclude,not-research,model,,FAO statistics commission meeting document; no abstract
+a frican commission on agricultural statistics twenty nineth session,exclude,not-research,model,,FAO statistics commission meeting document; no abstract
+10.5281/zenodo.18803845,include,,model,,"Natural disturbance return periods, biomass loss and buffer pool for EU crediting"
+10.2905/jrc.rhyqcn0,include,,model,,"Natural disturbance risk, biomass loss and buffer pool for EU crediting"
+10.1002/eap.70259,exclude,not-research,model,,Journal cover image note on island beetle diversity
+10.1016/j.forpol.2026.103907,exclude,wrong-concept,model,,Government narratives and forest cover in China; disturbance only background
+10.2905/jrc.07t9jc8,include,,model,,"Natural disturbance risk, biomass loss and buffer pool for EU crediting"
+10.1002/fee.2765,exclude,not-research,model,,Journal cover image note on acoustic wildlife monitoring
+10.1002/fee.v23.7,exclude,not-research,model,,Journal cover image note on acoustic wildlife monitoring
+10.3390/f16010031,exclude,wrong-concept,model,,Russian forest restoration policy and forest area loss; no carbon estimate
+10.5194/egusphere-egu24-16178,include,,model,,Carbon uptake recovery after wildfire in Korea and creditable stabilisation period
+overview of forest carbon inclusion in certification schemes and need for improvement,exclude,wrong-concept,model,,Review of forest carbon certification methods; disturbance only background
+10.1126/science.adl5889,include,,model,,Title names global forest fire emissions trend; no abstract
+10.1016/j.quascirev.2023.108040,undecided,,model,,"Paleo natural and human disturbance of Patagonian forest; no abstract, link unclear"
+10.1007/978-981-16-9777-7_1,undecided,,model,,"Untitled book introduction; no abstract, subject cannot be judged"
+10.1007/s11027-021-09983-0,include,,model,,Title names wildfire in forest carbon accounting and offsets; no abstract
+10.1016/j.aquaculture.2021.737025,exclude,off-topic,model,,Fish cage aquaculture economics
+10.1002/tafs.10270,exclude,wrong-population,model,,Salmon spawning habitat in rivers
+10.3390/w12102917,include,,model,,"Catchment carbon balance after windthrow, bark beetle and fire in Tatra"
+10.18174/580700,exclude,wrong-population,model,,Seafloor benthic community and trawling
+10.1016/j.quascirev.2019.106005,include,,model,,"Title names 15,400-year fire-regime record in Patagonia; no abstract"
+10.2514/1.a34277,exclude,off-topic,model,,Hypersonic boundary-layer disturbances
+10.1002/bes2.1435,exclude,wrong-concept,model,,"Retention harvesting and understory plants; stand ecology, no carbon"
+integrating geographic object based image analysis with the open data cube for multi resolution multi sensor hyper temporal image analysis using ccdc for deforestation monitoring in canada,exclude,wrong-concept,model,,Image analysis for deforestation mapping; no carbon estimate shown
+10.1016/j.rsma.2017.05.003,exclude,wrong-concept,model,,Mangrove restoration sediment carbon; no disturbance
+the survival of moth larvae feeding on different plant species in northern fennoscandia,exclude,wrong-concept,model,,Moth larvae feeding experiment; no carbon or regime statistics
+10.1007/s11027-014-9573-4,undecided,,model,,"Non-permanence in CDM afforestation credits; no abstract, disturbance role unclear"
+10.1080/10549811.2014.883998,exclude,wrong-concept,model,,Alaska forest carbon map assuming no natural disturbance
+sustainable forest governance in the asia pacific region has redd adequately addressed drivers of deforestation and forest degradation,undecided,,model,,"REDD+ governance and deforestation drivers; no abstract, accounting link unclear"
+10.1016/j.envsci.2013.04.011,include,,model,,Title names natural forest disturbances in REDD+ design; no abstract
+10.1007/s10750-013-1763-7,exclude,wrong-population,model,,Stream crab migration and natural disturbance
+10.1017/cbo9780511894824.023,exclude,wrong-concept,model,,Carbon management on US public lands; disturbance only background
+10.1007/s11027-012-9362-x,include,,model,,Title names natural disturbance risk for afforestation in boreal Canada
+the challenge of ecological restoration,exclude,wrong-concept,model,,"Ecological restoration; no abstract, nothing on disturbance or carbon"
+10.1016/j.jenvman.2011.10.002,exclude,wrong-concept,model,,Forest monitoring indicators; title names no disturbance or carbon
+10.1016/j.tree.2010.09.001,exclude,wrong-concept,model,,Soil linkages in restoration ecology; no disturbance or carbon
+10.1016/j.foreco.2009.03.055,exclude,wrong-concept,model,,Stand dynamics of Afrotemperate forest; stand ecology
+10.1016/j.foreco.2009.03.017,undecided,,model,,"Risks to forest offset projects; no abstract, risks not named"
+10.1126/science.324.5926.463-b,exclude,wrong-concept,model,,Letter on research after natural disasters; no carbon or accounting
+10.1111/j.1526-100x.2009.00587.x,exclude,wrong-concept,model,,Carbon offsets and restoration; natural disturbance one reform among several
+little umpqua gentian and the big biscuit fire,exclude,wrong-concept,model,,"Rare plant and Biscuit Fire; plant ecology, no carbon"
+10.1126/science.324_463b,exclude,wrong-concept,model,,"Letter on research after natural disasters; no abstract, no carbon"
+montane forest diversity influencing pioneer flora on naturallandslides at the western side of podacarpus national park southecuador,exclude,wrong-concept,model,,Pioneer flora on landslides; plant ecology
+10.1007/s10152-007-0087-2,exclude,wrong-population,model,,Mudflat biota change
+10.1017/cbo9780511541995.001,exclude,wrong-concept,model,,"Book on disaster recovery ecology; no abstract, no carbon or accounting shown"
+people and forests in east kalimantanl,exclude,wrong-concept,model,,"People and forests in East Kalimantan; no abstract, no disturbance named"
+10.13031/2013.21436,exclude,wrong-concept,model,,Watershed hydrology after Hurricane Hugo; no carbon
+10.1111/j.1365-2745.2005.01021.x,exclude,wrong-concept,model,,Biological flora account of ivy
+10.1641/0006-3568(2004)054[0266:uirr]2.0.co;2,exclude,wrong-population,model,,Book review on river restoration uncertainty
+overivew of the rocky intertidal systems of southern california,exclude,wrong-population,model,,Rocky intertidal systems
+revisiting the use of managed land as a proxy for estimating national anthropogenic emissions and removals ipcc expert meeting report,include,,model,,IPCC expert meeting on managed land proxy for anthropogenic emissions
+2013 revised supplementary methods and good practice guidance arising from the kyoto protocol,include,,model,,IPCC Kyoto Protocol supplementary guidance with natural disturbance provision
+2006 ipcc guidelines for national greenhouse gas inventories volume 4 chapter 2 generic methodologies applicable to multiple land use categories,include,,model,,IPCC 2006 generic land methods including disturbance and fire emissions
+2006 ipcc guidelines for national greenhouse gas inventories volume 4 chapter 4 forest land,include,,model,,IPCC 2006 forest land inventory guidance
+2019 refinement to the 2006 ipcc guidelines volume 4 chapter 2 generic methodologies applicable to multiple land use categories,include,,model,,IPCC 2019 Refinement generic methods holding the natural disturbance provision
+2019 refinement to the 2006 ipcc guidelines volume 1 chapter 3 uncertainties,include,,model,,IPCC 2019 Refinement uncertainty chapter for inventories
+national inventory report 1990 2024 greenhouse gas sources and sinks in canada,include,,model,,Canada national inventory report 1990 to 2024
+the redd environmental excellence standard trees version 2 0,include,,model,,TREES jurisdictional REDD+ crediting standard
+faostat domain emissions from fires methodological note release october 2025,include,,model,,FAOSTAT fire emissions methodological note

@@ -159,3 +159,27 @@ says so.
    page by number, which OpenAlex answered without a key, the 401 retry of deviation 1
    was removed because retrying a key refusal cannot succeed, and only the OpenAlex
    strand was deleted and run again, before any record was screened.
+3. 24 October 2026. The author screened 53 of the first 54 records himself, in a workbook
+   copy of the reading file, and described his rule in these words. "I basically looked
+   for any mention of anthropogenic disturbances or any mention of disturbances separated
+   from natural disturbances, or in fact, any mention of anthropogenic disturbances or
+   natural disturbances or human-induced disturbances or any such kind of disturbances in
+   the title or the abstract, and then that determined whether it was to be included." He
+   asked for the remaining 1,084 records to be screened by the same rule. A match on the
+   word disturbance agreed with only 27 of his 53 decisions, because he excluded records
+   in which disturbance was background to another subject, so the rule was applied by
+   reading rather than by word match. A large language model, Claude Opus 5.5 (Anthropic),
+   read each title and abstract against a written form of the rule. The first form,
+   `screening-rule-1.md`, tried blind on his 53 records, agreed with him on 38, and 11 of
+   the 15 disagreements were records it included and he did not. The second form,
+   `screening-rule-2.md`, added the test that disturbance be a central subject of the
+   record and described the pattern of his decisions, and tried blind on 26 of his records
+   with the other 27 given as examples, it agreed on 20. The 1,084 records were then
+   screened in eight batches under the second form, with all 53 of his decisions as
+   examples. He gave no reason codes for his 24 exclusions, so the codes the first form
+   assigned to those records stand in for them. The decisions are kept in
+   `02.inputs/derived/review-screening.csv`, built by the `review-screening` chunk from his
+   workbook and from the model's decisions in `screening-model.csv`, rather than in
+   `review-records.csv`. The full texts of included and undecided records were then sought
+   by the `review-fulltext` chunk, and those it could not fetch were listed for the author
+   to fetch by hand.

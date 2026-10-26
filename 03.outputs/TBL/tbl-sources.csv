@@ -1,0 +1,5 @@
+Dataset,Publisher,Supplies,Period
+FAOSTAT Emissions from Fires (GI),FAO,"Burned area, burned biomass and emissions by country and year",1990-2024
+FAO AllFires_OrganicSoils table,FAO,Organic soil fire values set to zero in the published domain,1990-2021
+MODIS MCD64A1 Collection 6.1,NASA,"Monthly burned area at 500 m, the input FAOSTAT aggregates",2000-2024
+MODIS MCD12Q1 Collection 6.1,NASA,"Annual land cover at 500 m, the vegetation strata FAOSTAT applies",2001-2023

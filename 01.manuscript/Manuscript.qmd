@@ -1,0 +1,963 @@
+---
+title: "Reported forest emissions and removals in Canada with and without the separation of natural disturbances"
+subtitle: "Uncertainty under the IPCC 2019 Refinement, jurisdictional credit and a test of the FAOSTAT fire method"
+keywords:
+  - natural disturbance
+  - managed land proxy
+  - factoring out
+  - greenhouse gas inventory
+  - national inventory
+  - UNFCCC
+  - Kyoto Protocol
+  - Paris Agreement
+  - carbon accounting
+  - LULUCF
+  - managed forest
+  - forest reference level
+  - fire regime
+  - disturbance regime
+  - fire cycle
+  - fire history
+  - fire frequency
+  - time-since-fire
+  - fire return interval
+  - natural range of variation
+  - historical range of variability
+  - range of natural variability
+  - interannual variability
+  - record length
+  - baseline period
+  - age-class distribution
+  - negative exponential
+  - Weibull
+  - carbon budget
+  - forest carbon
+  - carbon balance
+  - net ecosystem production
+  - net biome production
+  - carbon flux
+  - carbon sink
+  - Monte Carlo
+  - wildfire
+  - FAOSTAT
+  - Global Fire Emissions Database
+  - crediting
+  - carbon credits
+  - REDD+
+  - buffer pool
+  - reversal
+author:
+  - name: Seamus Murphy
+    orcid: 0000-0002-1792-0351
+    email: seamusrobertmurphy@gmail.com
+    corresponding: true
+date: today
+
+format:
+  docx:
+    prefer-html: true
+    reference-doc: ../04.references/style-formal.docx
+    highlight-style: pygments
+    number-sections: true
+  html:
+    page-layout: full
+    toc: true
+    toc-title: ""
+    toc-location: right
+    toc-depth: 3
+    number-sections: true
+    embed-resources: true
+    code-fold: false
+    code-tools: true
+    code-link: true
+    theme:
+      - ../04.references/style.scss
+      - cosmo
+
+execute:
+  eval: true
+  echo: true
+  warning: false
+  message: false
+  error: false
+  comment: NA
+
+engine: knitr
+citeproc: true
+editor: visual
+bibliography: ../04.references/references.bib
+csl: ../04.references/apa.csl
+---
+
+```{r}
+#| label: setup
+#| echo: true
+#| output: false
+
+knitr::opts_chunk$set(fig.path = "../03.outputs/PNG/", dpi = 300, dev = "png")
+
+fmt_tbl <- function(df, right = NULL) {
+  right <- union(names(df)[vapply(df, is.numeric, TRUE)], right)
+  flextable::flextable(df) |>
+    flextable::fontsize(size = 9, part = "all") |>
+    flextable::align(align = "center", part = "header") |>
+    flextable::align(j = setdiff(names(df), right), align = "left", part = "body") |>
+    flextable::align(j = right, align = "right", part = "body") |>
+    flextable::colformat_int(big.mark = "") |>
+    flextable::padding(padding.top = 1, padding.bottom = 1, part = "all") |>
+    flextable::set_table_properties(layout = "autofit", width = 1)
+}
+
+th <- ggplot2::theme_bw(base_size = 8) +
+  ggplot2::theme(panel.grid.minor = ggplot2::element_blank())
+```
+
+```{r}
+#| label: analysis
+#| echo: true
+#| output: false
+
+# FAOSTAT Emissions from Fires (domain GI), FAO, Rome
+# https://www.fao.org/faostat/en/#data/GI
+if (!file.exists("02.inputs/faostat/canada-fires.csv") &&
+    nzchar(Sys.getenv("FAOSTAT_USER")) && nzchar(Sys.getenv("FAOSTAT_PASSWORD"))) {
+  login <- httr2::request("https://faostatservices.fao.org/api/v1/auth/login") |>
+    httr2::req_body_form(username = Sys.getenv("FAOSTAT_USER"),
+                         password = Sys.getenv("FAOSTAT_PASSWORD")) |>
+    httr2::req_perform() |>
+    httr2::resp_body_json()
+  httr2::request("https://faostatservices.fao.org/api/v1/en/data/GI") |>
+    httr2::req_url_query(area = "33", area_cs = "FAO", output_type = "csv") |>
+    httr2::req_auth_bearer_token(login$AuthenticationResult$AccessToken) |>
+    httr2::req_perform(path = "02.inputs/faostat/canada-fires.csv")
+}
+
+fires <- readr::read_csv("02.inputs/faostat/canada-fires.csv", show_col_types = FALSE) |>
+  dplyr::select(item = Item, element = Element, year = Year, source = Source,
+                value = Value, unit = Unit, flag = Flag)
+
+forest_co2 <- fires |>
+  dplyr::filter(item == "Forest fires", element == "Emissions (CO2)", source == "FAO TIER 1") |>
+  dplyr::select(year, co2 = value)
+
+forest <- fires |>
+  dplyr::filter(item == "Forest fires", source == "FAO TIER 1",
+                element %in% c("Burned Area", "Emissions (CO2)", "Emissions (CH4)"), year >= 2001) |>
+  tidyr::pivot_wider(id_cols = year, names_from = element, values_from = value) |>
+  dplyr::rename(Year = year, `Burned area (ha)` = `Burned Area`,
+                `CO2 (kt)` = `Emissions (CO2)`, `CH4 (kt)` = `Emissions (CH4)`)
+
+gap <- fires |>
+  dplyr::filter(item == "Other forest", element == "Emissions (CO2)") |>
+  tidyr::pivot_wider(id_cols = year, names_from = source, values_from = value) |>
+  dplyr::filter(!is.na(`FAO TIER 1`), !is.na(UNFCCC)) |>
+  dplyr::transmute(Year = year, `FAO Tier 1 (kt)` = `FAO TIER 1`, `UNFCCC (kt)` = UNFCCC,
+                   Ratio = round(`FAO TIER 1` / UNFCCC, 1))
+
+# FAO AllFires_OrganicSoils, related document of FAOSTAT Emissions from Fires (GI)
+# https://www.fao.org/faostat/en/#data/GI
+if (!file.exists("02.inputs/faostat/organic-soil-fires.csv")) {
+  flat <- gsub("[\n ]+", " ",
+    paste(pdftools::pdf_text("02.inputs/faostat/raw/AllFires_OrganicSoils.pdf"), collapse = "\n"))
+  rx <- paste0("[0-9]+,(?:\"[^\"]*\"|[^,]*),6993,Fires in organic soils,",
+               "(?:CH4 emissions|CO2 emissions|Burned Area|Biomass burned [(]dry matter[)]),",
+               "[0-9]{4},[0-9.eE+-]+,(?:ha|tonnes|kilotonnes)")
+  readr::write_lines(
+    c("area_code,area,item_code,item,element,year,value,unit",
+      regmatches(flat, gregexpr(rx, flat))[[1]]),
+    "02.inputs/faostat/organic-soil-fires.csv")
+}
+
+peat <- readr::read_csv("02.inputs/faostat/organic-soil-fires.csv", show_col_types = FALSE)
+stopifnot(nrow(peat) == dplyr::n_distinct(peat$area) * dplyr::n_distinct(peat$year) * 4)
+
+canada <- peat |>
+  dplyr::filter(area == "Canada", element %in% c("Burned Area", "CO2 emissions", "CH4 emissions")) |>
+  tidyr::pivot_wider(id_cols = year, names_from = element, values_from = value) |>
+  dplyr::rename(Year = year, `Burned area (ha)` = `Burned Area`,
+                `CO2 (kt)` = `CO2 emissions`, `CH4 (kt)` = `CH4 emissions`)
+
+obs  <- canada[canada$Year >= 2001, ]
+post <- canada[canada$Year >= 1996, ]
+fill <- canada[["Burned area (ha)"]][1]
+
+# Table 6-1, Net Greenhouse Gas Flux Estimates in the Land Use, Land-Use Change and Forestry Sector,
+# All Inventory Years, by province and territory, Environment and Climate Change Canada,
+# National Inventory Report 1990-2024
+# https://data-donnees.az.ec.gc.ca/data/substances/monitor/canada-s-official-greenhouse-gas-inventory/E-LULUCF/?lang=en
+if (!file.exists("02.inputs/eccc/lulucf-2026.csv")) {
+  dir.create("02.inputs/eccc/raw", showWarnings = FALSE, recursive = TRUE)
+  download.file(paste0("https://data-donnees.az.ec.gc.ca/api/file?path=", URLencode("/substances/monitor/canada-s-official-greenhouse-gas-inventory/E-LULUCF/NIR2026_Table 6-1_All_Years_PTs.xlsx", reserved = TRUE)), "02.inputs/eccc/raw/table-6-1.xlsx", mode = "wb")
+  sheets <- readxl::excel_sheets("02.inputs/eccc/raw/table-6-1.xlsx")
+  c(Canada = "NATIONAL$", BC = " BC$") |>
+    purrr::map(\(s) readxl::read_excel("02.inputs/eccc/raw/table-6-1.xlsx", sheet = grep(s, sheets, value = TRUE), skip = 3, col_types = "text", .name_repair = "unique_quiet")) |>
+    purrr::list_rbind(names_to = "region") |>
+    dplyr::mutate(component = dplyr::case_when(grepl("TOTAL", ...1) ~ "human", grepl("^Natural disturbances", ...2) ~ "natural")) |>
+    dplyr::filter(!is.na(component)) |>
+    tidyr::pivot_longer(dplyr::matches("^[0-9]{4}$"), names_to = "year", values_to = "kt") |>
+    dplyr::transmute(region, component, year = as.integer(year), mt = as.numeric(kt) / 1000) |>
+    tidyr::pivot_wider(names_from = component, values_from = mt) |>
+    readr::write_csv("02.inputs/eccc/lulucf-2026.csv")
+}
+
+eccc <- readr::read_csv("02.inputs/eccc/lulucf-2026.csv", show_col_types = FALSE) |>
+  dplyr::mutate(net = human + natural)
+stopifnot(nrow(eccc) == 2 * 35, !anyNA(eccc))
+
+national <- dplyr::filter(eccc, region == "Canada")
+
+# Canadian National Fire Database, fire polygons, Natural Resources Canada, Canadian Forest Service
+# https://cwfis.cfs.nrcan.gc.ca/ha/nfdb
+if (!file.exists("02.inputs/nfdb/area-burned-by-province.csv")) {
+  dir.create("02.inputs/nfdb", showWarnings = FALSE, recursive = TRUE)
+  Sys.setenv(GDAL_DISABLE_READDIR_ON_OPEN = "EMPTY_DIR", CPL_VSIL_CURL_USE_HEAD = "NO")
+  zip <- paste0("/vsizip//vsicurl/https://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/",
+                "fire_poly/current_version/NFDB_poly.zip")
+  lapply(c("NFDB_poly_1972to2020_20250630", "NFDB_poly_2021to2024_20250630"), function(layer)
+    sf::st_drop_geometry(sf::st_read(zip, quiet = TRUE,
+      query = sprintf('SELECT SRC_AGENCY, YEAR, SIZE_HA FROM "%s"', layer)))) |>
+    dplyr::bind_rows() |>
+    dplyr::filter(YEAR >= 1990, !is.na(SIZE_HA)) |>
+    dplyr::rename(province = SRC_AGENCY, year = YEAR) |>
+    dplyr::summarise(hectares = sum(SIZE_HA), .by = c(province, year)) |>
+    readr::write_csv("02.inputs/nfdb/area-burned-by-province.csv")
+}
+
+burned <- readr::read_csv("02.inputs/nfdb/area-burned-by-province.csv", show_col_types = FALSE)
+
+share <- burned |>
+  dplyr::summarise(bc = sum(hectares[province == "BC"]), canada = sum(hectares), .by = year) |>
+  dplyr::mutate(share = bc / canada)
+
+bc <- eccc |>
+  dplyr::filter(region == "BC") |>
+  dplyr::inner_join(dplyr::select(share, year, share), by = "year")
+
+trees_uncertainty <- function(ci_half_width) 0.524417 / 1.645006 * ci_half_width
+
+buffer_table <- c(none = 0.25, `1` = 0.20, `2` = 0.15, `3` = 0.20,
+                  `1,2` = 0.10, `1,3` = 0.15, `2,3` = 0.10, `1,2,3` = 0.05)
+
+trees_buffer <- function(mitigating = "none", after_reversal = FALSE) {
+  buffer_table[[mitigating]] + if (after_reversal) 0.05 else 0
+}
+
+kept <- function(ci_half_width, mitigating = "none", after_reversal = FALSE) {
+  1 - trees_uncertainty(ci_half_width) - trees_buffer(mitigating, after_reversal)
+}
+
+break_even <- function(...) (1 - trees_buffer(...)) / (0.524417 / 1.645006)
+
+crediting_level <- function(x, years) sum(x[years]) / 5
+
+accounts <- national |>
+  dplyr::filter(year >= 2012) |>
+  dplyr::mutate(reference = year <= 2016)
+
+level_split  <- sum(accounts$human[accounts$reference]) / 5
+level_whole  <- sum(accounts$net[accounts$reference]) / 5
+
+credits <- accounts |>
+  dplyr::filter(!reference) |>
+  dplyr::transmute(Year = year,
+                   `Disaggregated emissions (Mt)` = human,
+                   `Disaggregated reductions (Mt)` = round(level_split - human, 1),
+                   `Undisaggregated emissions (Mt)` = net,
+                   `Undisaggregated reductions (Mt)` = round(level_whole - net, 1))
+
+split_pos <- credits[["Disaggregated reductions (Mt)"]] > 0
+whole_pos <- credits[["Undisaggregated reductions (Mt)"]] > 0
+worst <- which.min(credits[["Undisaggregated reductions (Mt)"]])
+
+bc_accounts <- bc |> dplyr::filter(year >= 2012)
+bc_level_split <- sum(bc_accounts$human[bc_accounts$year <= 2016]) / 5
+bc_level_whole <- sum(bc_accounts$net[bc_accounts$year <= 2016]) / 5
+
+bc_credits <- bc_accounts |>
+  dplyr::filter(year >= 2017) |>
+  dplyr::transmute(Year = year,
+                   `Burned area share (%)` = round(100 * share, 1),
+                   `Disaggregated emissions (Mt)` = round(human, 1),
+                   `Disaggregated reductions (Mt)` = round(bc_level_split - human, 1),
+                   `Undisaggregated emissions (Mt)` = round(net, 1),
+                   `Undisaggregated reductions (Mt)` = round(bc_level_whole - net, 1))
+
+bc_split_pos <- bc_credits[["Disaggregated reductions (Mt)"]] > 0
+bc_whole_pos <- bc_credits[["Undisaggregated reductions (Mt)"]] > 0
+bc_worst <- which.min(bc_credits[["Undisaggregated reductions (Mt)"]])
+
+classify <- function(n) {
+  base <- forest_co2[forest_co2$year < min(forest_co2$year) + n, ]
+  thr <- mean(base$co2) + 2 * stats::sd(base$co2)
+  data.frame(`Baseline (years)` = n,
+             Period = if (nrow(base) < n) NA_character_ else
+               paste(min(base$year), max(base$year), sep = "-"),
+             `Threshold (kt)` = if (nrow(base) < n) NA_real_ else round(thr),
+             `Years classified natural` = if (nrow(base) < n) "baseline longer than the series" else
+               paste(forest_co2$year[forest_co2$co2 > thr], collapse = ", "),
+             check.names = FALSE)
+}
+baselines <- do.call(rbind, lapply(c(13, 20, 30), classify))
+
+ci <- c(0.10, 0.20, 0.30, 0.50, 0.75, 1.00, 1.50, 2.00)
+deductions <- data.frame(
+  `Uncertainty, 90% interval half width (%)` = ci * 100,
+  `Uncertainty deduction (%)` = round(100 * trees_uncertainty(ci), 1),
+  `Kept, 25% buffer (%)` = round(100 * kept(ci), 1),
+  `Kept, 5% buffer (%)` = round(100 * kept(ci, "1,2,3"), 1),
+  `Kept, 30% buffer after a reversal (%)` = round(100 * kept(ci, after_reversal = TRUE), 1),
+  check.names = FALSE)
+
+set.seed(42)
+sd_mt <- 16.6 * (44 / 12) / 1.96
+
+simulate_reductions <- function(reference, emissions, n = 10000) {
+  level <- rowMeans(matrix(rep(reference, each = n) +
+                             stats::rnorm(n * length(reference), 0, sd_mt), nrow = n))
+  level - (emissions + stats::rnorm(n, 0, sd_mt))
+}
+
+monte_carlo <- function(reference, series) {
+  do.call(rbind, lapply(seq_len(nrow(series)), function(k) {
+    draws <- simulate_reductions(reference, series$emissions[k])
+    half <- (stats::quantile(draws, 0.95) - stats::quantile(draws, 0.05)) / 2
+    data.frame(Year = series$year[k], mean = mean(draws), half = half,
+               ci = half / abs(mean(draws)))
+  }))
+}
+
+reference_split <- accounts$human[accounts$reference]
+reference_whole <- accounts$net[accounts$reference]
+
+mc_split <- monte_carlo(reference_split,
+  data.frame(year = credits$Year, emissions = credits[["Disaggregated emissions (Mt)"]]))
+mc_whole <- monte_carlo(reference_whole,
+  data.frame(year = credits$Year, emissions = credits[["Undisaggregated emissions (Mt)"]]))
+
+blank_if_negative <- function(value, mean_reduction) ifelse(mean_reduction > 0, value, NA)
+
+uncertainty <- data.frame(
+  Year = mc_split$Year,
+  `Disaggregated reductions (Mt)` = round(mc_split$mean, 1),
+  `Disaggregated interval (% of mean)` = blank_if_negative(round(100 * mc_split$ci), mc_split$mean),
+  `Disaggregated deduction (%)` = blank_if_negative(round(100 * trees_uncertainty(mc_split$ci), 1), mc_split$mean),
+  `Undisaggregated reductions (Mt)` = round(mc_whole$mean, 1),
+  `Undisaggregated interval (% of mean)` = blank_if_negative(round(100 * mc_whole$ci), mc_whole$mean),
+  check.names = FALSE)
+
+over <- uncertainty[["Disaggregated deduction (%)"]] > 100
+banked <- ifelse(mc_split$mean > 0, 100 * purrr::map2_dbl(mc_split$ci, mc_split$Year > min(credits$Year[!split_pos]), \(ci, after) kept(ci, after_reversal = after)), NA)
+
+msd <- \(x) sprintf("%.1f ± %.1f Mt CO~2~e a year (95 per cent confidence interval %.1f to %.1f)",
+                    mean(x), stats::sd(x), stats::t.test(x)$conf.int[1], stats::t.test(x)$conf.int[2])
+province <- dplyr::filter(eccc, region == "BC")
+```
+
+# Abstract {.unnumbered}
+
+Separating natural disturbance from human activity decided whether Canada and British Columbia could report a creditable forest carbon balance at all in the years of the largest fires on record, rather than merely narrowing the uncertainty of one. The 2019 Refinement to the 2006 guidelines of the Intergovernmental Panel on Climate Change offers that separation as an option and sets no length for the record it requires, and little is known about what it does to the credit a jurisdiction can issue. This study compared two accounts of the same land, one that separates natural disturbance and one that does not, for Canada and for British Columbia across the crediting years 2017 to 2024 against a 2012 to 2016 reference period, using the published components of the national inventory for 1990 to 2024, the fire polygons of the Canadian National Fire Database and the fire emissions of the Food and Agriculture Organization statistical database. The crediting level, the uncertainty deduction and the buffer withholding of the REDD+ Environmental Excellence Standard were implemented as the standard writes them, and the natural disturbance threshold was calibrated on baselines of thirteen, twenty and thirty years. The account Canada reports earned reductions in `r sum(split_pos)` of the `r nrow(credits)` crediting years, totalling `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` million tonnes of carbon dioxide equivalent, while the same land without the separation earned them in `r sum(whole_pos)` years and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` million tonnes below the crediting level in `r credits$Year[worst]` alone. British Columbia, which held `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent of the area burned in Canada in 2023, earned `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` million tonnes on the separated account and fell `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` million tonnes short without it. Lengthening the baseline from thirteen to twenty years raised the threshold that marks a year as natural by `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent without changing which years it marked, and the two deductions of the standard leave nothing to issue once reported uncertainty reaches `r round(100 * break_even())` per cent. Carbon standards that credit jurisdictions therefore rest on a separation their own guidance leaves undefined, and the rule that defines it decides the credit.
+
+# Introduction
+
+Canada reports the emissions and removals of its managed forest to the United Nations Framework Convention on Climate Change in two parts, one for the land affected by forest management and one for the land recovering from natural disturbance, and moves an area from the second part to the first once the stand has grown back to the age at which it holds enough wood to be worth cutting, between 60 and 100 years depending on the region [@kurz2024revised]. The split matters to the reported balance rather than to the atmosphere. Revising the record of what was harvested between 1889 and 1989 moved 34 million hectares out of the managed part in 1990 and cut the sink reported as human caused by 113 Mt CO~2~e in that year, 56 per cent of it, and by 30 Mt CO~2~e in 2021, 23 per cent of it [@kurz2024revised]. Australia reaches a similar separation by a different route, classifying a whole fire season as natural when national fire emissions exceed the mean of a 2000 to 2012 baseline by two standard deviations and a state's burned area exceeds its own baseline mean by one standard deviation [@bowman2023wildfire].
+
+The uncertainty attached to those reported numbers is bounded by the method used to combine it. The simple propagation of the 2019 Refinement, its Approach 1, "theoretically requires that the standard deviation divided by the mean value is less than 0.3", and Monte Carlo simulation, its Approach 2, "will be particularly appropriate to use when uncertainties are large, their distribution are non-Gaussian, and algorithms are complex functions" [@paciornik2019uncertainties]. Neither approach prevents an uncertainty larger than the estimate it describes, because the percentage is the interval divided by the reported value, and the guidance says so itself, that "caution should be exercised in the interpretation of the results in cases where the point estimate is very small when compared with the size of the confidence interval (e.g. a sector or inventory where removals and emissions are of similar sizes)" [@paciornik2019uncertainties]. Its own worked example for Finland prints ±150 per cent for wetlands remaining wetlands against ±30 per cent for forest land remaining forest land.
+
+The data a government reaches for first is FAOSTAT, which the IPCC recommends for checking national inventory activity data and emission estimates. Its Emissions from Fires domain covers 1990 to 2024 for every country, and its methodological note gives the equation, emissions equal burned biomass multiplied by a default emission factor, and names each input, the MODIS MCD64A1 Collection 6.1 burned area product, the MODIS MCD12Q1 land cover product and the default values of the 2006 IPCC Guidelines [@fao2025fires]. It does not give the code that runs in Google Earth Engine, the rule that allocates a fuel consumption value to each pixel through the ecological and climate zone layers, or the effect of keeping "only those pixels with a percentage uncertainty lower than 20 percent" [@fao2025fires]. It also sets the burned area and emissions of fires in organic soils to zero for every country outside Southeast Asia, publishing the full values separately in a table named `AllFires_OrganicSoils.csv` [@fao2025fires].
+
+What the separation is worth is set by the crediting standard rather than by the inventory. Under the REDD+ Environmental Excellence Standard a jurisdiction may leave natural disturbance out of its accounts on exactly the authority described above, since the standard states that "only anthropogenic emissions shall be considered, and IPCC guidance shall be adhered to on any exclusion of non-anthropogenic emissions", and its 2025 draft adds that natural disturbances "may be excluded if they are 'non-anthropogenic events or non-anthropogenic circumstances that cause significant emissions and are beyond the control of, and not materially influenced by a country'", citing Volume 4, Chapter 2 of the 2019 Refinement [@art2021trees; @art2025trees3; @ogle2019generic]. Two deductions then scale off whatever the accounts report. The uncertainty deduction is the gross reductions and removals multiplied by an adjustment factor, 0.524417 divided by 1.645006 and multiplied by the half width of the 90 per cent confidence interval, which the standard requires to be estimated by Monte Carlo simulation at 10,000 iterations. The buffer withholding is the same gross quantity multiplied by a contribution of 25 per cent, which falls to 5 per cent where three mitigating factors are met and rises by 5 percentage points for five years after a reversal [@art2021trees]. A reversal retires buffer credits equal to the lower of the emissions above the crediting level or every credit the jurisdiction has been issued.
+
+This study asked three questions of Canada and British Columbia from 1990 to 2024, the period of the 2026 national inventory.
+
+1. What difference does separating natural from human-caused disturbance, as the 2019 Refinement allows, make to the emissions Canada and British Columbia report, to their uncertainty and to the credit they could claim?
+2. Where does the separation become hard to apply, in the length of record behind a natural disturbance test, in the period over which regrowth is tracked, and in an uncertainty taken on a net near zero?
+3. Can the fire emissions a government starts from be reproduced from the method FAOSTAT publishes and the IPCC Tier 1 steps it cites, and where does the published method fall short?
+
+# Materials and Methods
+
+## Literature review
+
+The literature behind the Introduction and the Discussion was mapped by a scoping review that followed the five stages of @arksey2005scoping as refined by @levac2010scoping and @peters2020updated, reported against the extension of the PRISMA checklist for scoping reviews [@tricco2018prisma]. The review questions, their search strings and the rules for what would change each claim were written into a protocol and committed before the first query ran, and the search terms were drawn only from the title, subtitle and keywords of this manuscript, so that every term can be traced to them. Each search ran from the chunks below and wrote what it found to a file, so that a later render read the files rather than the services.
+
+```{r}
+#| label: review-terms
+#| echo: true
+
+if (!file.exists("04.references/review/search-terms.csv")) {
+  front <- rmarkdown::yaml_front_matter(knitr::current_input(dir = TRUE))
+  small <- c("a", "an", "and", "as", "at", "by", "do", "does", "for", "from", "how", "in", "into", "is", "its", "of", "on", "or", "the", "to", "under", "using", "versus", "what", "why", "with")
+  phrases <- \(x) x |>
+    stringr::str_to_lower() |>
+    stringr::str_remove_all("[*_]") |>
+    stringr::str_replace_all("[^[:alnum:][:space:]-]", " | ") |>
+    stringr::str_replace_all(paste0("\\b(", paste(small, collapse = "|"), ")\\b"), " | ") |>
+    stringr::str_split_1("\\|") |>
+    stringr::str_squish() |>
+    purrr::keep(\(p) nchar(p) > 2)
+  dir.create("04.references/review", recursive = TRUE, showWarnings = FALSE)
+  dplyr::bind_rows(
+    tibble::tibble(term = stringr::str_squish(stringr::str_to_lower(unlist(front$keywords))), source = "keywords"),
+    tibble::tibble(term = phrases(front$title), source = "title"),
+    tibble::tibble(term = phrases(front$subtitle %||% ""), source = "subtitle")
+  ) |>
+    dplyr::distinct(term, .keep_all = TRUE) |>
+    dplyr::mutate(question = NA, concept = NA) |>
+    readr::write_csv("04.references/review/search-terms.csv", na = "")
+}
+```
+
+```{r}
+#| label: review-queries
+#| echo: true
+
+front <- rmarkdown::yaml_front_matter(knitr::current_input(dir = TRUE))
+declared <- paste(front$title, front$subtitle, paste(unlist(front$keywords), collapse = " ")) |>
+  stringr::str_remove_all("[*_]") |>
+  stringr::str_to_lower()
+term_regex <- \(x) if (stringr::str_ends(x, "\\*")) paste0("\\b", stringr::str_escape(stringr::str_remove(x, "\\*$"))) else paste0("\\b", stringr::str_escape(x), "\\b")
+terms <- readr::read_csv("04.references/review/search-terms.csv", col_types = readr::cols(.default = "c")) |>
+  dplyr::filter(!is.na(question), !is.na(concept)) |>
+  dplyr::mutate(term = stringr::str_to_lower(term)) |>
+  tidyr::separate_longer_delim(question, " ")
+stray <- terms$term[!purrr::map_lgl(terms$term, \(x) stringr::str_detect(declared, term_regex(x)))]
+if (nrow(terms) == 0) stop("No search terms selected in 04.references/review/search-terms.csv")
+if (length(stray) > 0) stop("Not in the title, subtitle or keywords: ", paste(unique(stray), collapse = ", "))
+queries <- terms |>
+  dplyr::summarise(.by = c(question, concept), group = paste(term, collapse = "|")) |>
+  dplyr::summarise(.by = question, route = paste(c(dplyr::first(question), concept), collapse = "-"), concepts = paste(group, collapse = " AND "))
+record_id <- \(doi, title) dplyr::coalesce(stringr::str_to_lower(doi), stringr::str_squish(stringr::str_to_lower(stringr::str_replace_all(title, "[^[:alnum:] ]", " "))))
+```
+
+```{r}
+#| label: review-store
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-store-hits.csv")) {
+  dir.create("02.inputs/derived", recursive = TRUE, showWarnings = FALSE)
+  # library-science manifest, https://github.com/seamusrobertmurphy/library-science/blob/main/library/manifest.csv
+  manifest <- readr::read_csv("../library-science/library/manifest.csv", show_col_types = FALSE)
+  # library-science source notes, https://github.com/seamusrobertmurphy/library-science/tree/main/sources
+  notes <- tibble::tibble(path = list.files("../library-science/sources", "\\.md$", full.names = TRUE)) |>
+    dplyr::mutate(key = tools::file_path_sans_ext(basename(path)), note = purrr::map_chr(path, \(p) paste(readLines(p, warn = FALSE), collapse = " ")))
+  store <- manifest |>
+    dplyr::filter(status %in% c("verified", "filed", "unverified"), !is.na(title) | !is.na(key)) |>
+    dplyr::left_join(dplyr::select(notes, key, note), by = "key") |>
+    dplyr::mutate(text = stringr::str_to_lower(paste(title, note)))
+  hits <- queries |>
+    purrr::pmap(\(question, route, concepts) {
+      groups <- stringr::str_split_1(concepts, " AND ")
+      term <- \(x) if (stringr::str_ends(x, "\\*")) paste0(stringr::str_escape(stringr::str_remove(x, "\\*$")), "\\w*") else paste0(stringr::str_escape(x), "\\b")
+      patterns <- purrr::map_chr(groups, \(g) paste0("\\b(", paste(purrr::map_chr(stringr::str_split_1(g, "\\|"), term), collapse = "|"), ")"))
+      keep <- purrr::map(patterns, \(r) stringr::str_detect(store$text, r)) |> purrr::reduce(`&`)
+      store[keep, ] |> dplyr::transmute(question, route = paste0("store-", route), key, doi, title, year, venue = container, source_note = dplyr::if_else(has_source_note == "yes", key, NA))
+    }) |>
+    purrr::list_rbind()
+  readr::write_csv(hits, "02.inputs/derived/review-store-hits.csv")
+  queries |>
+    dplyr::transmute(strand = "library-science", route = paste0("store-", route), query = concepts, date = as.character(Sys.Date())) |>
+    dplyr::left_join(dplyr::count(hits, route, name = "retrieved"), by = "route") |>
+    dplyr::mutate(retrieved = tidyr::replace_na(retrieved, 0L), reported_total = retrieved, cap = NA, capped = FALSE, error = NA) |>
+    readr::write_csv("02.inputs/derived/review-log-store.csv", na = "")
+}
+```
+
+```{r}
+#| label: review-openalex
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-openalex-hits.csv")) {
+  search_openalex <- function(question, route, concepts, cap = 2000) {
+    query <- stringr::str_split_1(concepts, " AND ") |>
+      purrr::map_chr(\(g) paste0("(", paste0('"', stringr::str_remove(stringr::str_split_1(g, "\\|"), "\\*$"), '"', collapse = " OR "), ")")) |>
+      paste(collapse = " AND ")
+    tryCatch({
+      works <- list(); page <- 1; total <- NA
+      repeat {
+        # OpenAlex works, searched on title and abstract, https://docs.openalex.org/api-entities/works/search-works
+        body <- httr2::request("https://api.openalex.org/works") |>
+          httr2::req_url_query(filter = paste0("title_and_abstract.search:", query), `per-page` = 200, page = page,
+                               select = "doi,title,publication_year,primary_location,type,cited_by_count,abstract_inverted_index") |>
+          httr2::req_retry(max_tries = 8, is_transient = \(r) httr2::resp_status(r) == 429, backoff = \(i) 15 * i) |>
+          httr2::req_perform() |>
+          httr2::resp_body_json()
+        total <- body$meta$count
+        works <- c(works, body$results)
+        Sys.sleep(3)
+        if (length(body$results) < 200 || length(works) >= min(total, cap)) break
+        page <- page + 1
+      }
+      hits <- works |>
+        purrr::map(\(w) tibble::tibble(doi = stringr::str_remove(w$doi %||% NA_character_, "^https://doi.org/"), title = w$title %||% NA_character_, year = w$publication_year %||% NA_integer_,
+                                       venue = w$primary_location$source$display_name %||% NA_character_, type = w$type %||% NA_character_, citations = w$cited_by_count %||% NA_integer_,
+                                       abstract = if (length(w$abstract_inverted_index) == 0) NA_character_ else paste(rep(names(w$abstract_inverted_index), lengths(w$abstract_inverted_index))[order(unlist(w$abstract_inverted_index))], collapse = " "))) |>
+        purrr::list_rbind() |>
+        dplyr::mutate(question, route = paste0("oa-", route), .before = 1)
+      list(hits = hits, log = tibble::tibble(strand = "openalex", route = paste0("oa-", route), query, date = as.character(Sys.Date()), retrieved = nrow(hits), reported_total = total, cap, capped = total > cap, error = NA))
+    }, error = \(e) list(hits = NULL, log = tibble::tibble(strand = "openalex", route = paste0("oa-", route), query, date = as.character(Sys.Date()), retrieved = 0L, reported_total = NA, cap, capped = FALSE, error = conditionMessage(e))))
+  }
+  runs <- purrr::pmap(queries, search_openalex)
+  hits <- purrr::map(runs, "hits") |> purrr::list_rbind()
+  dir.create("02.inputs/review/raw", recursive = TRUE, showWarnings = FALSE)
+  hits |>
+    dplyr::transmute(id = record_id(doi, title), abstract) |>
+    dplyr::distinct(id, .keep_all = TRUE) |>
+    readr::write_csv("02.inputs/review/raw/review-abstracts.csv", na = "")
+  readr::write_csv(dplyr::select(hits, -abstract), "02.inputs/derived/review-openalex-hits.csv", na = "")
+  readr::write_csv(purrr::map(runs, "log") |> purrr::list_rbind(), "02.inputs/derived/review-log-openalex.csv", na = "")
+}
+```
+
+```{r}
+#| label: review-semantic-scholar
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-s2-hits.csv")) {
+  search_s2 <- function(question, route, concepts, cap = 3000) {
+    query <- stringr::str_split_1(concepts, " AND ") |>
+      purrr::map_chr(\(g) paste0("(", paste(purrr::map_chr(stringr::str_split_1(g, "\\|"), \(x) if (grepl(" ", x)) paste0('"', stringr::str_remove(x, "\\*$"), '"') else x), collapse = " | "), ")")) |>
+      paste(collapse = " + ")
+    tryCatch({
+      papers <- list(); token <- NULL; total <- NA
+      repeat {
+        # Semantic Scholar Academic Graph bulk search, https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/get_graph_paper_bulk_search
+        body <- httr2::request("https://api.semanticscholar.org/graph/v1/paper/search/bulk") |>
+          httr2::req_url_query(query = query, fields = "title,year,venue,externalIds,citationCount,publicationTypes", token = token) |>
+          httr2::req_retry(max_tries = 4) |>
+          httr2::req_perform() |>
+          httr2::resp_body_json()
+        total <- body$total; token <- body$token
+        papers <- c(papers, body$data)
+        if (is.null(token) || length(papers) >= cap) break
+      }
+      works <- papers |>
+        purrr::map(\(w) tibble::tibble(doi = w$externalIds$DOI %||% NA_character_, title = w$title %||% NA_character_, year = w$year %||% NA_integer_, venue = w$venue %||% NA_character_, type = paste(unlist(w$publicationTypes), collapse = " "), citations = w$citationCount %||% NA_integer_)) |>
+        purrr::list_rbind()
+      list(hits = dplyr::mutate(works, question, route = paste0("s2-", route), .before = 1),
+           log = tibble::tibble(strand = "semantic-scholar", route = paste0("s2-", route), query, date = as.character(Sys.Date()), retrieved = nrow(works), reported_total = total, cap, capped = total > cap, error = NA))
+    }, error = \(e) list(hits = NULL, log = tibble::tibble(strand = "semantic-scholar", route = paste0("s2-", route), query, date = as.character(Sys.Date()), retrieved = 0L, reported_total = NA, cap, capped = FALSE, error = conditionMessage(e))))
+  }
+  runs <- purrr::pmap(queries, search_s2)
+  readr::write_csv(purrr::map(runs, "hits") |> purrr::list_rbind() |> dplyr::bind_rows(tibble::tibble(question = character(), route = character(), doi = character(), title = character())), "02.inputs/derived/review-s2-hits.csv", na = "")
+  readr::write_csv(purrr::map(runs, "log") |> purrr::list_rbind(), "02.inputs/derived/review-log-s2.csv", na = "")
+}
+```
+
+```{r}
+#| label: review-records
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-records.csv")) {
+  c("02.inputs/derived/review-store-hits.csv", "02.inputs/derived/review-openalex-hits.csv", "02.inputs/derived/review-s2-hits.csv") |>
+    purrr::map(\(f) readr::read_csv(f, col_types = readr::cols(.default = "c"))) |>
+    purrr::list_rbind() |>
+    dplyr::mutate(id = record_id(doi, title)) |>
+    dplyr::summarise(.by = id, doi = dplyr::first(stats::na.omit(doi)), title = dplyr::first(title), year = dplyr::first(stats::na.omit(year)), venue = dplyr::first(stats::na.omit(venue)), questions = paste(sort(unique(question)), collapse = " "), routes = paste(sort(unique(route)), collapse = " "), duplicates_merged = dplyr::n(), key = dplyr::first(stats::na.omit(key)), source_note = dplyr::first(stats::na.omit(source_note))) |>
+    dplyr::arrange(questions, dplyr::desc(year)) |>
+    dplyr::mutate(decision = NA, reason = NA, full_text = NA) |>
+    readr::write_csv("02.inputs/derived/review-records.csv", na = "")
+  c("02.inputs/derived/review-log-store.csv", "02.inputs/derived/review-log-openalex.csv", "02.inputs/derived/review-log-s2.csv") |>
+    purrr::map(\(f) readr::read_csv(f, col_types = readr::cols(.default = "c"))) |>
+    purrr::list_rbind() |>
+    readr::write_csv("02.inputs/derived/review-search-log.csv", na = "")
+}
+```
+
+```{r}
+#| label: review-chase
+#| echo: true
+
+central <- c()
+if (length(central) > 0 && !file.exists("02.inputs/derived/review-chase-hits.csv")) {
+  chase <- function(seed_doi, direction) {
+    # Semantic Scholar Academic Graph references and citations, https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data
+    resp <- httr2::request(paste0("https://api.semanticscholar.org/graph/v1/paper/DOI:", seed_doi, "/", direction)) |>
+      httr2::req_url_query(fields = "title,year,venue,externalIds", limit = 1000) |>
+      httr2::req_retry(max_tries = 6) |>
+      httr2::req_error(is_error = \(r) FALSE) |>
+      httr2::req_perform()
+    if (httr2::resp_status(resp) != 200) return(tibble::tibble(seed = seed_doi, route = paste0("chase-", direction), error = httr2::resp_status_desc(resp)))
+    key <- if (direction == "references") "citedPaper" else "citingPaper"
+    httr2::resp_body_json(resp)$data |>
+      purrr::map(\(w) tibble::tibble(doi = w[[key]]$externalIds$DOI %||% NA_character_, title = w[[key]]$title %||% NA_character_, year = w[[key]]$year %||% NA_integer_, venue = w[[key]]$venue %||% NA_character_)) |>
+      purrr::list_rbind() |>
+      dplyr::mutate(seed = seed_doi, route = paste0("chase-", direction), .before = 1)
+  }
+  tidyr::expand_grid(seed_doi = central, direction = c("references", "citations")) |>
+    purrr::pmap(chase) |>
+    purrr::list_rbind() |>
+    readr::write_csv("02.inputs/derived/review-chase-hits.csv")
+}
+```
+
+```{r}
+#| label: review-screening
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-screening.csv")) {
+  records <- readr::read_csv("02.inputs/derived/review-records.csv", col_types = readr::cols(.default = "c"))
+  # Decisions on title and abstract by a language model, one row for each record in each pass, committed with the protocol
+  # The pilot pass read the author's 53 records blind under the first rule, the validation pass read 26 of them blind under the revised rule, and the screen pass read the rest
+  model <- readr::read_csv("04.references/review/screening-model.csv", col_types = readr::cols(.default = "c"))
+  # The author's decisions, entered by hand in the reading copy of review-records.csv that carries the abstracts, outside git
+  # Excel opened that copy as Mac Roman, so the accented characters in its ids are converted back to UTF-8 before the join
+  from_mac <- \(x) { y <- iconv(x, "UTF-8", "MACINTOSH"); Encoding(y) <- "UTF-8"; dplyr::coalesce(y, x) }
+  by_hand <- readxl::read_excel("02.inputs/review/raw/screening-with-abstracts.xlsx", col_types = "text") |>
+    dplyr::mutate(id = from_mac(id))
+  stopifnot(setequal(by_hand$id, records$id), setequal(c(by_hand$id[!is.na(by_hand$decision)], model$id[model$pass == "screen"]), records$id))
+  screening <- dplyr::select(by_hand, id, author = decision) |>
+    dplyr::left_join(dplyr::filter(model, pass %in% c("pilot", "screen")) |> dplyr::select(id, model = decision, reason, note), by = "id") |>
+    dplyr::mutate(screener = dplyr::if_else(is.na(author), "model", "author"), decision = dplyr::coalesce(author, model), reason = dplyr::if_else(decision == "exclude", reason, NA)) |>
+    dplyr::select(id, decision, reason, screener, author, note)
+  readr::write_csv(screening, "02.inputs/derived/review-screening.csv", na = "")
+  wb <- openxlsx::loadWorkbook("02.inputs/review/raw/screening-with-abstracts.xlsx")
+  openxlsx::writeData(wb, 1, dplyr::select(screening, decision, reason), startCol = 8)
+  openxlsx::writeData(wb, 1, dplyr::select(screening, screener, note), startCol = 11)
+  openxlsx::saveWorkbook(wb, "02.inputs/review/raw/screening-with-abstracts.xlsx", overwrite = TRUE)
+}
+screening <- readr::read_csv("02.inputs/derived/review-screening.csv", show_col_types = FALSE)
+```
+
+```{r}
+#| label: review-fulltext
+#| echo: true
+
+if (!file.exists("02.inputs/derived/review-fulltext.csv")) {
+  squash <- \(x) stringr::str_remove_all(stringr::str_to_lower(stringi::stri_trans_general(x, "NFKC; Latin-ASCII")), "[^a-z0-9]")
+  # library-science manifest, https://github.com/seamusrobertmurphy/library-science/blob/main/library/manifest.csv
+  held_doi <- stringr::str_to_lower(stats::na.omit(readr::read_csv("../library-science/library/manifest.csv", show_col_types = FALSE)$doi))
+  # PDFs saved by hand into library-science staging, named by author, year and title, outside git
+  staged <- squash(stringr::str_remove(basename(list.files("../library-science/library/staging", "\\.pdf$", recursive = TRUE)), "^.*?\\b(19|20)[0-9]{2}\\b"))
+  staged <- substr(staged[nchar(staged) >= 25], 1, 40)
+  wanted <- readr::read_csv("02.inputs/derived/review-records.csv", col_types = readr::cols(.default = "c")) |>
+    dplyr::select(id, doi, title, year, routes, url) |>
+    dplyr::inner_join(dplyr::filter(screening, decision %in% c("include", "undecided")) |> dplyr::select(id, decision), by = "id") |>
+    dplyr::mutate(work = squash(title),
+                  held = dplyr::case_when(routes == "grey" ~ "04.references/literature", stringr::str_to_lower(doi) %in% held_doi ~ "library-science pdf",
+                                          purrr::map_lgl(work, \(t) any(startsWith(t, staged))) ~ "library-science staging")) |>
+    dplyr::mutate(.by = work, held = dplyr::first(held[!is.na(held)]), copy = dplyr::row_number() > 1)
+  todo <- dplyr::filter(wanted, is.na(held), !copy)
+  look_up <- function(doi, title) {
+    req <- if (!is.na(doi)) {
+      # OpenAlex work by DOI, a single-work lookup that costs nothing against the daily budget, https://docs.openalex.org/api-entities/works/get-a-single-work
+      httr2::request(paste0("https://api.openalex.org/works/doi:", doi))
+    } else {
+      # OpenAlex works searched by title for a record with no DOI, at $0.001 of the $0.10 a day the unkeyed service allows, https://docs.openalex.org/api-entities/works/search-works
+      httr2::request("https://api.openalex.org/works") |>
+        httr2::req_url_query(filter = paste0("title.search:", stringr::str_squish(stringr::str_replace_all(stringi::stri_trans_nfkc(title), "[^[:alnum:]]", " "))), `per-page` = 5)
+    }
+    w <- req |> httr2::req_url_query(select = "title,authorships,best_oa_location,locations") |> httr2::req_retry(max_tries = 4) |> httr2::req_perform() |> httr2::resp_body_json()
+    if (is.na(doi)) w <- purrr::detect(w$results, \(r) squash(r$title %||% "") == squash(title))
+    list(urls = unique(stats::na.omit(c(w$best_oa_location$pdf_url %||% NA, purrr::map_chr(w$locations, \(l) l$pdf_url %||% NA)))),
+         authors = purrr::map_chr(w$authorships, \(a) a$author$display_name %||% NA))
+  }
+  folder <- file.path("../library-science/library/staging", paste0("ipcc-uncertainties-", Sys.Date()))
+  dir.create(folder, showWarnings = FALSE)
+  fetch <- function(id, doi, title, year, ...) {
+    found <- look_up(doi, title)
+    Sys.sleep(0.5)
+    author <- stringr::word(found$authors[1], -1)
+    name <- paste0(dplyr::coalesce(author, "Anon"), if (length(found$authors) > 2) " et al" else "", " ", year, " ",
+                   stringr::str_trunc(stringr::str_squish(stringr::str_replace_all(title, "[[:cntrl:]:/\\\\?*\"<>|]", " ")), 120, ellipsis = ""), ".pdf")
+    if (file.exists(file.path(folder, name))) name <- sub("\\.pdf$", paste0(" ", substr(rlang::hash(id), 1, 6), ".pdf"), name)
+    status <- "no open copy found"
+    for (u in found$urls) {
+      resp <- tryCatch(httr2::request(u) |> httr2::req_user_agent("ipcc-uncertainties literature review, R httr2") |> httr2::req_timeout(90) |>
+                         httr2::req_error(is_error = \(r) FALSE) |> httr2::req_perform(), error = \(e) NULL)
+      if (is.null(resp)) { status <- "no answer from the open copy"; next }
+      body <- if (httr2::resp_has_body(resp)) httr2::resp_body_raw(resp) else raw()
+      if (httr2::resp_status(resp) == 200 && length(body) > 10000 && identical(body[1:4], charToRaw("%PDF"))) {
+        writeBin(body, file.path(folder, name))
+        return(tibble::tibble(id, author, status = "downloaded", pdf_url = u, file = name))
+      }
+      status <- if (httr2::resp_status(resp) == 200) "open copy is a web page, not a PDF" else paste("publisher refused,", httr2::resp_status(resp))
+    }
+    tibble::tibble(id, author, status, pdf_url = found$urls[1], file = NA_character_)
+  }
+  got <- purrr::pmap(dplyr::select(todo, id, doi, title, year), \(...) tryCatch(fetch(...), error = \(e) tibble::tibble(id = list(...)$id, author = NA_character_, status = paste("lookup failed,", conditionMessage(e)), pdf_url = NA_character_, file = NA_character_)), .progress = TRUE) |>
+    purrr::list_rbind()
+  log <- wanted |>
+    dplyr::left_join(got, by = "id") |>
+    dplyr::mutate(status = dplyr::case_when(!is.na(held) ~ paste("held in", held), copy ~ "copy of a work listed above", .default = status)) |>
+    dplyr::select(id, doi, author, title, year, decision, status, url, pdf_url, file)
+  readr::write_csv(log, "02.inputs/derived/review-fulltext.csv", na = "")
+  log |>
+    dplyr::filter(!stringr::str_detect(status, "^(held|downloaded|copy)")) |>
+    dplyr::transmute(author, year, title, decision, link = dplyr::coalesce(dplyr::if_else(is.na(doi), NA, paste0("https://doi.org/", doi)), url, pdf_url), status) |>
+    readr::write_excel_csv("02.inputs/review/raw/pdfs-to-download.csv", na = "")
+}
+fulltext <- readr::read_csv("02.inputs/derived/review-fulltext.csv", show_col_types = FALSE)
+```
+
+```{r}
+#| label: review-counts
+#| echo: true
+
+records <- readr::read_csv("02.inputs/derived/review-records.csv", show_col_types = FALSE) |>
+  dplyr::select(-decision, -reason) |>
+  dplyr::left_join(screening, by = "id")
+search_log <- readr::read_csv("02.inputs/derived/review-search-log.csv", show_col_types = FALSE)
+review_counts <- tibble::tibble(
+  Stage = c("Records retrieved", "Unique after removing duplicates", "Excluded on title and abstract", "Read in full", "Retained"),
+  Records = c(sum(search_log$retrieved), nrow(records), sum(records$decision == "exclude" & dplyr::coalesce(records$full_text, "") != "yes"), sum(records$full_text == "yes", na.rm = TRUE), sum(records$decision == "include"))
+)
+kappa <- \(a, b) {
+  lv <- c("include", "exclude", "undecided")
+  chance <- sum(prop.table(table(factor(a, lv))) * prop.table(table(factor(b, lv))))
+  (mean(a == b) - chance) / (1 - chance)
+}
+agreement <- readr::read_csv("04.references/review/screening-model.csv", show_col_types = FALSE) |>
+  dplyr::filter(pass != "screen") |>
+  dplyr::inner_join(dplyr::select(screening, id, author), by = "id") |>
+  dplyr::summarise(.by = pass, n = dplyr::n(), agree = sum(author == decision), kappa = kappa(author, decision))
+validation <- dplyr::filter(agreement, pass == "validation")
+works <- dplyr::filter(fulltext, status != "copy of a work listed above")
+review_reasons <- records |>
+  dplyr::filter(decision == "exclude") |>
+  dplyr::count(reason, name = "Records", sort = TRUE)
+oa <- dplyr::filter(search_log, strand == "openalex")
+s2 <- dplyr::filter(search_log, strand == "semantic-scholar")
+```
+
+On `r format(as.Date(min(search_log$date)), "%d %B %Y")` the `r nrow(oa)` searches of OpenAlex retrieved `r format(sum(oa$retrieved), big.mark = ",")` records on title and abstract, and the same searches of library-science, the author's store of sources verified against CrossRef, retrieved `r sum(search_log$retrieved[search_log$strand == "library-science"])`. `r if (all(!is.na(s2$error))) "Semantic Scholar refused every search made without an access key, so it contributed no records." else paste0("Semantic Scholar retrieved ", format(sum(s2$retrieved), big.mark = ","), " records.")` Once records sharing a DOI or a title were merged, and `r sum(records$routes == "grey")` guidelines, standards, inventory reports and methodological notes sought by hand from the IPCC, Environment and Climate Change Canada, Architecture for REDD+ Transactions and FAO were added, `r format(nrow(records), big.mark = ",")` unique records remained to be screened. Scopus and Web of Science were not searched, because both require an institutional key.
+
+The author screened the first `r sum(records$screener == "author")` records on title and abstract, including a record when it mentioned natural, anthropogenic, human-induced or any other kind of disturbance. His decisions showed that a record was excluded when disturbance was only background to another subject, and the remaining `r format(sum(records$screener == "model"), big.mark = ",")` records were screened against a written form of the rule that said so, by a large language model (Claude Opus 5.5, Anthropic) that read each title and abstract and was given his decisions as worked examples. Tried blind on `r validation$n` of his records, with the other `r sum(records$screener == "author") - validation$n` given as examples, the model agreed with him on `r validation$agree` [Cohen's κ = `r sprintf("%.2f", validation$kappa)`]. Of the `r format(nrow(records), big.mark = ",")` records, `r sum(records$decision == "include")` were included and `r sum(records$decision == "exclude")` excluded, `r sum(records$reason == "wrong-concept", na.rm = TRUE)` of them because they concerned forest or land but none of the concepts the questions turn on, and `r sum(records$decision == "undecided")` were left undecided because they had no abstract and their titles could not settle them. The full texts of the included and undecided records were sought from the open copies that OpenAlex lists, and `r sum(stringr::str_detect(works$status, "^(held|downloaded)"))` of the `r nrow(works)` works were held already or downloaded.
+
+## Data sources
+
+```{r}
+#| label: tbl-sources
+#| tbl-cap: "Datasets this study read, with the release used and what each one supplies."
+#| echo: true
+
+sources <- data.frame(
+  Dataset = c("FAOSTAT Emissions from Fires (GI)",
+              "FAO AllFires_OrganicSoils table",
+              "MODIS MCD64A1 Collection 6.1",
+              "MODIS MCD12Q1 Collection 6.1"),
+  Publisher = c("FAO", "FAO", "NASA", "NASA"),
+  Supplies = c("Burned area, burned biomass and emissions by country and year",
+               "Organic soil fire values set to zero in the published domain",
+               "Monthly burned area at 500 m, the input FAOSTAT aggregates",
+               "Annual land cover at 500 m, the vegetation strata FAOSTAT applies"),
+  Period = c("1990-2024", "1990-2021", "2000-2024", "2001-2023"))
+readr::write_csv(sources, "03.outputs/TBL/tbl-sources.csv")
+fmt_tbl(sources)
+```
+
+## Fire emissions from FAOSTAT
+
+FAOSTAT computes each country's fire emissions as the burned area of a pixel multiplied by the fuel biomass consumption of its vegetation type and then by the default emission factor of that gas, aggregated to the country through the FAO Global Administrative Unit Layers, and disseminates the result for forest fires, savanna fires and fires in organic soils [@fao2025fires]. The methodological note states that forest fire carbon dioxide is left out of the domain because it is counted in the FAOSTAT Forests domain, and that savanna fire carbon dioxide is left out on the assumption that regrowth balances it within a year [@fao2025fires]. The domain nonetheless returns carbon dioxide for forest fires from 2001 onwards, and those are the values reported here.
+
+The domain was retrieved through the FAOSTAT application programming interface, which requires an account. The analysis chunk at the head of this document authenticated with the credentials stored in the environment, requested the domain for Canada and cached the response, so that a later render read the cached file rather than the service.
+
+
+## Fires in organic soils
+
+The values FAO withholds from the published domain are read from the `AllFires_OrganicSoils` table, which FAO releases as a related document of the domain. The analysis chunk extracted every record from that document, keeping only lines that held a complete record so that a line broken across a page boundary could not enter the table as a partial one, and checked that the result held one record for every combination of area, year and reported element.
+
+
+## The natural disturbance rule
+
+Australia's rule was applied to the Canadian series in the form its inventory uses, a year counting as natural when its fire emissions exceed the mean of a baseline period by two standard deviations [@bowman2023wildfire]. The rule was run three times, on baselines of 13, 20 and 30 years, so that the effect of the baseline length could be read from the same data. The 13 year baseline is the length Australia itself used, 2000 to 2012.
+
+
+## Canada's reported components
+
+Canada's own disaggregated series was taken from Table 6-1 of the 2026 national inventory report, which Environment and Climate Change Canada published for every inventory year from 1990 to 2024 and for each province and territory separately [@eccc2026nir]. The table gave the net emissions of the land use sector, which is the account Canada reports, and on a separate line the net emissions of land affected by natural disturbance, which Canada tracks but leaves out of its reported total. Both lines were read for Canada and for British Columbia. The share of the area burned in Canada that fell in British Columbia each year was computed from the Canadian National Fire Database, which stores the fire polygons of every provincial, territorial and federal agency in one archive. The two accounts were first compared over the whole inventory period, 1990 to 2024, by the mean and standard deviation of their annual net emissions, following the comparison of reported series under two partitions of the managed forest by @kurz2024revised, before the crediting arithmetic below was applied to the years from 2012.
+
+
+## Crediting under the standard
+
+The two deductions the standard applies were implemented as written, so that the share of gross reductions and removals a jurisdiction keeps can be read off any uncertainty level. The uncertainty deduction takes the adjustment factor of the standard's Equation 11 and the buffer takes the contribution of its Table 2 [@art2021trees].
+
+
+The uncertainty of each account was drawn from the published uncertainty of the model that produces Canada's estimates, a 95 per cent interval 32.2 Tg of carbon a year wide, taken here as a standard deviation applied to every annual flux in both accounts, which assumes the model is no more certain about a megafire year than about a quiet one [@metsaranta2017uncertainty]. The crediting level of the standard is the emissions of a five year historical reference period divided by five, and reductions in a year are that level minus the emissions reported for the year [@art2021trees]. Both were computed twice, once on the human activity component alone, which is the disaggregated account Canada reports, and once on the sum of the two components, which is the account a jurisdiction would report without the disaggregation. The reference period was 2012 to 2016 and the crediting period 2017 to 2024.
+
+
+# Results
+
+## Reported national emissions
+
+```{r}
+#| label: fig-accounts
+#| fig-cap: "Net emissions of the land use sector for Canada and British Columbia, 1990 to 2024, in the account Canada reports, with natural disturbance separated, and in the undisaggregated account, the reported total plus the natural disturbance component. Positive values are emissions and negative values are removals."
+#| echo: true
+
+eccc |>
+  dplyr::mutate(region = factor(dplyr::if_else(region == "BC", "British Columbia", region), levels = c("Canada", "British Columbia"))) |>
+  tidyr::pivot_longer(c(human, net), names_to = "account", values_to = "mt") |>
+  dplyr::mutate(account = dplyr::if_else(account == "human", "Disaggregated, as reported", "Undisaggregated")) |>
+  ggplot2::ggplot(ggplot2::aes(year, mt, linetype = account)) +
+  ggplot2::geom_hline(yintercept = 0, linewidth = 0.3, colour = "grey60") +
+  ggplot2::geom_line() +
+  ggplot2::facet_wrap(~region, ncol = 1, scales = "free_y") +
+  ggplot2::labs(x = NULL, y = expression("Net emissions (Mt CO"[2]*"e)"), linetype = NULL) +
+  th +
+  ggplot2::theme(legend.position = "bottom")
+```
+
+Separating natural disturbance cut the standard deviation of Canada's annual land use emissions from `r round(stats::sd(national$net))` to `r round(stats::sd(national$human))` Mt CO~2~e over 1990 to 2024, a factor of `r round(stats::sd(national$net) / stats::sd(national$human), 1)` (@fig-accounts). The account Canada reports averaged `r msd(national$human)`, while the same land without the separation averaged `r msd(national$net)`, the difference being the natural disturbance component, which ran from `r round(min(national$natural))` Mt in `r national$year[which.min(national$natural)]` to `r format(round(max(national$natural)), big.mark = ",")` Mt in `r national$year[which.max(national$natural)]`. In 2023 Canada reported `r national$human[national$year == 2023]` Mt where the undisaggregated account showed `r format(round(national$net[national$year == 2023]), big.mark = ",")` Mt. British Columbia's reported account averaged `r msd(province$human)` against `r msd(province$net)` without the separation, a standard deviation `r round(stats::sd(province$net) / stats::sd(province$human), 1)` times larger, and in 2023 the province reported `r province$human[province$year == 2023]` Mt against `r round(province$net[province$year == 2023])` Mt.
+
+## Fire emissions in Canada
+
+```{r}
+#| label: tbl-canada-forest
+#| tbl-cap: "Carbon dioxide from forest fires in Canada as FAOSTAT computes it at Tier 1, with the burned area it was derived from. The series begins in 2001 because that is the first year of the MODIS burned area input."
+#| echo: true
+
+readr::write_csv(forest, "03.outputs/TBL/tbl-canada-forest.csv")
+fmt_tbl(forest)
+```
+
+```{r}
+#| label: fig-canada-forest
+#| fig-cap: "Carbon dioxide from forest fires in Canada, 2001 to 2024, as computed by FAOSTAT at Tier 1 from MODIS burned area."
+#| echo: true
+
+ggplot2::ggplot(forest, ggplot2::aes(Year, `CO2 (kt)` / 1000)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::labs(x = NULL, y = expression(CO[2]~"(Mt)")) +
+  th
+```
+
+Forest fires in Canada released `r format(round(forest[["CO2 (kt)"]][forest$Year == 2023] / 1000), big.mark = ",")` Mt of carbon dioxide in 2023 on the FAOSTAT Tier 1 estimate, `r round(forest[["CO2 (kt)"]][forest$Year == 2023] / mean(forest[["CO2 (kt)"]][forest$Year < 2023]), 1)` times the mean of the years before it and `r round(forest[["CO2 (kt)"]][forest$Year == 2023] / forest[["CO2 (kt)"]][forest$Year == 2020], 0)` times the quietest year of the series, 2020, at `r format(round(forest[["CO2 (kt)"]][forest$Year == 2020] / 1000, 1), nsmall = 1)` Mt (@fig-canada-forest).
+
+```{r}
+#| label: tbl-source-gap
+#| tbl-cap: "Carbon dioxide from fires in other forest in Canada, as FAOSTAT computes it at Tier 1 and as Canada reported it to the UNFCCC, for the years both are available. FAOSTAT carries the reported series inside the same domain."
+#| echo: true
+
+readr::write_csv(gap, "03.outputs/TBL/tbl-source-gap.csv")
+fmt_tbl(gap)
+```
+
+The two sources disagree by more than they agree. Across the `r nrow(gap)` years in which both are reported, the FAOSTAT Tier 1 estimate is a median of `r round(median(gap$Ratio), 1)` times the value Canada itself submitted, running from `r min(gap$Ratio)` times in `r gap$Year[which.min(gap$Ratio)]` to `r max(gap$Ratio)` times in `r gap$Year[which.max(gap$Ratio)]` (@tbl-source-gap).
+
+## Classifying a fire year as natural
+
+```{r}
+#| label: tbl-baselines
+#| tbl-cap: "The natural disturbance threshold applied to Canadian forest fire emissions under three baseline lengths. The threshold is the baseline mean plus two standard deviations, and the years listed are those the rule classifies as natural."
+#| echo: true
+
+readr::write_csv(baselines, "03.outputs/TBL/tbl-baselines.csv")
+fmt_tbl(baselines)
+```
+
+The baseline length moved the threshold without moving the classification. Lengthening the baseline from 13 to 20 years raised the threshold from `r format(baselines[["Threshold (kt)"]][1], big.mark = ",")` to `r format(baselines[["Threshold (kt)"]][2], big.mark = ",")` kilotonnes of carbon dioxide, a rise of `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent, and both lengths classified the same `r length(strsplit(baselines[["Years classified natural"]][1], ", ")[[1]])` years as natural, `r baselines[["Years classified natural"]][1]` (@tbl-baselines). The 30 year baseline could not be run at all, because the FAOSTAT series covers only `r nrow(forest_co2)` years derived from observations, 2001 to 2024, and the years before that are filled rather than measured.
+
+## Crediting with and without the separation
+
+```{r}
+#| label: tbl-credits
+#| tbl-cap: "Emissions and reductions for Canada's managed land under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. The disaggregated account is the human activity component Canada reports; the undisaggregated account is the sum of the human activity and natural disturbance components. A negative reduction is emissions above the crediting level, which the standard treats as a reversal."
+#| echo: true
+
+readr::write_csv(credits, "03.outputs/TBL/tbl-credits.csv")
+fmt_tbl(credits)
+```
+
+
+The separation decides whether there is anything to credit. On the account Canada reports, reductions were positive in `r sum(split_pos)` of the `r nrow(credits)` crediting years and summed to `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent, with `r sum(!split_pos)` years below the crediting level, `r credits$Year[!split_pos][1]` at `r credits[["Disaggregated reductions (Mt)"]][!split_pos][1]` Mt and `r credits$Year[!split_pos][2]` at `r credits[["Disaggregated reductions (Mt)"]][!split_pos][2]` Mt. On the same land without the separation, reductions were positive in only `r sum(whole_pos)` years, and the shortfall in `r credits$Year[worst]` alone reached `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt, which is `r round(abs(credits[["Undisaggregated reductions (Mt)"]][worst]) / sum(credits[["Disaggregated reductions (Mt)"]][split_pos]))` times every reduction the disaggregated account earned across the whole period (@tbl-credits).
+
+Neither deduction is reached in that case, because there is nothing to deduct from. The standard's reversal rule retires buffer credits equal to the lower of the emissions above the crediting level or every credit the jurisdiction has been issued, so an undisaggregated account of this land exhausts its buffer in `r credits$Year[which(!whole_pos)[1]]` and again in each later year that emissions exceed the level [@art2021trees].
+
+## Crediting in British Columbia
+
+```{r}
+#| label: tbl-bc
+#| tbl-cap: "Emissions and reductions for British Columbia under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. Both components are the provincial figures of the national inventory, and the burned area share is the province's share of the area burned in Canada."
+#| echo: true
+
+readr::write_csv(bc_credits, "03.outputs/TBL/tbl-bc.csv")
+fmt_tbl(bc_credits)
+```
+
+
+British Columbia followed the national pattern and more sharply. The province took `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2018]` per cent of the area burned in Canada in 2018 and `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent in 2023. On the disaggregated account its reductions were positive in `r sum(bc_split_pos)` of the `r nrow(bc_credits)` crediting years, summing to `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt of carbon dioxide equivalent. Without the separation they were positive in `r sum(bc_whole_pos)` years, and `r bc_credits$Year[bc_worst]` fell `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` Mt below the crediting level (@tbl-bc).
+
+## The uncertainty of each account
+
+```{r}
+#| label: tbl-uncertainty
+#| tbl-cap: "Reductions and their uncertainty for Canada under the two accounts, from 10,000 Monte Carlo draws using the annual flux uncertainty published for Canada's forest carbon model. The interval is the 90 per cent interval the standard requires, its half width expressed against the mean reduction of the same draws, and the deduction is what the standard's adjustment factor takes from it. A percentage is printed only where the mean reduction is positive, since a percentage of a shortfall carries no meaning, and the undisaggregated deduction is therefore not reported."
+#| echo: true
+
+readr::write_csv(uncertainty, "03.outputs/TBL/tbl-uncertainty.csv")
+fmt_tbl(uncertainty)
+```
+
+Canada's own uncertainty analysis of the model behind these numbers reports a 95 per cent interval `r round(32.2 * 44 / 12)` Mt of carbon dioxide equivalent wide around a median of `r round(-0.8 * 44 / 12, 1)` Mt, and states plainly that "the CI for NBP cannot be meaningfully expressed in percentage terms because its range of possible values contains zero" [@metsaranta2017uncertainty]. Carried into the crediting arithmetic, that interval is wider than the reductions it qualifies. Across the `r sum(!is.na(uncertainty[["Disaggregated interval (% of mean)"]]))` crediting years with a positive mean reduction, the interval of the disaggregated account ran from `r format(min(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated interval (% of mean)"]], na.rm = TRUE), big.mark = ",")` per cent of its own mean reduction, and the uncertainty deduction it implies is `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent (@tbl-uncertainty). The separation rescues the sign of the account and leaves the credit uncertain by more than its own size, which the disaggregation does not address.
+
+## What survives the deductions
+
+```{r}
+#| label: tbl-kept
+#| tbl-cap: "The share of gross reductions and removals a jurisdiction keeps under the standard, by the reported uncertainty. The uncertainty deduction follows Equation 11 and the buffer follows Table 2 of the standard. The last column is the worst case in the five years after a reversal, when the buffer rises by five percentage points."
+#| echo: true
+
+readr::write_csv(deductions, "03.outputs/TBL/tbl-kept.csv")
+fmt_tbl(deductions)
+```
+
+
+The two deductions together are linear in the reported uncertainty, so the level at which a jurisdiction keeps nothing can be solved rather than searched. On the default buffer that level is an uncertainty of `r round(100 * break_even())` per cent, with all three mitigating factors and the smallest buffer the standard allows it is `r round(100 * break_even("1,2,3"))` per cent, and in the five years after a reversal it is `r round(100 * break_even(after_reversal = TRUE))` per cent. Below those levels the loss is still severe. At an uncertainty of 100 per cent the jurisdiction keeps `r deductions[["Kept, 25% buffer (%)"]][deductions[[1]] == 100]` per cent of its gross reductions and removals on the default buffer, and at 150 per cent it keeps `r deductions[["Kept, 25% buffer (%)"]][deductions[[1]] == 150]` per cent (@tbl-kept). Uncertainty of that size is not hypothetical, since the uncertainty chapter's own worked example prints ±150 per cent for one land category [@paciornik2019uncertainties].
+
+## Fires in organic soils
+
+```{r}
+#| label: tbl-canada-peat
+#| tbl-cap: "Burned area and emissions from fires in organic soils in Canada, as FAO computed them and then set them to zero in the published Emissions from Fires domain. Values for 1990 to 1995 are the average of the reconstructed series rather than observations, which is why they do not vary."
+#| echo: true
+
+readr::write_csv(canada, "03.outputs/TBL/tbl-canada-peat.csv")
+fmt_tbl(canada)
+```
+
+```{r}
+#| label: fig-canada-peat
+#| fig-cap: "Burned area of fires in organic soils in Canada, 1990 to 2021, from the FAO table that the published domain replaces with zeros. The flat section to 1995 is the filled part of the series and the rest is derived from satellite observations."
+#| echo: true
+
+ggplot2::ggplot(canada, ggplot2::aes(Year, `Burned area (ha)` / 1000)) +
+  ggplot2::geom_col(width = 0.7) +
+  ggplot2::labs(x = NULL, y = "Burned area (thousand ha)") +
+  th
+```
+
+
+Over the `r nrow(obs)` years the satellite record covers, 2001 to 2021, fires in organic soils in Canada burned a mean of `r format(round(mean(obs[["Burned area (ha)"]])), big.mark = ",")` hectares a year and released a mean of `r format(round(mean(obs[["CO2 (kt)"]])), big.mark = ",")` kilotonnes of carbon dioxide and `r format(round(mean(obs[["CH4 (kt)"]])), big.mark = ",")` kilotonnes of methane, none of which appears in the FAOSTAT domain a government downloads. The largest single year was `r obs$Year[which.max(obs[["Burned area (ha)"]])]`, at `r format(round(max(obs[["Burned area (ha)"]])), big.mark = ",")` hectares and `r format(round(obs[["CO2 (kt)"]][which.max(obs[["Burned area (ha)"]])]), big.mark = ",")` kilotonnes of carbon dioxide, and the smallest was `r obs$Year[which.min(obs[["Burned area (ha)"]])]`, at `r format(round(min(obs[["Burned area (ha)"]])), big.mark = ",")` hectares.
+
+The six years from 1990 to 1995 repeat one value, `r format(round(fill), big.mark = ",")` hectares, and that value is the mean of every year that follows them to the last digit the table prints, `r format(round(mean(post[["Burned area (ha)"]]), 2), big.mark = ",", nsmall = 2)` hectares for 1996 to 2021 against `r format(round(fill, 2), big.mark = ",", nsmall = 2)`. The filled years are therefore the average of the whole remaining series rather than of the window the methodological note describes, and any mean taken over the full series returns that same value whatever the observations do.
+
+# Discussion
+
+Separating natural disturbance from human activity decided whether an account existed to credit, and it did not make that account precise. On the components Canada published, the managed land of the country reported reductions in `r sum(split_pos)` of the `r nrow(credits)` years from 2017 to 2024, totalling `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent, while the same land accounted without the separation reported them in `r sum(whole_pos)` years and fell `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt short of its crediting level in 2023 alone. British Columbia, with `r bc_credits[["Burned area share (%)"]][bc_credits$Year == 2023]` per cent of the area burned in Canada that year, reversed in the same way at the provincial scale, reporting `r round(sum(bc_credits[["Disaggregated reductions (Mt)"]][bc_split_pos]), 1)` Mt separated against a shortfall of `r format(abs(bc_credits[["Undisaggregated reductions (Mt)"]][bc_worst]), big.mark = ",")` Mt unseparated. The separation was therefore not an adjustment to a reported number but the condition on which a jurisdictional credit existed at all.
+
+The separated account nonetheless kept part of its reductions in only `r sum(banked > 0, na.rm = TRUE)` of the `r sum(!is.na(banked))` years with a positive reduction, for a reason that is arithmetic rather than ecological. A percentage uncertainty is an interval divided by a reported value, so an account whose emissions and removals nearly cancel reports an uncertainty far larger than either side of it, and @paciornik2019uncertainties warned against interpreting such a result "in cases where the point estimate is very small when compared with the size of the confidence interval". @metsaranta2017uncertainty met the same limit from the other direction, reporting an interval `r round(32.2 * 44 / 12)` Mt wide around a median of `r round(-0.8 * 44 / 12, 1)` Mt and stating that it "cannot be meaningfully expressed in percentage terms because its range of possible values contains zero". Applied to the crediting equations, that interval produced uncertainty deductions of `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent, larger than the reduction they were taken from in `r sum(over, na.rm = TRUE)` of the `r sum(!is.na(over))` years with a positive reduction and smaller only in `r paste(uncertainty$Year[which(!over)], collapse = " and ")`, so the separation moved the reported quantity away from zero in the years the fires dominated and left it near zero in the years they did not. In `r mc_split$Year[which(banked > 0)]` it kept `r round(banked[which(banked > 0)], 1)` per cent of its reduction, after the uncertainty deduction and a buffer that the shortfall of `r min(credits$Year[!split_pos])` had raised to `r 100 * trees_buffer(after_reversal = TRUE)` per cent.
+
+The length of the record behind the separation mattered less than its absence from the guidance. Lengthening the baseline from 13 to 20 years raised the threshold that marks a year as natural by `r round(100 * (baselines[["Threshold (kt)"]][2] / baselines[["Threshold (kt)"]][1] - 1))` per cent and marked the same five years, so the classification was insensitive to the choice while the threshold was not, and a 30 year baseline could not be tested because the satellite record behind the emissions covered only `r nrow(forest_co2)` years. Canada applied no baseline of any length, reconstructing instead the cause of every stand for the century from 1889 to 1989 and then reporting each burned area in the natural category for the 60 to 100 years it takes to grow back to the age at which it can be logged [@kurz2024revised], while Australia tested fire seasons against a thirteen year mean [@bowman2023wildfire] and the worked European example built its series over the twenty years before the base year and assumed twenty years of regrowth [@ogle2019generic]. Three implementations used three temporal designs under guidance that specifies none, which is what leaves the regrowth half of the account undefined.
+
+Crediting standards inherit that silence directly, because the REDD+ Environmental Excellence Standard permits the exclusion of natural disturbance on the authority of the guidance and points to the chapter that defines the term without defining how far back the record must reach [@art2025trees3; @ogle2019generic], and both of the standard's deductions are then taken from whatever remains. A standard that credits jurisdictions therefore rests on a boundary it does not set and cannot audit, since two jurisdictions applying the same clause to the same fire record could report different natural shares according to how far back their labelling reached and how long their regrowth periods ran. Three changes would close that gap, which are to specify the length of the record behind any natural disturbance test rather than leave it to the participant, to state the regrowth period over which subsequent removals are disaggregated together with the evidence for it, and to compute the uncertainty deduction on gross emissions and gross removals rather than on a net that approaches zero, so that a jurisdiction is not penalised for the arithmetic of cancellation rather than for the quality of its data.
+
+Three limits qualify these results, the first being that the uncertainty analysis applied one published interval to every annual flux in both accounts, which assumes the model is no more certain about a quiet year than about a megafire year. The comparison of sources showed that the Tier 1 estimate published by the Food and Agriculture Organization ran a median of `r round(median(gap$Ratio), 1)` times the value Canada submitted for the same item, so the choice of source moved the reported total as much as the choice of method. The same database sets Canada's organic soil fire emissions to zero while computing them at a mean of `r format(round(mean(obs[["CO2 (kt)"]])), big.mark = ",")` kilotonnes of carbon dioxide a year over the satellite record, so a government checking its inventory against that source checks it against a figure the publisher does not stand behind outside Southeast Asia [@fao2025fires].
+
+# Conclusions
+
+Two accounts of the same Canadian managed land, one separating natural disturbance from human activity and one not, were run through the crediting level, the uncertainty deduction and the buffer withholding of the REDD+ Environmental Excellence Standard for the fire years 2017 to 2024, and the separation decided whether any reduction existed to credit, `r round(sum(credits[["Disaggregated reductions (Mt)"]][split_pos]), 1)` Mt of carbon dioxide equivalent separated against a shortfall of `r format(abs(credits[["Undisaggregated reductions (Mt)"]][worst]), big.mark = ",")` Mt in 2023 alone unseparated, which means that a jurisdiction in a megafire regime can report a creditable balance only by excluding the fires, on guidance that sets no length for the record the exclusion rests on. The separated account remained uncertain by more than its own size, with an uncertainty deduction of `r format(min(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` to `r format(max(uncertainty[["Disaggregated deduction (%)"]], na.rm = TRUE), big.mark = ",")` per cent, and kept part of its reductions only in `r mc_split$Year[which(banked > 0)]`, `r round(banked[which(banked > 0)], 1)` per cent of them, so separation alone left little to issue and the standards that rely on it need to specify the record length, state the regrowth period and take the uncertainty deduction from gross emissions and gross removals rather than from a net that approaches zero.
+
+
+# Author contributions {.unnumbered}
+
+# Acknowledgements {.unnumbered}
+
+# Data availability {.unnumbered}
+
+# Word count {.unnumbered}
+
+Main text {{WC_PROSE}} words. Total including tables, captions and references {{WC_TOTAL}} words. Abstract {{WC_ABSTRACT}} words.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
