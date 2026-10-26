@@ -92,7 +92,7 @@ Everything from here to the end marker is generated from the render by `01.manus
 
 ### Abstract
 
-Separating natural disturbance from human activity decided whether Canada and British Columbia could report a creditable forest carbon balance at all in the years of the largest fires on record, rather than merely narrowing the uncertainty of one. The 2019 Refinement to the 2006 guidelines of the Intergovernmental Panel on Climate Change offers that separation as an option and sets no length for the record it requires, and little is known about what it does to the credit a jurisdiction can issue. This study compared two accounts of the same land, one that separates natural disturbance and one that does not, for Canada and for British Columbia across the crediting years 2017 to 2024 against a 2012 to 2016 reference period, using the published components of the national inventory for 1990 to 2024, the fire polygons of the Canadian National Fire Database and the fire emissions of the Food and Agriculture Organization statistical database. The crediting level, the uncertainty deduction and the buffer withholding of the REDD+ Environmental Excellence Standard were implemented as the standard writes them, and the natural disturbance threshold was calibrated on baselines of thirteen, twenty and thirty years. The account Canada reports earned reductions in 6 of the 8 crediting years, totalling 85.6 million tonnes of carbon dioxide equivalent, while the same land without the separation earned them in 2 years and fell 853.6 million tonnes below the crediting level in 2023 alone. British Columbia, which held 22.2 per cent of the area burned in Canada in 2023, earned 104.6 million tonnes on the separated account and fell 322 million tonnes short without it. Lengthening the baseline from thirteen to twenty years raised the threshold that marks a year as natural by 74 per cent without changing which years it marked, and the two deductions of the standard leave nothing to issue once reported uncertainty reaches 235 per cent. Carbon standards that credit jurisdictions therefore rest on a separation their own guidance leaves undefined, and the rule that defines it decides the credit.
+Separating natural disturbance from human activity, as the 2019 Refinement to the guidelines of the Intergovernmental Panel on Climate Change allowed, decided whether Canada and British Columbia had any forest carbon credit to claim in the large fire years of 2017 to 2024. Few studies have run a national inventory through a crediting standard with and without that separation, and the guidance set no length for the record behind it. This study compared the two accounts for Canada and British Columbia using the 2026 national inventory (1990 to 2024) and applied the crediting level, Monte Carlo uncertainty deduction and buffer of the REDD+ Environmental Excellence Standard to 2017 to 2024. It also tested baselines of 13, 20 and 30 years for classing a fire year as natural, and recovered the coefficients behind the fire emissions that the Food and Agriculture Organization published for Canada. The account Canada reported showed reductions in 6 of 8 crediting years, totalling 85.6 million tonnes of carbon dioxide equivalent, while the same land without the separation showed them in 2 years and fell 853.6 million tonnes short in 2023 alone. British Columbia showed 104.6 million tonnes of reductions separated and fell 322 million tonnes short without it. Lengthening the baseline from 13 to 20 years raised the natural disturbance threshold by 74 per cent without changing the years it marked, and the two deductions left nothing to issue once uncertainty reached 235 per cent. The Food and Agriculture Organization applied savanna and grassland emission factors to Canadian forest fires, putting their methane at 49 per cent of its cited method. It also classed 86 per cent of the burned area as savanna, grassland or shrubland, for which it reported no carbon dioxide. Crediting standards that relied on the separation therefore needed a stated record length, a stated regrowth period and an uncertainty deduction taken on gross rather than net fluxes.
 
 ### Results
 
@@ -211,6 +211,33 @@ Every figure and table below is reproduced from the current render, in the order
 
 #### Table 4
 
+*Fuel consumption and emission factors FAOSTAT applied to fires in Canada, 2001 to 2024, recovered from its own published values by dividing the biomass burned of each item by its burned area and each emission by the biomass burned, with the rows of Tables 2.4 and 2.5 of the 2006 IPCC Guidelines that the values equal. Carbon dioxide is not reported for the savanna, grassland and shrubland items.*
+
+<table>
+<thead>
+<tr>
+<th width="2000" align="left">Item</th>
+<th width="2000" align="left">Burned area (kha a year)</th>
+<th width="2000" align="left">Fuel (t/ha)</th>
+<th width="2000" align="left">Table 2.4 row</th>
+<th width="2000" align="left">CO2 (g/kg)</th>
+<th width="2000" align="left">CH4 (g/kg)</th>
+<th width="2000" align="left">N2O (g/kg)</th>
+<th width="2000" align="left">Table 2.5 row</th>
+</tr>
+</thead>
+<tbody>
+<tr><td align="left">Other forest</td><td align="left">340</td><td align="left">41.2 to 47.6</td><td align="left">All boreal forest to All other temperate forests</td><td align="left">1,613</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+<tr><td align="left">Closed shrubland</td><td align="left">0</td><td align="left">26.7</td><td align="left">Shrubland (general)</td><td align="left">not reported</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+<tr><td align="left">Grassland</td><td align="left">56</td><td align="left">4.1</td><td align="left">Grassland, mid or late dry season burns</td><td align="left">not reported</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+<tr><td align="left">Open shrubland</td><td align="left">35</td><td align="left">14.3</td><td align="left">All shrublands</td><td align="left">not reported</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+<tr><td align="left">Savanna</td><td align="left">754</td><td align="left">4.1</td><td align="left">Grassland, mid or late dry season burns</td><td align="left">not reported</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+<tr><td align="left">Woody savanna</td><td align="left">1,195</td><td align="left">3.3</td><td align="left">Savanna woodland, mid or late dry season burns</td><td align="left">not reported</td><td align="left">2.3</td><td align="left">0.21</td><td align="left">Savanna and grassland</td></tr>
+</tbody>
+</table>
+
+#### Table 5
+
 *The natural disturbance threshold applied to Canadian forest fire emissions under three baseline lengths. The threshold is the baseline mean plus two standard deviations, and the years listed are those the rule classifies as natural.*
 
 <table>
@@ -229,7 +256,7 @@ Every figure and table below is reproduced from the current render, in the order
 </tbody>
 </table>
 
-#### Table 5
+#### Table 6
 
 *Emissions and reductions for Canada’s managed land under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. The disaggregated account is the human activity component Canada reports; the undisaggregated account is the sum of the human activity and natural disturbance components. A negative reduction is emissions above the crediting level, which the standard treats as a reversal.*
 
@@ -255,7 +282,7 @@ Every figure and table below is reproduced from the current render, in the order
 </tbody>
 </table>
 
-#### Table 6
+#### Table 7
 
 *Emissions and reductions for British Columbia under the two accounts, 2017 to 2024, on a 2012 to 2016 reference period. Both components are the provincial figures of the national inventory, and the burned area share is the province’s share of the area burned in Canada.*
 
@@ -282,7 +309,7 @@ Every figure and table below is reproduced from the current render, in the order
 </tbody>
 </table>
 
-#### Table 7
+#### Table 8
 
 *Reductions and their uncertainty for Canada under the two accounts, from 10,000 Monte Carlo draws using the annual flux uncertainty published for Canada’s forest carbon model. The interval is the 90 per cent interval the standard requires, its half width expressed against the mean reduction of the same draws, and the deduction is what the standard’s adjustment factor takes from it. A percentage is printed only where the mean reduction is positive, since a percentage of a shortfall carries no meaning, and the undisaggregated deduction is therefore not reported.*
 
@@ -309,7 +336,7 @@ Every figure and table below is reproduced from the current render, in the order
 </tbody>
 </table>
 
-#### Table 8
+#### Table 9
 
 *The share of gross reductions and removals a jurisdiction keeps under the standard, by the reported uncertainty. The uncertainty deduction follows Equation 11 and the buffer follows Table 2 of the standard. The last column is the worst case in the five years after a reversal, when the buffer rises by five percentage points.*
 
@@ -335,7 +362,7 @@ Every figure and table below is reproduced from the current render, in the order
 </tbody>
 </table>
 
-#### Table 9
+#### Table 10
 
 *Burned area and emissions from fires in organic soils in Canada, as FAO computed them and then set them to zero in the published Emissions from Fires domain. Values for 1990 to 1995 are the average of the reconstructed series rather than observations, which is why they do not vary.*
 
